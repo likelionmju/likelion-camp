@@ -21,6 +21,16 @@
                 {% csrf_token %}
                 <div>이름 : <input type="text" name="name"/></div>
                 <div>이메일 : <input type="email" name="email"/></div>
+                <div>기수 : <select id="grade" name="grade">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select></div>
                 <div>비밀번호 : <input type="password" id="userPw" name="password1"/></div>
                 <div>비밀번호 확인 : <input type="password" id="userPwChk" name="password2"/></div>
                 <span id="chkNotice"></span>

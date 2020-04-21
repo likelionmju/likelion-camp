@@ -32,7 +32,7 @@ def register(request):
     if request.method == 'POST':
         if request.method == "POST":
             if request.POST["password1"] == request.POST["password2"]:
-                user = User.objects.create_user(name=request.POST["name"], email=request.POST["email"],
+                user = User.objects.create_user(name=request.POST["name"], email=request.POST["email"], grade=request.POST["grade"],
                                                 password=request.POST["password1"])
                 user.is_active = False
                 user.save()
