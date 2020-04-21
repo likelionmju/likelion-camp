@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likelion Camp</title>
+</head>
+{% block content%}
+<body>
+    <h1>로그인</h1>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        EMAIL <input type="email" name="email"/>
+        PW <input type="password" name="password"/>
+        <input type="submit" value="Login" name="login"/>
+        <a href="{% url 'register' %}"><input type="button" value="Join" name="join"/></a>
+    </form>
+{#    <a href="{%url 'register'%}" id="register">회원 가입</a>#}
+</body>
+{% endblock %}
+
+
+</html>

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likelion Camp</title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+{% block content%}
+    <body>
+    <h1>회원 가입</h1>
+    <div class="panel panel-default registration">
+        <div class="panel-heading">
+            가입하기
+        </div>
+        <div class="panel-body">
+            <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <div>이름 : <input type="text" name="name"/></div>
+                <div>이메일 : <input type="email" name="email"/></div>
+                <div>기수 : <select id="grade" name="grade">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select></div>
+                <div>비밀번호 : <input type="password" id="userPw" name="password1"/></div>
+                <div>비밀번호 확인 : <input type="password" id="userPwChk" name="password2"/></div>
+                <span id="chkNotice"></span>
+                <script>
+                    $(function(){
+                        $('#userPw').keyup(function(){
+                            $('#chkNotice').html('');
+                        });
+
+                        $('#userPwChk').keyup(function(){
+
+                            if($('#userPw').val() != $('#userPwChk').val()){
+                                $('#chkNotice').html('비밀번호 일치하지 않음<br><br>');
+                                $('#chkNotice').attr('color', '#f82a2aa3');
+                            } else{
+                                $('#chkNotice').html('비밀번호 일치함<br><br>');
+                                $('#chkNotice').attr('color', '#199894b3');
+                            }
+
+                        });
+                    });
+                </script>
+                <div class="form-actions">
+                    <button class="btn btn-primary btn-large" type="submit">가입하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </body>
+{% endblock %}
+
+
+</html>
