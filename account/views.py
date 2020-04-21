@@ -47,7 +47,7 @@ def register(request):
                 mail_to = request.POST["email"]
                 email = EmailMessage(mail_title, message, to=[mail_to])
                 email.send()
-                return redirect("home")
+                return render(request, 'activation_alert.html', {'name':request.POST['name'], 'email':mail_to})
     else:
         return render(request, 'register.html')
 
