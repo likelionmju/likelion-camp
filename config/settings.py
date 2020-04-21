@@ -16,7 +16,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -31,6 +30,17 @@ INSTALLED_APPS = [
     'homework.apps.HomeworkConfig',
     'stacklion.apps.StacklionConfig',
 ]
+
+AUTH_USER_MODEL = 'account.User'
+
+# email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = 'skdusdl8804@gmail.com'
+EMAIL_HOST_PASSWORD = 'dlgkrsus4!'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
