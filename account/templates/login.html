@@ -11,7 +11,14 @@
 {% block content%}
 <body>
     <h1>로그인</h1>
-    <a href="{%url 'register'%}" id="register">회원 가입</a>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        EMAIL <input type="email" name="email"/>
+        PW <input type="password" name="password"/>
+        <input type="submit" value="Login" name="login"/>
+        <a href="{% url 'register' %}"><input type="button" value="Join" name="join"/></a>
+    </form>
+{#    <a href="{%url 'register'%}" id="register">회원 가입</a>#}
 </body>
 {% endblock %}
 
