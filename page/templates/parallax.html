@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Parallax</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i'" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/page/css/parallax.css">
+
+</head>
+<body>
+    <nav id="nav">
+        <h1>WEB'S</h1>
+        <ul>
+            <li><a href="#section1">menu1</a></li>
+            <li><a href="#section2">menu2</a></li>
+            <li><a href="#section3">menu3</a></li>
+            <li><a href="#section4">menu4</a></li>
+            <li><a href="#section5">menu5</a></li>
+            <li><a href="#section6">menu6</a></li>
+        </ul>
+    </nav>
+
+    <div id="contents">
+        <div id="section1"><h2>Time is <strong>gold</strong></h2></div>
+        <div id="section2"><h2>Seeing is <strong>believing</strong></h2></div>
+        <div id="section3"><h2>Asking costs <strong>nothing</strong></h2></div>
+        <div id="section4"><h2><strong>Better</strong> is to bow than break</h2></div>
+        <div id="section5"><h2><strong>Habit</strong> is second nature</h2></div>
+        <div id="section6"><h2>Pain past is <strong>pleasure</strong></h2></div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        var nav = $("#nav ul li");
+        var cont = $("#contents > div");
+
+        nav.click(function(e){
+            e.preventDefault();
+            var target = $(this);
+            var index = target.index();
+            //alert(index);
+            var section = cont.eq(index);
+            var offset = section.offset().top;
+            $("html,body").animate({ scrollTop:offset },600,"easeInOutExpo");
+        });
+    </script>
+    <script src="../static/page/js/parallax.js"></script>
+</body>
+</html>

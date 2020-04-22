@@ -6,3 +6,6 @@ def home(request):
 
 def introduce(request):
     return render(request, 'introduce.html')
+
+def parallax(request):
+    return render(request, 'parallax.html')
