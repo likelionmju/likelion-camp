@@ -9,11 +9,37 @@
     <title>Likelion Camp</title>
 </head>
 {% block content%}
-<body>
+    <body>
     <h1>Q&A</h1>
-    
-   
-</body>
+
+{#    질문하기 버튼 필요함#}
+    <table border="1" style="width:600px">
+        <caption>게시판</caption>
+        <colgroup>
+            <col width='8%' />
+            <col width='*%' />
+            <col width='15%' />
+            <col width='15%' />
+        </colgroup>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>등록자</th>
+            <th>등록일</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><c:out value="${listview.brdno}"/></td>
+                <td><a href="${link}"><c:out value="${listview.brdtitle}"/></a></td>
+                <td><c:out value="${listview.brdwriter}"/></td>
+                <td><c:out value="${listview.brddate}"/></td>
+            </tr>
+        </tbody>
+    </table>
+
+    </body>
 {% endblock %}
 
 
