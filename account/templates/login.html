@@ -3,21 +3,30 @@
 
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Likelion Camp</title>
+    {% block link %}
+        {% static '.static\admin\css\login.css' %}
+    {% endblock %}
+    <script src="{% static '.static\admin\js\login.js' %}" type="text/javascript"></script>
 </head>
-{% block content%}
-<body>
-    <h1>로그인</h1>
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        EMAIL <input type="email" name="email"/>
-        PW <input type="password" name="password"/>
-        <input type="submit" value="Login" name="login"/>
-        <a href="{% url 'register' %}"><input type="button" value="Join" name="join"/></a>
-    </form>
+
+{% block content %}
+<form action="{% url 'login' %}" method="post">
+{% csrf_token %}
+    <h2><span class="entypo-login"><i class="fa fa-sign-in"></i></span> Login</h2>
+    <span class="entypo-lock"><i class="fa fa-lock"></i><input type="submit" value="Login" name="login"/></span>      
+    <span class="entypo-user inputUserIcon"><i class="fa fa-user"></i></span>
+    <input type="email" name="E-mail Address"/>
+    <span class="entypo-key inputPassIcon"><i class="fa fa-key"></i></span>
+    <input type="password" name="password"/></p>
+    <a href="{% url 'register' %}"><input type="button" value="Join" name="join"/></a>
+</form>
+
+  
 {#    <a href="{%url 'register'%}" id="register">회원 가입</a>#}
 </body>
 {% endblock %}
