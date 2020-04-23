@@ -2,3 +2,8 @@ body {
     background: #272125;
     font-family: 'Roboto', sans-serif;
   }
+h2{
+    font-size: larger;
+    background-color: #1ea623;
+    color: #4cae4c;
+}

@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-
-{% load staticfiles %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -8,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% staitc 'account\static\account\css\login.css' %}">
-    <title>Likelion Camp</title>
+    {% block link %}{% static 'account/css/login.css' %}{% endblock %}
+    {% block title %}Login{% endblock %}
 </head>
 
 {% block content %}
