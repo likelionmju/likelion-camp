@@ -15,13 +15,14 @@
 <form action="{% url 'login' %}" method="post">
 {% csrf_token %}
     <h2><span class="entypo-login"><i class="fa fa-sign-in"></i></span> Login</h2>
-    <span class="entypo-lock"><i class="fa fa-lock"></i><input type="submit" value="Login" name="login"/></span>      
     <span class="entypo-user inputUserIcon"><i class="fa fa-user"></i></span>
-    <input type="email" name="E-mail Address"/>
+    <input type="email" class="user" placeholder="E-mail Address"/>
     <span class="entypo-key inputPassIcon"><i class="fa fa-key"></i></span>
-    <input type="password" name="password"/></p>
-    <a href="{% url 'register' %}"><input type="button" value="Join" name="join"/></a>
-</form>
+    <input type="password" class="password" placeholder="Password"/></p>
+    <input type="submit" value="Login" name="login"/>
+    <a href="{% url 'register' %}" style="text-decoration: none;"><input type="button" value="Join" name="join" >
+
+
 
   
 {#    <a href="{%url 'register'%}" id="register">회원 가입</a>#}
