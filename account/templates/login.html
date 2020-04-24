@@ -16,9 +16,9 @@
 {% csrf_token %}
     <h2><span class="entypo-login"><i class="fa fa-sign-in"></i></span> Login</h2>
     <span class="entypo-user inputUserIcon"><i class="fa fa-user"></i></span>
-    <input type="email" class="user" placeholder="E-mail Address"/>
+    <input type="email" name="email" class="user" placeholder="E-mail Address"/>
     <span class="entypo-key inputPassIcon"><i class="fa fa-key"></i></span>
-    <input type="password" class="password" placeholder="Password"/></p>
+    <input type="password" name="password" class="password" placeholder="Password"/></p>
     <input type="submit" value="Login" name="login"/>
     <a href="{% url 'register' %}" style="text-decoration: none;"><input type="button" value="Join" name="join" >
 
