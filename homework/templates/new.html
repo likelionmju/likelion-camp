@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likelion Camp</title>
+</head>
+{% block content%}
+<body>
+    <h2 style="color: red;">과제 제출하기</h2><br>
+    <form action="{% url 'new' %}" method="POST">
+        {% csrf_token %}
+        <h3>과제 제목</h3>
+        <input type="text" name='title'>
+        <h3>과제 내용</h3>
+        <textarea name="content" cols="50" rows="10"></textarea>
+        <br>
+        <input type="submit" value="SAVE">
+
+    </form>
+   
+</body>
+{% endblock %}
+
+
+</html>
