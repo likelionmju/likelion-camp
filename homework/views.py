@@ -23,3 +23,20 @@ def new(request):
         return redirect('/homework/detail/'+str(post.id))
     else:
         return render(request,'new.html')
+
+def delete(request, id):
+    post = get_object_or_404(Post, pk=id)
+    post.delete()
+    return redirect('/homework/')
+
+def edit(request, id):
+    post = get_object_or_404(Post, pk=id)
+    # 수정 폼 제출
+    if request.method == 'POST':
+        post.title = request.POST['title']
+        post.content = request.POST['content']
+        post.save()
+        return redirect('/homework/detail/'+str(post.id))
+    else:
+        # 수정 폼
+        return render(request, 'edit.html', {'post': post})

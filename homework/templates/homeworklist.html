@@ -11,6 +11,8 @@
 {% block content%}
 <body>
     <h1>과제 제출</h1><br>
+
+
     <a href="{%url 'new'%}" id="new">제출하기</a><br><br>
     
     {% for post in posts.all reversed %}
