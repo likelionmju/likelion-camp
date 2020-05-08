@@ -12,32 +12,40 @@
     <body>
     <h1>Q&A</h1>
 
-{#    질문하기 버튼 필요함#}
-    <table border="1" style="width:600px">
-        <caption>게시판</caption>
-        <colgroup>
-            <col width='8%' />
-            <col width='*%' />
-            <col width='15%' />
-            <col width='15%' />
-        </colgroup>
-        <thead>
-        <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>등록자</th>
-            <th>등록일</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><c:out value="${listview.brdno}"/></td>
-                <td><a href="${link}"><c:out value="${listview.brdtitle}"/></a></td>
-                <td><c:out value="${listview.brdwriter}"/></td>
-                <td><c:out value="${listview.brddate}"/></td>
-            </tr>
-        </tbody>
-    </table>
+    <div>질문하기</div>
+    <div>
+        <div>{{ user.name }}</div>
+        <form action="{% url 'QnA' %}" method="post">
+            <textarea name="question" rows="5" cols="50" placeholder="질문을 입력해주세요."></textarea>
+            {% csrf_token %}
+            <input type="submit" value="등록">
+        </form>
+    </div>
+
+    {% for question in questions.all reversed %}
+        <div>
+            -------------------------------------------------------------
+            <div>{{ question.asker }}</div>
+            <div>{{ question.pub_date }}</div>
+            <div>{{ question.question_content }}</div>
+            <div>
+                <form action="{% url 'refresh' %}" method="post">
+                    <input type="hidden" value="{{ question.id }}" name="question_id">
+                    <textarea name="answer" rows="1" cols="50" placeholder="답변을 입력해주세요."></textarea>
+                    {% csrf_token %}
+                    <input type="submit" value="답변">
+                </form>
+                {% for answer in question.answers.all %}
+                    <div name="comment">
+                    {{ answer.answerer }}
+                    {{ answer.answer_content }}
+                    </div>
+                {% endfor %}
+            </div>
+            -------------------------------------------------------------
+        </div>
+    {% endfor %}
+
 
     </body>
 {% endblock %}

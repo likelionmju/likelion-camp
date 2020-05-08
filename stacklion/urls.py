@@ -2,5 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('QnA/', views.QnA, name = 'QnA'),
+    path('', views.QnA, name = 'QnA'),
+    path('answer/', views.refresh, name='refresh')
 ]
