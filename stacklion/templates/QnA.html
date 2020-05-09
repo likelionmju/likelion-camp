@@ -15,9 +15,10 @@
     <div>질문하기</div>
     <div>
         <div>{{ user.name }}</div>
-        <form action="{% url 'QnA' %}" method="post">
-            <textarea name="question" rows="5" cols="50" placeholder="질문을 입력해주세요."></textarea>
+        <form action="{% url 'QnA' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
+            <textarea name="question" rows="5" cols="50" placeholder="질문을 입력해주세요."></textarea><br>
+            <input type="file" name="question_file">
             <input type="submit" value="등록">
         </form>
     </div>
@@ -28,6 +29,7 @@
             <div>{{ question.asker }}</div>
             <div>{{ question.pub_date }}</div>
             <div>{{ question.question_content }}</div>
+            <div><a href="{{ question.question_file.url }}" download="">첨부파일 다운로드 {{ question.question_file }}</a> </div>
             <div>
                 <form action="{% url 'refresh' %}" method="post">
                     <input type="hidden" value="{{ question.id }}" name="question_id">
