@@ -6,12 +6,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Likelion Camp</title>
+    {% block title %}Likelion Camp{% endblock %}
 </head>
 {% block content%}
     <body>
     <h1>Q&A</h1>
-
     <div>질문하기</div>
     <div>
         <div>{{ user.name }}</div>

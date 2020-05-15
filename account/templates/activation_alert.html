@@ -1,20 +1,20 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% block link %}{% static 'account/css/activation_alert.css' %}{% endblock %}>
-    {% block title %}Likelion Camp{% endblock %}
+    <link rel="stylesheet" href="{% static 'account/css/activation_alert.css' %}">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <title>Likelion Camp</title>
 </head>
 <body>
-    {{ name }} 님,<br>
-    {{ email }} 으로<br>
-    인증메일을 보내드렸습니다. 확인하시고 인증url을 눌러주십시오.
+    <h1 style="text-align: center;"  class="a_style">{{ name }} 님</h1><br>
+    <h3 style="text-align: center;">{{ email }} 으로인증메일을 보내드렸습니다. 
+        <br>확인하시고 인증url을 눌러주십시오.</h3>
 
-     <a href="{% url 'home' %}">HOME 으로 돌아가기</a>
+     <a href="{% url 'home' %}"><i class="fa fa-home" aria-hidden="true" style="color: #E18A07; font-size:50px; margin-left: calc(100%/2);" ></i></a>
 
 </body>
 </html>
