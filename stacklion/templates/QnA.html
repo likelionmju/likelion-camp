@@ -6,12 +6,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block link %}{% static 'stacklion/css/QnA.css' %}{% endblock %}
     {% block title %}Likelion Camp{% endblock %}
 </head>
 {% block content%}
-    <body>
-    <h1>Q&A</h1>
-    <div>질문하기</div>
+    <body style="background-color: black; color: white;">
+    <h1 style="text-align: center; color: #E18A07;">질문하기</h1>
     <div>
         <div>{{ user.name }}</div>
         <form action="{% url 'QnA' %}" method="post" enctype="multipart/form-data">
