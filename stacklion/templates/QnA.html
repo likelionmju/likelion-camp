@@ -9,11 +9,12 @@
     {% block link %}{% static 'stacklion/css/QnA.css' %}{% endblock %}
     {% block title %}Likelion Camp{% endblock %}
 </head>
+
 {% block content%}
-    <body style="background-color: black; color: white;">
-    <h1 style="text-align: center; color: #E18A07;">질문하기</h1>
+    <body>
+    <h1 style="text-align: center;">질문하기</h1>
     <div>
-        <div>{{ user.name }}</div>
+        <div>{{ user.name }}님.</div>
         <form action="{% url 'QnA' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <textarea name="question" rows="5" cols="50" placeholder="질문을 입력해주세요."></textarea><br>
