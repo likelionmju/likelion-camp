@@ -12,9 +12,9 @@
 
 {% block content%}
     <body>
-    <h1 style="text-align: center;">질문하기</h1>
-    <div>
-        <div>{{ user.name }}님.</div>
+    <h1 style="text-align: center;">Question & Answer</h1>
+    <div class="question_form">
+        <h5>{{ user.name }}님의 질문</h5>
         <form action="{% url 'QnA' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <textarea name="question" rows="5" cols="50" placeholder="질문을 입력해주세요."></textarea><br>

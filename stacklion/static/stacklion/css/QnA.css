@@ -1,9 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+@-webkit-keyframes typing { from { width: 0; } }
+@-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
+
 body{
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 h1{
     color : #E18A07;
-    text-decoration: overline underline;
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: 50px;
+    text-shadow: 2px 2px 4px #e2a113;
+    text-decoration: underline;
+    margin-top: 10px;
+    border-right: .1em solid black;
+	width: 17ch;
+	white-space: nowrap;
+	overflow: hidden;
+	-webkit-animation: typing 3s steps(14, end),
+	           blink-caret .5s step-end infinite alternate;
+               
+}
+
+div.question_form{
+    margin-left: calc(100%/2.5);
+    margin-top: 70px;
+}
+
+div{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+textarea{
+    border: #E18A07 2px solid ;
+    background-color: rgb(248, 214, 163);
+    color: black;
+}
+
+
+textarea::-webkit-input-placeholder{
+    color:rgba(0, 0, 0, 0.288);
+    font-size: small;
 }
