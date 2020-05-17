@@ -19,4 +19,4 @@ class Question(models.Model):
 class Answer(models.Model):
     answer_content = models.TextField(null=False, blank=False)
     answerer = models.ForeignKey(User, on_delete=models.PROTECT)
-    question_id = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
+    question_id = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers', blank=True)

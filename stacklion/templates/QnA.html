@@ -29,7 +29,9 @@
             <div>{{ question.asker }}</div>
             <div>{{ question.pub_date }}</div>
             <div>{{ question.question_content }}</div>
-            <div><a href="{{ question.question_file.url }}" download="">첨부파일 다운로드 {{ question.question_file }}</a> </div>
+            {% if question.question_file.url != None %}
+                <div><a href="{{ question.question_file.url }}" download="">첨부파일 다운로드 {{ question.question_file }}</a> </div>
+            {% endif %}
             <div>
                 <form action="{% url 'refresh' %}" method="post">
                     <input type="hidden" value="{{ question.id }}" name="question_id">

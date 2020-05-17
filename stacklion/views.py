@@ -10,7 +10,7 @@ def QnA(request):
     if request.method == 'POST':
         question = Question()
         question.question_content = request.POST['question']
-        question.question_file = request.FILES['question_file']
+        question.question_file = request.FILES.get('question_file', None)
         question.asker = request.user
         question.pub_date = timezone.datetime.now()
         question.save()
