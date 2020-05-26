@@ -28,6 +28,7 @@ div.question_form{
     margin-left: calc(100%/2.5);
     margin-top: 70px;
     font-family: 'Noto Sans KR', sans-serif;
+
 }
 
 div{
@@ -46,6 +47,11 @@ textarea.question{
     background-color: rgb(248, 214, 163);
     color: black;
     font-size: small;
+    box-shadow: 5px 5px 5px rgb(134, 83, 5);
+}
+
+textarea.answer{
+
 }
 
 input.button{
@@ -61,7 +67,7 @@ input.button{
 }
 
 input.button:hover{
-        color:#444;
+        color:rgb(255, 255, 255);
 }
 input.button.activate{
         color:#222;
