@@ -14,39 +14,35 @@
     <body>
     <h1 style="text-align: center;">Question & Answer</h1>
     <div class="question_form">
-        <h5>{{ user.name }}님의 질문</h5>
+        <h5>{{ user.name }}<a style="font-size: small; color:#E18A07">님의 질문</a></h5>
         <form action="{% url 'QnA' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <textarea name="question" rows="5" cols="50" placeholder="질문을 입력해주세요."></textarea><br>
-            <input type="file" name="question_file">
-            <input type="submit" value="등록">
+            <textarea class="question" name="question" rows="10" cols="50" placeholder="질문을 입력해주세요."></textarea><br>
+            <input type="file" name="question_file" style="color : #E18A07; font-size: small;">
+            <input class="button" type="submit" value="등록">
         </form>
     </div>
 
     {% for question in questions.all reversed %}
-        <div>
-            -------------------------------------------------------------
-            <div>{{ question.asker }}</div>
-            <div>{{ question.pub_date }}</div>
+        <div class="answer_form"> 
+            <a style="background-color: rgb(216, 216, 216);">{{ question.asker }} / {{ question.pub_date }}</a>
             <div>{{ question.question_content }}</div>
             {% if question.question_file.url != None %}
                 <div><a href="{{ question.question_file.url }}" download="">첨부파일 다운로드 {{ question.question_file }}</a> </div>
             {% endif %}
-            <div>
                 <form action="{% url 'refresh' %}" method="post">
                     <input type="hidden" value="{{ question.id }}" name="question_id">
-                    <textarea name="answer" rows="1" cols="50" placeholder="답변을 입력해주세요."></textarea>
+                    <textarea class="answer" name="answer" rows="2" cols="50" placeholder="답변을 입력해주세요."></textarea>
                     {% csrf_token %}
-                    <input type="submit" value="답변">
+                    <br>
+                    <input type="submit" class="button" value="답변" >
                 </form>
                 {% for answer in question.answers.all %}
                     <div name="comment">
-                    {{ answer.answerer }}
+                    {{ answer.answerer }} )
                     {{ answer.answer_content }}
                     </div>
                 {% endfor %}
-            </div>
-            -------------------------------------------------------------
         </div>
     {% endfor %}
 
