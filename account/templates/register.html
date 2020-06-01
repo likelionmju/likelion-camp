@@ -8,7 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block link %}{% static 'account/css/register.css' %}{% endblock %}
     {% block title %}Likelion Camp{% endblock %}
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    {% block jqueryscript %}
+        <script type="text/javascript">
+            $(function(){
+                $('#userPw').keyup(function(){
+                    $('#chkNotice').html('');
+                });
+
+                $('#userPwChk').keyup(function(){
+
+                    if($('#userPw').val() != $('#userPwChk').val()){
+                        $('#chkNotice').html('비밀번호 일치하지 않음<br><br>');
+                        $('#chkNotice').attr('color', '#f82a2aa3');
+                    } else{
+                        $('#chkNotice').html('비밀번호 일치함<br><br>');
+                        $('#chkNotice').attr('color', '#199894b3');
+                    }
+
+                });
+            });
+        </script>
+    {% endblock %}
 </head>
 {% block content%}
     <body>
@@ -34,25 +54,6 @@
                 <div><h4>비밀번호</h4><input type="password" id="userPw" name="password1"/></div>
                 <div><h4>비밀번호 확인</h4><input type="password" id="userPwChk" name="password2"/></div>
                 <span id="chkNotice"></span>
-                <script>
-                    $(function(){
-                        $('#userPw').keyup(function(){
-                            $('#chkNotice').html('');
-                        });
-
-                        $('#userPwChk').keyup(function(){
-
-                            if($('#userPw').val() != $('#userPwChk').val()){
-                                $('#chkNotice').html('비밀번호 일치하지 않음<br><br>');
-                                $('#chkNotice').attr('color', '#f82a2aa3');
-                            } else{
-                                $('#chkNotice').html('비밀번호 일치함<br><br>');
-                                $('#chkNotice').attr('color', '#199894b3');
-                            }
-
-                        });
-                    });
-                </script>
                 <div class="form-actions">
                     <button class="button" type="submit"> 가입하기</button>
                 </div>

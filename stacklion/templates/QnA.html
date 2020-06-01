@@ -8,6 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block link %}{% static 'stacklion/css/QnA.css' %}{% endblock %}
     {% block title %}Likelion Camp{% endblock %}
+    {% block jqueryscript %}
+        <script type="text/javascript">
+            $(function () {
+                $(".revise").click(function(){
+                    alert("what the fucking hell");
+                    console.log("what?");
+                });
+            });
+        </script>
+    {% endblock %}
 </head>
 
 {% block content%}
@@ -24,26 +34,35 @@
     </div>
 
     {% for question in questions.all reversed %}
-        <div class="answer_form"> 
-            <a style="background-color: rgb(216, 216, 216);">{{ question.asker }} / {{ question.pub_date }}</a>
-            <div>{{ question.question_content }}</div>
-            {% if question.question_file.url != None %}
-                <div><a href="{{ question.question_file.url }}" download="">첨부파일 다운로드 {{ question.question_file }}</a> </div>
-            {% endif %}
-                <form action="{% url 'refresh' %}" method="post">
-                    <input type="hidden" value="{{ question.id }}" name="question_id">
-                    <textarea class="answer" name="answer" rows="2" cols="50" placeholder="답변을 입력해주세요."></textarea>
-                    {% csrf_token %}
-                    <br>
-                    <input type="submit" class="button" value="답변" >
-                </form>
+        <form action="{% url 'refresh' %}" method="post">
+            <div id="question+{{ question.id }}" class="answer_form">
+                <a style="background-color: rgb(216, 216, 216);">{{ question.asker }} / {{ question.pub_date }}</a>
+                <div id="question_content+{{ question.id }}">{{ question.question_content }}</div>
+                {% if question.asker == user %}
+                    <div name="revise">
+                        <button type="button" id="revise+{{ question.id }}" class="button revise" value="수정">수정</button>
+                        <button type="button" id="delete+{{ question.id }}" class="button delete" value="삭제">삭제</button>
+                    </div>
+                {% endif %}
+
+                {% if question.question_file.url != None %}
+                    <div><a href="{{ question.question_file.url }}" download="">첨부파일 다운로드 {{ question.question_file }}</a> </div>
+                {% endif %}
+
+                <input type="hidden" value="{{ question.id }}" name="question_id">
+                <textarea class="answer" name="answer" rows="2" cols="50" placeholder="답변을 입력해주세요."></textarea>
+                {% csrf_token %}
+                <br>
+                <input type="submit" class="button" value="답변" >
+
                 {% for answer in question.answers.all %}
                     <div name="comment">
-                    {{ answer.answerer }} )
-                    {{ answer.answer_content }}
+                        {{ answer.answerer }} )
+                        {{ answer.answer_content }}
                     </div>
                 {% endfor %}
-        </div>
+            </div>
+        </form>
     {% endfor %}
 
 

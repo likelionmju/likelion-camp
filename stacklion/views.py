@@ -27,3 +27,6 @@ def refresh(request):
         answer.question_id = Question.objects.get(id=request.POST['question_id'])
         answer.save()
         return redirect('/stacklion/')
+#
+# def revise(request):
+#     if request.method == 'POST':
