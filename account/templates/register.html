@@ -10,8 +10,8 @@
     {% block title %}Likelion Camp{% endblock %}
     {% block jqueryscript %}
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type="text/javascript">
             $(function(){
                 $('#userPw').keyup(function(){
@@ -49,8 +49,8 @@
                 {% csrf_token %}
                 <div><h4>이름 </h4><input type="text" name="name"/></div>
                 <div><h4>이메일</h4><input type="email" name="email"/></div>
-                <div class="password"><h4>비밀번호</h4><input type="password" id="userPw" name="password1"/></div>
-                <div class="password"><h4>비밀번호 확인</h4><input type="password" id="userPwChk" name="password2"/></div>
+                <div><h4>비밀번호</h4><input class="password" type="password" id="userPw" name="password1"/></div>
+                <div><h4>비밀번호 확인</h4><input class="password" type="password" id="userPwChk" name="password2"/></div>
                 <div id="chkNotice"></div>
                 <div><h4>기수</h4> <h8 style="color:rgb(212, 211, 211); font-weight: lighter;">박스를 눌러서 기수를 선택해주세요.</h8>
                     <select id="grade" name="grade">
