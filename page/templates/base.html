@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% block link %} {% endblock %}">
     <title>{% block title %}{% endblock %}</title>
-{#    <script src="//code.jquery.com/jquery-1.12.4.js"></script>#}
-{#    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>#}
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         function loginwarning(){
             alert('로그인 후 이용가능한 서비스입니다');
+            {#location.href = "{% url 'login' %}";#}
         }
     </script>
     {% block jqueryscript %}{% endblock %}
@@ -32,10 +33,10 @@
                     <a class="nav-item nav-link" href="{% url 'homeworklist' %}">Homework</a>
                     <a class="nav-item nav-link" href="{% url 'QnA' %}">QnA</a>
                 {% else %}
-                    <a class="nav-item nav-link active" href="" onclick="loginwarning()">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="" onclick="loginwarning()">Introduce</a>
-                    <a class="nav-item nav-link" href="" onclick="loginwarning()">Homework</a>
-                    <a class="nav-item nav-link" href="" onclick="loginwarning()">QnA</a>
+                    <a class="nav-item nav-link active" href="{% url 'home' %}" onclick="loginwarning()">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="{% url 'login' %}" onclick="loginwarning()">Introduce</a>
+                    <a class="nav-item nav-link" href="{% url 'login' %}" onclick="loginwarning()">Homework</a>
+                    <a class="nav-item nav-link" href="{% url 'login' %}" onclick="loginwarning()">QnA</a>
                 {% endif %}
 
                 {% if user.is_authenticated %}
