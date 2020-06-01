@@ -12,7 +12,9 @@
         <script type="text/javascript">
             $(function () {
                 $(".revise").click(function(){
-                    console.log($(this).attr("id"));
+                    var id = $(this).attr("id");
+                    var content = $(#question_content+id).val();
+                    console.log(content);
                 });
             });
         </script>
@@ -34,13 +36,13 @@
 
     {% for question in questions.all reversed %}
         <form action="{% url 'refresh' %}" method="post">
-            <div id="question+{{ question.id }}" class="answer_form">
+            <div id="{{ question.id }}" class="answer_form">
                 <a style="background-color: rgb(216, 216, 216);">{{ question.asker }} / {{ question.pub_date }}</a>
                 <div id="question_content+{{ question.id }}">{{ question.question_content }}</div>
                 {% if question.asker == user %}
                     <div name="revise">
-                        <button type="button" id="revise+{{ question.id }}" class="button revise" value="수정">수정</button>
-                        <button type="button" id="delete+{{ question.id }}" class="button delete" value="삭제">삭제</button>
+                        <button type="button" id="{{ question.id }}" class="button revise" value="수정">수정</button>
+                        <button type="button" id="{{ question.id }}" class="button delete" value="삭제">삭제</button>
                     </div>
                 {% endif %}
 
