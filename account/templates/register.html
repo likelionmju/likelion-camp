@@ -9,22 +9,31 @@
     {% block link %}{% static 'account/css/register.css' %}{% endblock %}
     {% block title %}Likelion Camp{% endblock %}
     {% block jqueryscript %}
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
         <script type="text/javascript">
             $(function(){
                 $('#userPw').keyup(function(){
                     $('#chkNotice').html('');
                 });
 
-                $('#userPwChk').keyup(function(){
+                $('#userPw').focusout(function () {
+                    if($('#userPw').val()==''){
+                        $('#chkNotice').html('');
+                    }
+                })
 
+                $('#userPwChk').focusout(function(){
                     if($('#userPw').val() != $('#userPwChk').val()){
                         $('#chkNotice').html('비밀번호 일치하지 않음<br><br>');
-                        $('#chkNotice').attr('color', '#f82a2aa3');
+                        $('#chkNotice').css('color', '#f82a2aa3');
+                        $('.password').effect("shake");
+
                     } else{
                         $('#chkNotice').html('비밀번호 일치함<br><br>');
-                        $('#chkNotice').attr('color', '#199894b3');
+                        $('#chkNotice').css('color', '#199894b3');
                     }
-
                 });
             });
         </script>
@@ -40,6 +49,9 @@
                 {% csrf_token %}
                 <div><h4>이름 </h4><input type="text" name="name"/></div>
                 <div><h4>이메일</h4><input type="email" name="email"/></div>
+                <div class="password"><h4>비밀번호</h4><input type="password" id="userPw" name="password1"/></div>
+                <div class="password"><h4>비밀번호 확인</h4><input type="password" id="userPwChk" name="password2"/></div>
+                <div id="chkNotice"></div>
                 <div><h4>기수</h4> <h8 style="color:rgb(212, 211, 211); font-weight: lighter;">박스를 눌러서 기수를 선택해주세요.</h8>
                     <select id="grade" name="grade">
                     <option value="1">1</option>
@@ -51,9 +63,6 @@
                     <option value="7">7</option>
                     <option value="8">8</option>
                 </select></div>
-                <div><h4>비밀번호</h4><input type="password" id="userPw" name="password1"/></div>
-                <div><h4>비밀번호 확인</h4><input type="password" id="userPwChk" name="password2"/></div>
-                <span id="chkNotice"></span>
                 <div class="form-actions">
                     <button class="button" type="submit"> 가입하기</button>
                 </div>
