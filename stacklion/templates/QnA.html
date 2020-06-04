@@ -62,7 +62,7 @@
     <h1 style="text-align: center;">Question & Answer</h1>
     <div class="question_form">
         <h5>{{ user.name }}<a style="font-size: small; color:#E18A07">님의 질문</a></h5>
-        <form action="{% url 'newQuestion' %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <textarea class="question" name="question" rows="10" cols="50" placeholder="질문을 입력해주세요."></textarea><br>
             <input type="file" name="question_file" style="color : #E18A07; font-size: small;" multiple>
