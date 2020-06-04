@@ -6,5 +6,5 @@ from . import views
 
 urlpatterns = [
     path('', views.QnA, name = 'QnA'),
-    path('answer/', views.refresh, name='refresh')
+    path('refresh/', views.refresh, name='refresh'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

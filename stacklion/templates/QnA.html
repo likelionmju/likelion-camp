@@ -10,17 +10,48 @@
     {% block title %}Likelion Camp{% endblock %}
     {% block jqueryscript %}
         <script type="text/javascript">
-            $(function () {
-                $(".revise").click(function(){
-                    var id = $(this).attr("id");
-                    console.log(id);
-                    var content = $('#question_content'+id).html();
+            $(document).ready(function () {
+                {% if top %}
+                    $('html').animate({scrollTop : 20 }, 400);
+                {% endif %}
+            })
 
-                    var contentID = "question_content"+id;
-                    console.log(contentID);
-                    $('#'+contentID).replaceWith("<textarea>"+content+"</textarea>");
-                });
-            });
+            $(document).on('click', '.revise', function () {
+                var id = $(this).attr("id");
+                var content = $('#question_content'+id).html();
+                var top = $('#question_content'+id).scrollTop();
+
+                $('#question_content'+id).replaceWith('<textarea name="revise" id="textarea'+id+'">'+content+'</textarea>');
+                $('#buttonpanel'+id).html('<button type="button" id="'+id+'" class="button cancel" value="취소">취소</button>\n' +
+                    '                        <button name="submit" type="submit" id="'+id+'" class="button complete" value="확인">확인</button>' + '<input type="hidden" name="scrolltop" value="'+top+'"/>');
+                {#$('#buttonpanel'+id).load(window.location.href + '#buttonpanel'+id);#}
+                {#window.location.reload();#}
+            })
+
+            $(document).on('click', '.cancel', function () {
+                var id = $(this).attr("id");
+                    console.log(id);
+                    var content = $('#textarea'+id).html();
+                    console.log(content);
+
+                    $('#textarea'+id).replaceWith('<div id="question_content'+id+'">'+content+'</div>');
+                    $('#buttonpanel'+id).html('<button type="button" id="'+id+'" class="button revise" value="수정">수정</button>\n' +
+                        '                        <button type="submit" id="'+id+'" class="button delete" value="삭제">삭제</button>');
+
+            })
+
+            {#$(function () {#}
+            {#    $(".cancel").click(function(){#}
+            {#        var id = $(this).attr("id");#}
+            {#        console.log(id);#}
+            {#        var content = $('#textarea'+id).html();#}
+            {#        console.log(content);#}
+            {##}
+            {#        $('#textarea'+id).replaceWith('<div id="question_content'+id+'">'+content+'</div>');#}
+            {#        $('#buttonpanel'+id).html('<button type="button" id="'+id+'" class="button revise" value="수정">수정</button>\n' +#}
+            {#            '                        <button type="submit" id="'+id+'" class="button delete" value="삭제">삭제</button>');#}
+            {#    });#}
+
         </script>
     {% endblock %}
 </head>
@@ -40,35 +71,43 @@
     </div>
 
     {% for question in questions.all reversed %}
-        <form action="{% url 'refresh' %}" method="post">
-            <div id="{{ question.id }}" class="answer_form">
+        <div id="{{ question.id }}" class="answer_form">
+            <form action="{% url 'refresh' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="val" value="revise"/>
+                <input type="hidden" name="id" value="{{ question.id }}"/>
+
                 <a style="background-color: rgb(216, 216, 216);">{{ question.asker }} / {{ question.pub_date }}</a>
                 <div id="question_content{{ question.id }}">{{ question.question_content }}</div>
                 {% if question.asker == user %}
-                    <div name="revise">
+                    <div id="buttonpanel{{ question.id }}"name="revise">
                         <button type="button" id="{{ question.id }}" class="button revise" value="수정">수정</button>
-                        <button type="button" id="{{ question.id }}" class="button delete" value="삭제">삭제</button>
+                        <button name="submit" type="submit" id="{{ question.id }}" class="button delete" value="삭제">삭제</button>
                     </div>
                 {% endif %}
 
                 {% if question.question_file.url != None %}
                     <div><a href="{{ question.question_file.url }}" download="">첨부파일 다운로드 {{ question.question_file }}</a> </div>
                 {% endif %}
+            </form>
 
+            <form action="{% url 'refresh' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="val" value="answer"/>
                 <input type="hidden" value="{{ question.id }}" name="question_id">
                 <textarea class="answer" name="answer" rows="2" cols="50" placeholder="답변을 입력해주세요."></textarea>
-                {% csrf_token %}
                 <br>
                 <input type="submit" class="button" value="답변" >
+            </form>
 
-                {% for answer in question.answers.all %}
-                    <div name="comment">
-                        {{ answer.answerer }} )
-                        {{ answer.answer_content }}
-                    </div>
-                {% endfor %}
-            </div>
-        </form>
+            {% for answer in question.answers.all %}
+                <div name="comment">
+                    {{ answer.answerer }} )
+                    {{ answer.answer_content }}
+                </div>
+            {% endfor %}
+        </div>
+
     {% endfor %}
 
 
