@@ -26,13 +26,13 @@
 
                 $('#userPwChk').focusout(function(){
                     if($('#userPw').val() != $('#userPwChk').val()){
-                        $('#chkNotice').html('비밀번호 일치하지 않음<br><br>');
-                        $('#chkNotice').css('color', '#f82a2aa3');
+                        $('#chkNotice').html('비밀번호 일치하지 않습니다.<br><br>');
+                        $('#chkNotice').css('color', '#F24405');
                         $('.password').effect("shake", {distance : 3});
 
                     } else{
-                        $('#chkNotice').html('비밀번호 일치함<br><br>');
-                        $('#chkNotice').css('color', '#199894b3');
+                        $('#chkNotice').html('비밀번호 일치합니다.<br><br>');
+                        $('#chkNotice').css('color', '#E67207');
                     }
                 });
             });
