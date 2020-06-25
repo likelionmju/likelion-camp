@@ -21,7 +21,7 @@ div.entire {
 }
 
 div.question_form{
-    width: 48%;
+    width: 45%;
     float: left;
     margin-left: 10px;
     margin-right: 10px;
@@ -41,7 +41,15 @@ div.answer_form{
 input.button{
     font-weight: bold;
     font-family: 'Nanum Gothic Coding', monospace;
+    border:2px #D95829 solid;
+    border-radius: 4px;
+    background-color: rgb(236, 225, 220);
 }
-a.user_name{
-    font-family: 'Nanum Gothic Coding', monospace;
+textarea.question{
+    background-color: rgb(235, 212, 212);
+    border:none;
+}
+textarea.answer{
+    background-color: rgb(235, 212, 212);
+    border:none;
 }
