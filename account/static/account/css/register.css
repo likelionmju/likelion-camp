@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 body{
-    background-color: black;
+    background-color: #F2F2F2;
     font-family: 'Noto Sans KR', sans-serif;
-    color:white;
 }
 
 p {
@@ -68,7 +67,7 @@ form {
     display: block;
     margin: 15px;
     width: 300px;  
-    color:white;
+    color:rgb(116, 96, 96);
     font-size:18px;
     height: 54px;
   }
@@ -94,7 +93,7 @@ form {
     
 
   h4{
-      color :rgb(226, 120, 21) ;
+      color :#F29B30;
   }
 
   input:focus {
@@ -104,7 +103,7 @@ form {
   .button {
     display: inline-block;
     border-radius: 4px;
-    background-color:rgb(225, 112, 7) ;
+    background-color:#F29B30;
     border: none;
     color: #FFFFFF;
     text-align: center;

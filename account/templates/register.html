@@ -27,12 +27,12 @@
                 $('#userPwChk').focusout(function(){
                     if($('#userPw').val() != $('#userPwChk').val()){
                         $('#chkNotice').html('비밀번호 일치하지 않습니다.<br><br>');
-                        $('#chkNotice').css('color', '#F24405');
+                        $('#chkNotice').css('color', '#F23C13');
                         $('.password').effect("shake", {distance : 3});
 
                     } else{
                         $('#chkNotice').html('비밀번호 일치합니다.<br><br>');
-                        $('#chkNotice').css('color', '#E67207');
+                        $('#chkNotice').css('color', '#F27E63');
                     }
                 });
             });
@@ -52,7 +52,7 @@
                 <div><h4>비밀번호</h4><input class="password" type="password" id="userPw" name="password1"/></div>
                 <div><h4>비밀번호 확인</h4><input class="password" type="password" id="userPwChk" name="password2"/></div>
                 <div id="chkNotice"></div>
-                <div><h4>기수</h4> <h8 style="color:rgb(212, 211, 211); font-weight: lighter;">박스를 눌러서 기수를 선택해주세요.</h8>
+                <div><h4>기수</h4> <h8 style="color:#F2C84B; font-weight: lighter; margin-left:15px;">박스를 눌러서 기수를 선택해주세요.</h8>
                     <select id="grade" name="grade">
                     <option value="1">1</option>
                     <option value="2">2</option>
