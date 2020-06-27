@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <link href="page\static\page\css\base.css" rel="stylesheet" type="text/css">
     <title>{% block title %}{% endblock %}</title>
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -24,37 +25,32 @@
 <body>
 {#    <h1>Base.html</h1><hr>#}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'home' %}" style="font-family: 'Roboto', sans-serif;color: rgb(253, 165, 0); text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">LIKELION CAMP</a>
+        <a class="navbar-brand" href="{% url 'home' %}" style="font-family: 'Roboto', sans-serif;color: rgb(255, 153, 0); text-shadow: 1px 1px 1px gray; font-size: 25px;">LIKELION CAMP</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav" style="font-family: 'Noto Sans JP', sans-serif;">
+            <div class="navbar-nav">
                 {% if user.is_authenticated %}
-                    <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link " href="{% url 'introduce' %}">Introduce</a>
-                    <a class="nav-item nav-link " href="{% url 'homeworklist' %}">Homework</a>
-                    <a class="nav-item nav-link " href="{% url 'QnA' %}">QnA</a>
+                    <a class="nav-item nav-link active" href="{% url 'home' %}" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">
+                        Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link " href="{% url 'introduce' %}" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">Introduce</a>
+                    <a class="nav-item nav-link " href="{% url 'homeworklist' %}" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">Homework</a>
+                    <a class="nav-item nav-link " href="{% url 'QnA' %}" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">QnA</a>
                 {% else %}
-<<<<<<< HEAD
-                    <a class="nav-item nav-link active " href="{% url 'home' %}" onclick="loginwarning()">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()">Introduce</a>
-                    <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()">Homework</a>
-                    <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()">QnA</a>
-=======
-                    <a class="nav-item nav-link active" href="{% url 'home' %}" onclick="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="{% url 'login' %}" onclick="{% url 'introduce' %}">Introduce</a>
-                    <a class="nav-item nav-link" href="{% url 'login' %}" onclick="loginwarning()">Homework</a>
-                    <a class="nav-item nav-link" href="{% url 'login' %}" onclick="loginwarning()">QnA</a>
->>>>>>> e3d70197ce8da3383937d115c5fefcf759a384e6
+                    <a class="nav-item nav-link active " href="{% url 'home' %}" onclick="loginwarning()" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">
+                        Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">Introduce</a>
+                    <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">Homework</a>
+                    <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">QnA</a>
                 {% endif %}
             </div>
                 {% if user.is_authenticated %}
-                <a style="font-family: 'Noto Sans KR', sans-serif; margin-left: 50%;">{{ user.name }}님, 환영합니다!</a>
-                <a class="nav-item nav-link ml-auto mr-1" name="logincheck" href="{% url 'logout' %}" style="font-family: 'Noto Sans KR', sans-serif; color: rgb(253, 165, 0);">
+                <a style="font-family: 'Noto Sans KR', sans-serif; margin-left: 60%; color: black;">{{ user.name }}님</a>
+                <a class="nav-item nav-link ml-auto mr-1" name="logincheck" href="{% url 'logout' %}" style="font-family: 'Noto Sans KR', sans-serif; color:rgb(180, 179, 179); font-size: medium;">
                     로그아웃</a>
                 {% else %}
-                <a class="nav-item nav-link ml-auto mr-1" name="logincheck" href="{% url 'login' %}" style="font-family: 'Noto Sans KR', sans-serif; color: rgb(253, 165, 0);">
+                <a class="nav-item nav-link ml-auto mr-1" name="logincheck" href="{% url 'login' %}" style="font-family: 'Noto Sans KR', sans-serif;  color:rgb(180, 179, 179); font-size: medium;">
                     로그인</a>
                 {% endif %}
             
