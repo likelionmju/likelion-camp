@@ -99,7 +99,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="val" value="answer"/>
                 <input type="hidden" value="{{ question.id }}" name="question_id">
-                <textarea style="margin:13px"class="answer" name="answer" rows="2" cols="85" placeholder="답변을 입력해주세요."></textarea>
+                <textarea style="margin:13px"class="answer" name="answer" rows="2" cols="80" placeholder="답변을 입력해주세요."></textarea>
                 <input type="submit" class="button" style="margin-left: 87%; margin-bottom:10px"value="답변" >   
             </form>
 
