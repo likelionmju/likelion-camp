@@ -36,10 +36,17 @@
                     <a class="nav-item nav-link " href="{% url 'homeworklist' %}">Homework</a>
                     <a class="nav-item nav-link " href="{% url 'QnA' %}">QnA</a>
                 {% else %}
+<<<<<<< HEAD
                     <a class="nav-item nav-link active " href="{% url 'home' %}" onclick="loginwarning()">Home <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()">Introduce</a>
                     <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()">Homework</a>
                     <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()">QnA</a>
+=======
+                    <a class="nav-item nav-link active" href="{% url 'home' %}" onclick="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="{% url 'login' %}" onclick="{% url 'introduce' %}">Introduce</a>
+                    <a class="nav-item nav-link" href="{% url 'login' %}" onclick="loginwarning()">Homework</a>
+                    <a class="nav-item nav-link" href="{% url 'login' %}" onclick="loginwarning()">QnA</a>
+>>>>>>> e3d70197ce8da3383937d115c5fefcf759a384e6
                 {% endif %}
             </div>
                 {% if user.is_authenticated %}
