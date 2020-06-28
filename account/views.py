@@ -20,7 +20,7 @@ def login(request):
             auth.login(request, user)
             return redirect('home')
         else:
-            return render(request, 'login.html', {'error': 'wrong info'})
+            return render(request, 'login.html', {'error': 'wronginfo'})
     else:
         return render(request, 'login.html')
 

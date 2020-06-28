@@ -10,21 +10,26 @@
     {% block link %}{% static 'account/css/login.css' %}{% endblock %}
     {% block title %}Login{% endblock %}
 </head>
-
+<body>
 {% block content %}
-<form action="{% url 'login' %}" method="post">
-{% csrf_token %}
-    <h2><span class="entypo-login"><i class="fa fa-sign-in"></i></span> Login</h2>
-    <span class="entypo-user inputUserIcon"><i class="fa fa-user"></i></span>
-    <input type="email" name="email" class="user" placeholder="E-mail Address"/>
-    <span class="entypo-key inputPassIcon"><i class="fa fa-key"></i></span>
-    <input type="password" name="password" class="password" placeholder="Password"/>
-    <input type="submit" value="Login" name="login"/>
-    <a href="{% url 'register' %}" style="text-decoration: none;"><input type="button" value="Join" name="join" ></a>
-</form>
-{#    <a href="{%url 'register'%}" id="register">회원 가입</a>#}
-</body>
+    {% if error == 'wronginfo' %}
+        <script>
+            alert("로그인 정보가 잘못되었습니다. 다시 입력해주세요.");
+            console.log("hihi");
+        </script>
+    {% endif %}
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <h2><span class="entypo-login"><i class="fa fa-sign-in"></i></span> Login</h2>
+        <span class="entypo-user inputUserIcon"><i class="fa fa-user"></i></span>
+        <input type="email" name="email" class="user" placeholder="E-mail Address"/>
+        <span class="entypo-key inputPassIcon"><i class="fa fa-key"></i></span>
+        <input type="password" name="password" class="password" placeholder="Password"/>
+        <input type="submit" value="Login" name="login"/>
+        <a href="{% url 'register' %}" style="text-decoration: none;"><input type="button" value="Join" name="join" ></a>
+    </form>
+    {#    <a href="{%url 'register'%}" id="register">회원 가입</a>#}
 {% endblock %}
-
+</body>
 
 </html>
