@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Likelion Camp</title>
+        {% block title %} Likelion Camp {% endblock %}
         {% block link %}{% static 'page/css/introduce.css' %}{% endblock %}
     </head>
 {% block content%}
@@ -17,13 +17,13 @@
 
             <!-- Header -->
                 <header id="header">
-                    <span class="avatar"><img src="{% static 'page/avatar.png' %}" alt="" /></span>
+                    <span class="avatar"><img src="{% static 'page/images/avatar.png' %}" alt="" /></span>
                     <h1>Who's with <strong>MJU X LIKELION?</strong><br/>
                     구성원 소개</h1>
                     <ul class="icons">
-                        <li><a href="https://www.facebook.com/likelionMJU" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
-                        <li><a href="https://www.instagram.com/likelion_mju/" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="https://github.com/likelionmju" class="icon style2 fa-github"><span class="label">Github</span></a></li>
+                        <li><a href="https://www.facebook.com/likelionMJU" target="_blank" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+                        <li><a href="https://www.instagram.com/likelion_mju/" target="_blank" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="https://github.com/likelionmju" target="_blank" class="icon style2 fa-github"><span class="label">Github</span></a></li>
                     </ul>
                 </header>
                 
@@ -36,14 +36,14 @@
                         <section class="thumbnails">
   
                             <div>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
+                                <a href="{% static 'page/images/thumbs/김만수.jpg' %}">
+                                    <img src="{% static 'page/images/thumbs/김만수.jpg' %}" alt="" />
                                     <h3>김만수 (만파카)</h3>
                                     <p>응용소프트웨어 18</p>
                                     <h5>사실은 경영대학 학생임</h5>
                                 </a>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
+                                <a href="{% static 'page/images/thumbs/노혜인.jpg' %}">
+                                    <img src="{% static 'page/images/thumbs/노혜인.jpg' %}" alt="" />
                                     <h3>노혜인 (YES혜인)</h3>
                                     <p>경영정보학과 18</p>
                                     <h5>모두가 "NO" 라고 말할 때, <br>
@@ -52,13 +52,13 @@
                                 </a>
                             </div>
                             <div>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
+                                <a href="{% static 'page/images/thumbs/김나연.jpg' %}">
+                                    <img src="{% static 'page/images/thumbs/김나연.jpg' %}" alt="" />
                                     <h3>김나연</h3>
                                     <p>응용소프트웨어 17</p>
-                                    <h5>나연</h5>
+                                    <h5>노는 게 제일 좋아 !</h5>
                                 </a>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/Yunsik-Choi">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>최윤식</h3>
                                     <p>응용소프트웨어 16</p>
@@ -83,11 +83,11 @@
                                 </a>
                             </div>
                             <div>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/1KimJiHyeon">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
-                                    <h3>김지현</h3>
+                                    <h3>김지현 (집순이)</h3>
                                     <p>데이터테크놀로지 18</p>
-                                    <h5>지현</h5>
+                                    <h5>집에 갈래.....🙂</h5>
                                 </a>
                             </div>
                         </section>
@@ -99,19 +99,19 @@
                         <section class="thumbnails">
   
                             <div>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/mina-gwak">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>곽민아</h3>
                                     <p>경영정보학과 18</p>
                                     <h5>민아</h5>
                                 </a>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/kimyubi">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>김유비</h3>
                                     <p>응용소프트웨어 20</p>
                                     <h5>유비</h5>
                                 </a>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/umyiebin">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>엄예빈</h3>
                                     <p>경영학과 18</p>
@@ -119,13 +119,13 @@
                                 </a>
                             </div>
                             <div>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/jinahkwak">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>곽진아</h3>
                                     <p>정보통신공학과 16</p>
                                     <h5>진아</h5>
                                 </a>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/wille318">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>김예빈</h3>
                                     <p>미술사학과 19<br>
@@ -133,7 +133,7 @@
                                     </p>
                                     <h5>예빈</h5>
                                 </a>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/s0y00n">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>이소윤</h3>
                                     <p>경영학과 18 <br>
@@ -143,19 +143,19 @@
                                 </a>
                             </div>
                             <div>
-                                <a href="{% static 'page/images/thumbs/02.jpg' %}">
+                                <a href="https://github.com/DoyKim-20">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>김도영</h3>
                                     <p>응용소프트웨어 19</p>
                                     <h5>도영</h5>
                                 </a>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/hyunbin1">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>김현빈</h3>
                                     <p>미술사학과 20</p>
                                     <h5>현빈</h5>
                                 </a>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/Ariel1016">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>정가현</h3>
                                     <p>숭실대 전자정보학부 18</p>
@@ -163,19 +163,19 @@
                                 </a>
                             </div>
                             <div>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/seunghyun2269">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>김승현</h3>
                                     <p>데이터테크놀로지 16</p>
                                     <h5>승현</h5>
                                 </a>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/ygnaiih1680">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>박성제</h3>
                                     <p>응용소프트웨어 18</p>
                                     <h5>성제</h5>
                                 </a>
-                                <a href="{% static 'page/images/fulls/02.jpg' %}">
+                                <a href="https://github.com/HWANHEE-CHO">
                                     <img src="{% static 'page/images/thumbs/02.jpg' %}" alt="" />
                                     <h3>조환희</h3>
                                     <p>사회과학부 20</p>
@@ -195,10 +195,10 @@
         </div>
 
     <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.poptrox.min.js"></script>
-        <script src="assets/js/skel.min.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="{% static 'page/js/introduce/jquery.min.js' %}"></script>
+        <script src="{% static 'page/js/introduce/jquery.poptrox.min.js' %}"></script>
+        <script src="{% static 'page/js/introduce/skel.min.js' %}"></script>
+        <script src="{% static 'page/js/introduce/main.js' %}"></script>
 
     </body>
 {% endblock %}

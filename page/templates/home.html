@@ -5,20 +5,148 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link ref="stylesheet" href="{% static '.static\admin\css\home.css'%}">
-    {% block link %}{% static 'page/css/home.css' %}{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     {% block title %}Likelion Camp{% endblock %}
+    {% block link %}{% static 'page/css/home.css' %}{% endblock %}
+    <noscript><link rel="stylesheet" href="{% static 'page/css/noscript.css' %}" /></noscript>
+    
 </head>
+
 {% block content%}
-<body>
+<body class="is-preload">
     <h1>LIKELION CAMP</h1>
     <a href="{%url 'login'%}" id="login">로그인</a>
     <a href="{%url 'homeworklist'%}" id="homeworklist">과제 제출</a>
     <a href="{%url 'QnA'%}" id="QnA">Q&A</a>
     <a href="{%url 'parallax'%}" id="parallax">testing parallax</a>
+    
+		<body class="is-preload">
+		<!-- Header -->
+			<section id="header">
+				<div class="inner">
+					<span class="icon solid major fa-cloud"></span>
+					<h1>멋쟁이사자처럼 X 명지대(서울)<br />
+					MJU X LIKELION</h1>
+					<p>전국 연합 코딩 교육 & 창업 동아리</p>
+					<ul class="actions special">
+						<li><a href="#one" class="button scrolly">알아보기</a></li>
+					</ul>
+				</div>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="main style1">
+				<div class="container">
+					<div class="row gtr-150">
+						<div class="col-6 col-12-medium">
+							<header class="major">
+								<h2>LIKELION?</h2>
+							</header>
+							<p>멋쟁이사자처럼 소개</p>
+						</div>
+						<div class="col-6 col-12-medium imp-medium">
+							<span class="image fit"><img src="{% static 'page/images/main/pic01.jpg' %}" alt="" /></span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="main style2">
+				<div class="container">
+					<div class="row gtr-150">
+						<div class="col-6 col-12-medium">
+							<ul class="major-icons">
+								<li><span class="icon solid style1 major fa-code"></span></li>
+								<li><span class="icon solid style2 major fa-bolt"></span></li>
+								<li><span class="icon solid style3 major fa-camera-retro"></span></li>
+								<li><span class="icon solid style4 major fa-cog"></span></li>
+								<li><span class="icon solid style5 major fa-desktop"></span></li>
+								<li><span class="icon solid style6 major fa-calendar"></span></li>
+							</ul>
+						</div>
+						<div class="col-6 col-12-medium">
+							<header class="major">
+								<h2>커리큘럼</h2>
+							</header>
+							<p>커리큘럼 소개</p>
+							<p>커리큘럼</p>
+							<p>커리큘럼</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Three -->
+			<section id="three" class="main style1 special">
+				<div class="container">
+					<header class="major">
+						<h2>페이지 기능 소개</h2>
+					</header>
+					<p>멋쟁이사자처럼에서 당신의 꿈을 실현하세요.</p>
+					<div class="row gtr-150">
+						<div class="col-4 col-12-medium">
+							<span class="image fit"><img src="{% static 'page/images/main/pic02.jpg' %}" alt="" /></span>
+							<h3>구성원 소개</h3>
+							<p>열정과 패기가 가득한 사자들을 소개합니다.</p>
+							<ul class="actions special">
+								<li><a href="{% url 'introduce' %}" class="button">More</a></li>
+							</ul>
+						</div>
+						<div class="col-4 col-12-medium">
+							<span class="image fit"><img src="{% static 'page/images/main/pic03.jpg' %}" alt="" /></span>
+							<h3>과제 제출</h3>
+							<p>꾸준한 연습이 완벽을 만듭니다.</p>
+							<ul class="actions special">
+								<li><a href="{% url 'homeworklist' %}" class="button">More</a></li>
+							</ul>
+						</div>
+						<div class="col-4 col-12-medium">
+							<span class="image fit"><img src="{% static 'page/images/main/pic04.jpg' %}" alt="" /></span>
+							<h3>Q&A</h3>
+							<p>혼자 해결하기 힘든 부분을 운영진과 부원들이 모두 함께 도와드립니다 !</p>
+							<ul class="actions special">
+								<li><a href="{% url 'QnA' %}" class="button">More</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Four -->
+			<section id="four" class="main style2 special">
+				<div class="container">
+					<header class="major">
+						<h2>사이트를 더 이용하려면?</h2>
+					</header>
+					<p>지금 바로 회원가입하세요!</p>
+					<ul class="actions special">
+						<li><a href="{%url 'register'%}" class="button wide primary">Sign Up</a></li>
+					</ul>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<section id="footer">
+				<ul class="icons">
+					<li><a href="https://www.facebook.com/likelionMJU" target="_blank" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="https://www.instagram.com/likelion_mju/" target="_blank"  class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="https://github.com/likelionmju" target="_blank"  class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; MJU X LIKELION 8th </li><li> All rights reserved. </li>
+				</ul>
+			</section>
+
+		<!-- Scripts -->
+			<script src="{% static 'page/js/main/jquery.min.js' %}"></script>
+			<script src="{% static 'page/js/main/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'page/js/main/browser.min.js' %}"></script>
+			<script src="{% static 'page/js/main/breakpoints.min.js' %}"></script>
+			<script src="{% static 'page/js/main/util.js' %}"></script>
+			<script src="{% static 'page/js/main/main.js' %}"></script>
+
 </body>
 {% endblock %}
-
 
 </html>
