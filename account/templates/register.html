@@ -45,12 +45,12 @@
 
             $(document).on('keyup click keypress focus focusout', '.data', function() {
                 if($('input[name=name]').val()==''||$('input[name=email]').val()==''||$('#userPw').val()==''||$('#userPwChk').val()==''){
-                    console.log($('input[name=name]').val());
-                    console.log($('input[name=email]').val());
-                    console.log($('#userPw').val());
-                    console.log($('#userPwChk').val());
                     $('#submit').attr('disabled', 'disabled');
                 }else{
+                    if($('#userPw').val()!=$('#userPwChk').val()){
+                        $('#submit').attr('disabled', 'disabled');
+                        return;
+                    }
                     console.log("hihi");
                     $('#submit').removeAttr("disabled");
                 }

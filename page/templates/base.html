@@ -38,9 +38,9 @@
                     <a class="nav-item nav-link " href="{% url 'homeworklist' %}" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">Homework</a>
                     <a class="nav-item nav-link " href="{% url 'QnA' %}" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">QnA</a>
                 {% else %}
-                    <a class="nav-item nav-link active " href="{% url 'home' %}" onclick="loginwarning()" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">
+                    <a class="nav-item nav-link active " href="{% url 'home' %}" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">
                         Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">Introduce</a>
+                    <a class="nav-item nav-link " href="{% url 'introduce' %}" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">Introduce</a>
                     <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">Homework</a>
                     <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()" style="color:rgb(180, 179, 179);font-family: 'Roboto', sans-serif;">QnA</a>
                 {% endif %}
