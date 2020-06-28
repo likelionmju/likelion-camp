@@ -26,13 +26,13 @@
 
                 $('#userPwChk').focusout(function(){
                     if($('#userPw').val() != $('#userPwChk').val()){
-                        $('#chkNotice').html('비밀번호 일치하지 않습니다.<br><br>');
-                        $('#chkNotice').css('color', '#F23C13');
+                        $('#chkNotice').html('비밀번호가 일치하지 않습니다.<br><br>');
+                        $('#chkNotice').css('color', '#F26241');
                         $('.password').effect("shake", {distance : 3});
 
                     } else{
-                        $('#chkNotice').html('비밀번호 일치합니다.<br><br>');
-                        $('#chkNotice').css('color', '#F23C13');
+                        $('#chkNotice').html('비밀번호가 일치합니다.<br><br>');
+                        $('#chkNotice').css('color', '#F26241');
                     }
                 });
             });
@@ -41,18 +41,18 @@
 </head>
 {% block content%}
     <body>
-    <p><span>회원 가입</span></p>
+    <h1>회원가입</h1>
+    <div class="form-actions">
+        <button class="button" type="submit"> 가 입 하 기</button>
+    </div>
     <div class="panel panel-default registration">
         <div class="panel-heading"></div>
         <div class="panel-body">
             <form action="{% url 'register' %}" method="post">
                 {% csrf_token %}
-                <div><h4>이름 </h4><input type="text" name="name"/></div>
-                <div><h4>이메일</h4><input type="email" name="email"/></div>
-                <div><h4>비밀번호</h4><input class="password" type="password" id="userPw" name="password1"/></div>
-                <div><h4>비밀번호 확인</h4><input class="password" type="password" id="userPwChk" name="password2"/></div>
-                <div id="chkNotice"></div>
-                <div><h4>기수</h4> <h8 style="color:#F2C84B; font-weight: lighter; margin-left:15px;">박스를 눌러서 기수를 선택해주세요.</h8>
+                <div class="up">
+                    이름 : <input type="text" name="name" class="name"/>
+                    기수 : 
                     <select id="grade" name="grade">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -62,9 +62,16 @@
                     <option value="6">6</option>
                     <option value="7">7</option>
                     <option value="8">8</option>
-                </select></div>
-                <div class="form-actions">
-                    <button class="button" type="submit"> 가입하기</button>
+                    </select>
+                    <div class="email">
+                        이메일 : <input type="email" name="email" class="email"/>
+                    </div>
+                </div>
+                <div class="down">
+                    비밀번호 : <input class="password" type="password" id="userPw" name="password1"/>
+                    비밀번호 확인 : <input class="password" type="password" id="userPwChk" name="password2"/>
+                    <div id="chkNotice">
+                    </div>
                 </div>
             </form>
         </div>
