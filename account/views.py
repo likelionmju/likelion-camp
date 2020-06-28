@@ -31,7 +31,7 @@ def logout(request):
 def register(request):
     if request.method == "POST":
         if request.POST["password1"] == request.POST["password2"]:
-            user = User.objects.create_user(name=request.POST["name"], email=request.POST["email"], grade=request.POST["grade"],
+            user = User.objects.create_user(name=request.POST["name"], email=request.POST["email"]+"@likelion.org", grade=request.POST["grade"],
                                             password=request.POST["password1"])
             user.is_active = False
             user.save()
@@ -43,7 +43,7 @@ def register(request):
                 'token': account_activation_token.make_token(user),
             })
             mail_title = "계정 활성화 확인 이메일"
-            mail_to = request.POST["email"]
+            mail_to = request.POST["email"]+"@likelion.org"
             email = EmailMessage(mail_title, message, to=[mail_to])
             email.send()
             return render(request, 'activation_alert.html', {'name':request.POST['name'], 'email':mail_to})

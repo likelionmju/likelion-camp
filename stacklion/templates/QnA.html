@@ -63,12 +63,12 @@
     <div class="entire">
         <div class="question_form" style="margin:13px;">
             <h3 style="color: #D95829; text-align: center;"><a style="color: black;">{{ user.name }} </a>QUESTION</h3>
-            <input style="font-weight: bold; margin-left: 90%; margin-bottom:10px" class="button" type="submit" value="등록">
             <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <textarea class="question" name="question" rows="10" cols="80" placeholder="질문을 입력해주세요."></textarea><br>
                 <input type="file" name="question_file" style="color: rgba(218, 95, 50, 0.644); font-weight: bold" multiple>
                 <output id="list"></output><br>
+                <input style="font-weight: bold; margin-left: 90%; margin-bottom:10px" class="button" type="submit" value="등록">
             </form>
         </div>
 
