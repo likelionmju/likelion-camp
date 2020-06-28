@@ -13,6 +13,7 @@
         <script src="//code.jquery.com/jquery-1.12.4.js"></script>
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type="text/javascript">
+
             $(function(){
                 $('#userPw').keyup(function(){
                     $('#chkNotice').html('');
@@ -39,6 +40,20 @@
                     }
 
                 });
+
+            });
+
+            $(document).on('keyup click keypress focus focusout', '.data', function() {
+                if($('input[name=name]').val()==''||$('input[name=email]').val()==''||$('#userPw').val()==''||$('#userPwChk').val()==''){
+                    console.log($('input[name=name]').val());
+                    console.log($('input[name=email]').val());
+                    console.log($('#userPw').val());
+                    console.log($('#userPwChk').val());
+                    $('#submit').attr('disabled', 'disabled');
+                }else{
+                    console.log("hihi");
+                    $('#submit').removeAttr("disabled");
+                }
             });
         </script>
     {% endblock %}
@@ -46,39 +61,40 @@
 {% block content%}
     <body>
     <h1>회원가입</h1>
-    <div class="form-actions">
-        <button class="button" type="submit"> 가 입 하 기</button>
-    </div>
-    <div class="panel panel-default registration">
-        <div class="panel-heading"></div>
-        <div class="panel-body">
-            <form action="{% url 'register' %}" method="post">
+    <form action="{% url 'register' %}" method="post">
+        <div class="form-actions">
+            <button id="submit" class="button" type="submit" disabled=""> 가 입 하 기</button>
+        </div>
+        <div class="panel panel-default registration">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+
                 {% csrf_token %}
                 <div class="up">
-                    이름 : <input type="text" name="name" class="name"/>
-                    기수 : 
-                    <select id="grade" name="grade">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
+                    이름 : <input type="text" name="name" class="name data"/>
+                    기수 :
+                    <select id="grade" name="grade" class="data">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
                     </select>
                     <div class="email">
-                        이메일 : <input type="email" name="email" class="email"/>
+                        이메일 : <input type="email" name="email" class="email data"/> @ likelion.org
                     </div>
                 </div>
                 <div class="down">
-                    비밀번호 : <input class="password" type="password" id="userPw" name="password1"/>
-                    비밀번호 확인 : <input class="password" type="password" id="userPwChk" name="password2"/>
+                    비밀번호 : <input class="password data" type="password" id="userPw" name="password1"/>
+                    비밀번호 확인 : <input class="password data" type="password" id="userPwChk" name="password2"/>
                     <div id="chkNotice">
                     </div>
                 </div>
-            </form>
-        </div>
+    </form>
+    </div>
     </div>
     </body>
 {% endblock %}
