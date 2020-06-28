@@ -25,15 +25,19 @@
                 })
 
                 $('#userPwChk').focusout(function(){
-                    if($('#userPw').val() != $('#userPwChk').val()){
-                        $('#chkNotice').html('비밀번호가 일치하지 않습니다.<br><br>');
-                        $('#chkNotice').css('color', '#F26241');
-                        $('.password').effect("shake", {distance : 3});
+                    console.log($('#userPw').val());
+                    if($('#userPw').val() != '' && $('#userPwChk').val() != ''){
+                        if($('#userPw').val() != $('#userPwChk').val()){
+                            $('#chkNotice').html('비밀번호가 일치하지 않습니다.<br><br>');
+                            $('#chkNotice').css('color', '#F26241');
+                            $('.password').effect("shake", {distance : 2});
 
-                    } else{
-                        $('#chkNotice').html('비밀번호가 일치합니다.<br><br>');
-                        $('#chkNotice').css('color', '#F26241');
+                        } else{
+                            $('#chkNotice').html('비밀번호가 일치합니다.<br><br>');
+                            $('#chkNotice').css('color', '#F26241');
+                        }
                     }
+
                 });
             });
         </script>
