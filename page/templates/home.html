@@ -14,17 +14,16 @@
 
 {% block content%}
 <body class="is-preload">
-    <h1>LIKELION CAMP</h1>
     <a href="{%url 'login'%}" id="login">로그인</a>
     <a href="{%url 'homeworklist'%}" id="homeworklist">과제 제출</a>
     <a href="{%url 'QnA'%}" id="QnA">Q&A</a>
-    <a href="{%url 'parallax'%}" id="parallax">testing parallax</a>
+    <a href="{%url 'parallax'%}" id="parallax">testing page</a>
     
 		<body class="is-preload">
 		<!-- Header -->
 			<section id="header">
 				<div class="inner">
-					<span class="icon solid major fa-cloud"></span>
+					<span class="icon solid major fa">HACK YOUR LIFE</span>
 					<h1>멋쟁이사자처럼 X 명지대(서울)<br />
 					MJU X LIKELION</h1>
 					<p>전국 연합 코딩 교육 & 창업 동아리</p>
@@ -40,12 +39,12 @@
 					<div class="row gtr-150">
 						<div class="col-6 col-12-medium">
 							<header class="major">
-								<h2>LIKELION?</h2>
+								<h2>ABOUT US</h2>
 							</header>
-							<p>멋쟁이사자처럼 소개</p>
+							<p> <a href="https://likelion.net/" target="_blank" > 멋쟁이사자처럼</a>은 컴퓨터 비전공자들도 프로그래밍을 할 수 있도록 교육하는 전국 대학 연합 교육 단체입니다. "내 아이디어를 내 손으로 직접 실현한다."는 목표를 갖고 온/오프라인 강의을 통한 체계적인 프로그래밍을 교육을 진행합니다. 열정과 아이디어만 있다면 누구나 참여 가능한 <u>멋쟁이사자처럼</u>에서 당신의 꿈을 이루어 보세요.  </p>
 						</div>
 						<div class="col-6 col-12-medium imp-medium">
-							<span class="image fit"><img src="{% static 'page/images/main/pic01.jpg' %}" alt="" /></span>
+							<span class="image fit"><img src="{% static 'page/images/likelion.png' %}" alt="" /></span>
 						</div>
 					</div>
 				</div>
@@ -81,12 +80,12 @@
 			<section id="three" class="main style1 special">
 				<div class="container">
 					<header class="major">
-						<h2>페이지 기능 소개</h2>
+						<h2>페이지 소개</h2>
 					</header>
 					<p>멋쟁이사자처럼에서 당신의 꿈을 실현하세요.</p>
 					<div class="row gtr-150">
 						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="{% static 'page/images/main/pic02.jpg' %}" alt="" /></span>
+							<span class="image fit"><img src="{% static 'page/images/members.jpg' %}" alt="" /></span>
 							<h3>구성원 소개</h3>
 							<p>열정과 패기가 가득한 사자들을 소개합니다.</p>
 							<ul class="actions special">
@@ -94,7 +93,7 @@
 							</ul>
 						</div>
 						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="{% static 'page/images/main/pic03.jpg' %}" alt="" /></span>
+							<span class="image fit"><img src="{% static 'page/images/homework2.jpg' %}" alt="" /></span>
 							<h3>과제 제출</h3>
 							<p>꾸준한 연습이 완벽을 만듭니다.</p>
 							<ul class="actions special">
@@ -102,9 +101,9 @@
 							</ul>
 						</div>
 						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="{% static 'page/images/main/pic04.jpg' %}" alt="" /></span>
+							<span class="image fit"><img src="{% static 'page/images/qna.jpg' %}" alt="" /></span>
 							<h3>Q&A</h3>
-							<p>혼자 해결하기 힘든 부분을 운영진과 부원들이 모두 함께 도와드립니다 !</p>
+							<p>궁금한 점이 있나요?</p>
 							<ul class="actions special">
 								<li><a href="{% url 'QnA' %}" class="button">More</a></li>
 							</ul>
@@ -119,7 +118,7 @@
 					<header class="major">
 						<h2>사이트를 더 이용하려면?</h2>
 					</header>
-					<p>지금 바로 회원가입하세요!</p>
+					<p>간단한 정보 입력으로 바로 회원가입하세요!</p>
 					<ul class="actions special">
 						<li><a href="{%url 'register'%}" class="button wide primary">Sign Up</a></li>
 					</ul>
