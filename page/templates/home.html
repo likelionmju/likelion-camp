@@ -1,16 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    {% block title %}Likelion Camp{% endblock %}
-    {% block link %}{% static 'page/css/home.css' %}{% endblock %}
+{% block title %}Likelion Camp{% endblock %}
+{% block link %}{% static 'page/css/home.css' %}{% endblock %}
+{% block noscript %}
     <noscript><link rel="stylesheet" href="{% static 'page/css/noscript.css' %}" /></noscript>
-    
-</head>
+{% endblock %}
 
 {% block content%}
 <body class="is-preload">
@@ -30,22 +25,22 @@
 				</div>
 			</section>
 
-		<!-- One -->
-			<section id="one" class="main style1">
-				<div class="container">
-					<div class="row gtr-150">
-						<div class="col-6 col-12-medium">
-							<header class="major">
-								<h2>ABOUT US</h2>
-							</header>
-							<p> <a href="https://likelion.net/" target="_blank" > 멋쟁이사자처럼</a>은 컴퓨터 비전공자들도 프로그래밍을 할 수 있도록 교육하는 전국 대학 연합 동아리입니다. "내 아이디어를 내 손으로 직접 실현한다."는 목표를 갖고 온/오프라인 강의을 통한 체계적인 프로그래밍을 교육을 진행합니다. 열정과 아이디어만 있다면 누구나 참여 가능한 <u>멋쟁이사자처럼</u>에서 당신의 꿈을 이루어 보세요.  </p>
-						</div>
-						<div class="col-6 col-12-medium imp-medium">
-							<span class="image fit"><img src="{% static 'page/images/likelion.png' %}" alt="" /></span>
-						</div>
-					</div>
-				</div>
-			</section>
+    <!-- One -->
+    <section id="one" class="main style1">
+        <div class="container">
+            <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                    <header class="major">
+                        <h2>ABOUT US</h2>
+                    </header>
+                    <p> <a href="https://likelion.net/" target="_blank" > 멋쟁이사자처럼</a>은 컴퓨터 비전공자들도 프로그래밍을 할 수 있도록 교육하는 전국 대학 연합 동아리입니다. "내 아이디어를 내 손으로 직접 실현한다."는 목표를 갖고 온/오프라인 강의을 통한 체계적인 프로그래밍을 교육을 진행합니다. 열정과 아이디어만 있다면 누구나 참여 가능한 <u>멋쟁이사자처럼</u>에서 당신의 꿈을 이루어 보세요.  </p>
+                </div>
+                <div class="col-6 col-12-medium imp-medium">
+                    <span class="image fit"><img src="{% static 'page/images/likelion.png' %}" alt="" /></span>
+                </div>
+            </div>
+        </div>
+    </section>
 
 		<!-- Two -->
 			<section id="two" class="main style2">
@@ -81,77 +76,79 @@
 				</div>
 			</section>
 
-		<!-- Three -->
-			<section id="three" class="main style1 special">
-				<div class="container">
-					<header class="major">
-						<h2>페이지 둘러보기</h2>
-					</header>
-					<p>멋쟁이사자처럼은 무한한 가능성의 꿈을 믿습니다.</p>
-					<div class="row gtr-150">
-						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="{% static 'page/images/members.jpg' %}" alt="" /></span>
-							<h3>구성원 소개</h3>
-							<p>열정과 패기가 가득한 사자들을 소개합니다.</p>
-							<ul class="actions special">
-								<li><a href="{% url 'introduce' %}" class="button">More</a></li>
-							</ul>
-						</div>
-						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="{% static 'page/images/homework2.jpg' %}" alt="" /></span>
-							<h3>과제 제출</h3>
-							<p>꾸준한 연습이 완벽을 만듭니다.</p>
-							<ul class="actions special">
-								<li><a href="{% url 'homeworklist' %}" class="button">More</a></li>
-							</ul>
-						</div>
-						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="{% static 'page/images/qna.jpg' %}" alt="" /></span>
-							<h3>Q&A</h3>
-							<p>궁금한 점이 있나요? 같이 해결해보아요!</p>
-							<ul class="actions special">
-								<li><a href="{% url 'QnA' %}" class="button">More</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</section>
+    <!-- Three -->
+    <section id="three" class="main style1 special">
+        <div class="container">
+            <header class="major">
+                <h2>페이지 둘러보기</h2>
+            </header>
+            <p>멋쟁이사자처럼은 무한한 가능성의 꿈을 믿습니다.</p>
+            <div class="row gtr-150">
+                <div class="col-4 col-12-medium">
+                    <span class="image fit"><img src="{% static 'page/images/members.jpg' %}" alt="" /></span>
+                    <h3>구성원 소개</h3>
+                    <p>열정과 패기가 가득한 사자들을 소개합니다.</p>
+                    <ul class="actions special">
+                        <li><a href="{% url 'introduce' %}" class="button">More</a></li>
+                    </ul>
+                </div>
+                <div class="col-4 col-12-medium">
+                    <span class="image fit"><img src="{% static 'page/images/homework2.jpg' %}" alt="" /></span>
+                    <h3>과제 제출</h3>
+                    <p>꾸준한 연습이 완벽을 만듭니다.</p>
+                    <ul class="actions special">
+                        <li><a href="{% url 'homeworklist' %}" class="button">More</a></li>
+                    </ul>
+                </div>
+                <div class="col-4 col-12-medium">
+                    <span class="image fit"><img src="{% static 'page/images/qna.jpg' %}" alt="" /></span>
+                    <h3>Q&A</h3>
+                    <p>궁금한 점이 있나요? 같이 해결해보아요!</p>
+                    <ul class="actions special">
+                        <li><a href="{% url 'QnA' %}" class="button">More</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<!-- Four -->
-			<section id="four" class="main style2 special">
-				<div class="container">
-					<header class="major">
-						<h2>사이트를 더 이용하려면?</h2>
-					</header>
-					<p>간단한 정보 입력으로 바로 회원가입하세요!</p>
-					<ul class="actions special">
-						<li><a href="{%url 'register'%}" class="button wide primary">Sign Up</a></li>
-					</ul>
-				</div>
-			</section>
+    <!-- Four -->
+    <section id="four" class="main style2 special">
+        <div class="container">
+            <header class="major">
+                <h2>사이트를 더 이용하려면?</h2>
+            </header>
+            <p>간단한 정보 입력으로 바로 회원가입하세요!</p>
+            <ul class="actions special">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'home' %}" class="button wide primary">Sign Up</a></li>
+                {% else %}
+                    <li><a href="{% url 'register' %}" class="button wide primary">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </section>
 
-		<!-- Footer -->
-			<section id="footer">
-				<ul class="icons">
-					<li><a href="https://www.facebook.com/likelionMJU" target="_blank" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-					<li><a href="https://www.instagram.com/likelion_mju/" target="_blank"  class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="https://github.com/likelionmju" target="_blank"  class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="https://www.youtube.com/channel/UCoYWng52Y7_Mit4K7USB-cg" target="_blank"  class="icon brands alt fa-youtube"><span class="label">GitHub</span></a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; MJU X LIKELION 8th </li><li> All rights reserved. </li>
-				</ul>
-			</section>
+    <!-- Footer -->
+    <section id="footer">
+        <ul class="icons">
+            <li><a href="https://www.facebook.com/likelionMJU" target="_blank" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/likelion_mju/" target="_blank"  class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="https://github.com/likelionmju" target="_blank"  class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+            <li><a href="https://www.youtube.com/channel/UCoYWng52Y7_Mit4K7USB-cg" target="_blank"  class="icon brands alt fa-youtube"><span class="label">GitHub</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy; MJU X LIKELION 8th </li><li> All rights reserved. </li>
+        </ul>
+    </section>
 
-		<!-- Scripts -->
-			<script src="{% static 'page/js/main/jquery.min.js' %}"></script>
-			<script src="{% static 'page/js/main/jquery.scrolly.min.js' %}"></script>
-			<script src="{% static 'page/js/main/browser.min.js' %}"></script>
-			<script src="{% static 'page/js/main/breakpoints.min.js' %}"></script>
-			<script src="{% static 'page/js/main/util.js' %}"></script>
-			<script src="{% static 'page/js/main/main.js' %}"></script>
+    <!-- Scripts -->
+    <script src="{% static 'page/js/main/jquery.min.js' %}"></script>
+    <script src="{% static 'page/js/main/jquery.scrolly.min.js' %}"></script>
+    <script src="{% static 'page/js/main/browser.min.js' %}"></script>
+    <script src="{% static 'page/js/main/breakpoints.min.js' %}"></script>
+    <script src="{% static 'page/js/main/util.js' %}"></script>
+    <script src="{% static 'page/js/main/main.js' %}"></script>
 
-</body>
+    </body>
 {% endblock %}
-
-</html>
