@@ -1,164 +1,153 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    {% block title %}Likelion Camp{% endblock %}
-    {% block link %}{% static 'page/css/home.css' %}{% endblock %}
+{% block title %}Likelion Camp{% endblock %}
+{% block link %}{% static 'page/css/home.css' %}{% endblock %}
+{% block noscript %}
     <noscript><link rel="stylesheet" href="{% static 'page/css/noscript.css' %}" /></noscript>
-    
-</head>
+{% endblock %}
 
 {% block content%}
-<body class="is-preload">
-    <a href="{%url 'login'%}" id="login">로그인</a>
-    <a href="{%url 'homeworklist'%}" id="homeworklist">과제 제출</a>
-    <a href="{%url 'QnA'%}" id="QnA">Q&A</a>
-    <a href="{%url 'parallax'%}" id="parallax">testing page</a>
-    
-		<body class="is-preload">
-		<!-- Header -->
-			<section id="header">
-				<div class="inner">
-					<span class="icon solid major fa">HACK YOUR LIFE</span>
-					<h1>멋쟁이사자처럼 X 명지대(서울)<br />
-					MJU X LIKELION</h1>
-					<p>전국 연합 코딩 교육 & 창업 동아리</p>
-					<ul class="actions special">
-						<li><a href="#one" class="button scrolly">알아보기</a></li>
-					</ul>
-				</div>
-			</section>
+    <body class="is-preload">
+    <!-- Header -->
+    <section id="header">
+        <div class="inner">
+            <span class="icon solid major fa">HACK YOUR LIFE</span>
+            <h1>멋쟁이사자처럼 X 명지대(서울)<br />
+                MJU X LIKELION</h1>
+            <p>전국 연합 코딩 교육 & 창업 동아리</p>
+            <ul class="actions special">
+                <li><a href="#one" class="button scrolly">알아보기</a></li>
+            </ul>
+        </div>
+    </section>
 
-		<!-- One -->
-			<section id="one" class="main style1">
-				<div class="container">
-					<div class="row gtr-150">
-						<div class="col-6 col-12-medium">
-							<header class="major">
-								<h2>ABOUT US</h2>
-							</header>
-							<p> <a href="https://likelion.net/" target="_blank" > 멋쟁이사자처럼</a>은 컴퓨터 비전공자들도 프로그래밍을 할 수 있도록 교육하는 전국 대학 연합 동아리입니다. "내 아이디어를 내 손으로 직접 실현한다."는 목표를 갖고 온/오프라인 강의을 통한 체계적인 프로그래밍을 교육을 진행합니다. 열정과 아이디어만 있다면 누구나 참여 가능한 <u>멋쟁이사자처럼</u>에서 당신의 꿈을 이루어 보세요.  </p>
-						</div>
-						<div class="col-6 col-12-medium imp-medium">
-							<span class="image fit"><img src="{% static 'page/images/likelion.png' %}" alt="" /></span>
-						</div>
-					</div>
-				</div>
-			</section>
+    <!-- One -->
+    <section id="one" class="main style1">
+        <div class="container">
+            <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                    <header class="major">
+                        <h2>ABOUT US</h2>
+                    </header>
+                    <p> <a href="https://likelion.net/" target="_blank" > 멋쟁이사자처럼</a>은 컴퓨터 비전공자들도 프로그래밍을 할 수 있도록 교육하는 전국 대학 연합 동아리입니다. "내 아이디어를 내 손으로 직접 실현한다."는 목표를 갖고 온/오프라인 강의을 통한 체계적인 프로그래밍을 교육을 진행합니다. 열정과 아이디어만 있다면 누구나 참여 가능한 <u>멋쟁이사자처럼</u>에서 당신의 꿈을 이루어 보세요.  </p>
+                </div>
+                <div class="col-6 col-12-medium imp-medium">
+                    <span class="image fit"><img src="{% static 'page/images/likelion.png' %}" alt="" /></span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<!-- Two -->
-			<section id="two" class="main style2">
-				<div class="container">
-					<div class="row gtr-150">
-						<div class="col-6 col-12-medium">
-							<ul class="major-icons">
-								<li><span class="icon solid style1 major fa-code"></span></li>
-								<li><span class="icon solid style2 major fa-code"></span></li>
-								<li><span class="icon solid style3 major fa-camera-retro"></span></li>
-								<li><span class="icon solid style4 major fa-cog"></span></li>
-								<li><span class="icon solid style5 major fa-desktop"></span></li>
-								<li><span class="icon solid style6 major fa-calendar"></span></li>
-								<li><i class="fab fa-python"></i></li>
-								<li><i class="fab fa-js"></i></li>
-								<li><i class="fab fa-html5"></i></li>
-								<li><i class="fab fa-git-alt"></i></li>
-								<li><i class="fab fa-aws"></i></li>
-								<li><i class="fab fa-book"></i></li>
-							</ul>
-						</div>
-						<div class="col-6 col-12-medium">
-							<header class="major">
-								<h2>커리큘럼</h2>
-							</header>
-							<p>멋쟁이사자처럼에서는 웹 서비스 런칭을 목표로 프로그래밍 및 창업 교육을 함께 진행합니다. 컴퓨터 비전공자도 쉽게 접근할 수 있는 Python을 중심으로 프로그래밍을 배우며, Django를 활용한 웹 페이지 개발을 진행하고 있습니다.
-								<li>Front-End : HTML5, CSS3, BootStrap, JavaScript(예정)</li>
-								<li>Back-End : Django</li>
-								<li>Programming Language : Python</li>
-							</p>
-							<p>또한, 서비스 기획을 위해 팀별로 아이디어를 구체화시키고 Adobe XD를 활용하여 UI/UX를 설계하는 방법을 배우게 됩니다. 다른 대학교와 함께 교류하며 아이디어 공유를 위한 연합 세션을 진행하고 있습니다. </p>
-							<p>커리큘럼</p>
-						</div>
-					</div>
-				</div>
-			</section>
+    <!-- Two -->
+    <section id="two" class="main style2">
+        <div class="container">
+            <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                    <ul class="major-icons">
+                        <li><span class="icon solid style1 major fa-code"></span></li>
+                        <li><span class="icon solid style2 major fa-code"></span></li>
+                        <li><span class="icon solid style3 major fa-camera-retro"></span></li>
+                        <li><span class="icon solid style4 major fa-cog"></span></li>
+                        <li><span class="icon solid style5 major fa-desktop"></span></li>
+                        <li><span class="icon solid style6 major fa-calendar"></span></li>
+                        <li><i class="fab fa-python"></i></li>
+                        <li><i class="fab fa-js"></i></li>
+                        <li><i class="fab fa-html5"></i></li>
+                        <li><i class="fab fa-git-alt"></i></li>
+                        <li><i class="fab fa-aws"></i></li>
+                        <li><i class="fab fa-book"></i></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-12-medium">
+                    <header class="major">
+                        <h2>커리큘럼</h2>
+                    </header>
+                    <p>멋쟁이사자처럼에서는 웹 서비스 런칭을 목표로 프로그래밍 및 창업 교육을 함께 진행합니다. 컴퓨터 비전공자도 쉽게 접근할 수 있는 Python을 중심으로 프로그래밍을 배우며, Django를 활용한 웹 페이지 개발을 진행하고 있습니다.
+                    <li>Front-End : HTML5, CSS3, BootStrap, JavaScript(예정)</li>
+                    <li>Back-End : Django</li>
+                    <li>Programming Language : Python</li>
+                    </p>
+                    <p>또한, 서비스 기획을 위해 팀별로 아이디어를 구체화시키고 Adobe XD를 활용하여 UI/UX를 설계하는 방법을 배우게 됩니다. 다른 대학교와 함께 교류하며 아이디어 공유를 위한 연합 세션을 진행하고 있습니다. </p>
+                    <p>커리큘럼</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<!-- Three -->
-			<section id="three" class="main style1 special">
-				<div class="container">
-					<header class="major">
-						<h2>페이지 둘러보기</h2>
-					</header>
-					<p>멋쟁이사자처럼은 무한한 가능성의 꿈을 믿습니다.</p>
-					<div class="row gtr-150">
-						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="{% static 'page/images/members.jpg' %}" alt="" /></span>
-							<h3>구성원 소개</h3>
-							<p>열정과 패기가 가득한 사자들을 소개합니다.</p>
-							<ul class="actions special">
-								<li><a href="{% url 'introduce' %}" class="button">More</a></li>
-							</ul>
-						</div>
-						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="{% static 'page/images/homework2.jpg' %}" alt="" /></span>
-							<h3>과제 제출</h3>
-							<p>꾸준한 연습이 완벽을 만듭니다.</p>
-							<ul class="actions special">
-								<li><a href="{% url 'homeworklist' %}" class="button">More</a></li>
-							</ul>
-						</div>
-						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="{% static 'page/images/qna.jpg' %}" alt="" /></span>
-							<h3>Q&A</h3>
-							<p>궁금한 점이 있나요? 같이 해결해보아요!</p>
-							<ul class="actions special">
-								<li><a href="{% url 'QnA' %}" class="button">More</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</section>
+    <!-- Three -->
+    <section id="three" class="main style1 special">
+        <div class="container">
+            <header class="major">
+                <h2>페이지 둘러보기</h2>
+            </header>
+            <p>멋쟁이사자처럼은 무한한 가능성의 꿈을 믿습니다.</p>
+            <div class="row gtr-150">
+                <div class="col-4 col-12-medium">
+                    <span class="image fit"><img src="{% static 'page/images/members.jpg' %}" alt="" /></span>
+                    <h3>구성원 소개</h3>
+                    <p>열정과 패기가 가득한 사자들을 소개합니다.</p>
+                    <ul class="actions special">
+                        <li><a href="{% url 'introduce' %}" class="button">More</a></li>
+                    </ul>
+                </div>
+                <div class="col-4 col-12-medium">
+                    <span class="image fit"><img src="{% static 'page/images/homework2.jpg' %}" alt="" /></span>
+                    <h3>과제 제출</h3>
+                    <p>꾸준한 연습이 완벽을 만듭니다.</p>
+                    <ul class="actions special">
+                        <li><a href="{% url 'homeworklist' %}" class="button">More</a></li>
+                    </ul>
+                </div>
+                <div class="col-4 col-12-medium">
+                    <span class="image fit"><img src="{% static 'page/images/qna.jpg' %}" alt="" /></span>
+                    <h3>Q&A</h3>
+                    <p>궁금한 점이 있나요? 같이 해결해보아요!</p>
+                    <ul class="actions special">
+                        <li><a href="{% url 'QnA' %}" class="button">More</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<!-- Four -->
-			<section id="four" class="main style2 special">
-				<div class="container">
-					<header class="major">
-						<h2>사이트를 더 이용하려면?</h2>
-					</header>
-					<p>간단한 정보 입력으로 바로 회원가입하세요!</p>
-					<ul class="actions special">
-                        {% if user.is_authenticated %}
-                            <li><a href="{% url 'home' %}" class="button wide primary">Sign Up</a></li>
-                        {% else %}
-                            <li><a href="{% url 'register' %}" class="button wide primary">Sign Up</a></li>
-                        {% endif %}
-					</ul>
-				</div>
-			</section>
+    <!-- Four -->
+    <section id="four" class="main style2 special">
+        <div class="container">
+            <header class="major">
+                <h2>사이트를 더 이용하려면?</h2>
+            </header>
+            <p>간단한 정보 입력으로 바로 회원가입하세요!</p>
+            <ul class="actions special">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'home' %}" class="button wide primary">Sign Up</a></li>
+                {% else %}
+                    <li><a href="{% url 'register' %}" class="button wide primary">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </section>
 
-		<!-- Footer -->
-			<section id="footer">
-				<ul class="icons">
-					<li><a href="https://www.facebook.com/likelionMJU" target="_blank" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-					<li><a href="https://www.instagram.com/likelion_mju/" target="_blank"  class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="https://github.com/likelionmju" target="_blank"  class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="https://www.youtube.com/channel/UCoYWng52Y7_Mit4K7USB-cg" target="_blank"  class="icon brands alt fa-youtube"><span class="label">GitHub</span></a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; MJU X LIKELION 8th </li><li> All rights reserved. </li>
-				</ul>
-			</section>
+    <!-- Footer -->
+    <section id="footer">
+        <ul class="icons">
+            <li><a href="https://www.facebook.com/likelionMJU" target="_blank" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/likelion_mju/" target="_blank"  class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="https://github.com/likelionmju" target="_blank"  class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+            <li><a href="https://www.youtube.com/channel/UCoYWng52Y7_Mit4K7USB-cg" target="_blank"  class="icon brands alt fa-youtube"><span class="label">GitHub</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy; MJU X LIKELION 8th </li><li> All rights reserved. </li>
+        </ul>
+    </section>
 
-		<!-- Scripts -->
-			<script src="{% static 'page/js/main/jquery.min.js' %}"></script>
-			<script src="{% static 'page/js/main/jquery.scrolly.min.js' %}"></script>
-			<script src="{% static 'page/js/main/browser.min.js' %}"></script>
-			<script src="{% static 'page/js/main/breakpoints.min.js' %}"></script>
-			<script src="{% static 'page/js/main/util.js' %}"></script>
-			<script src="{% static 'page/js/main/main.js' %}"></script>
+    <!-- Scripts -->
+    <script src="{% static 'page/js/main/jquery.min.js' %}"></script>
+    <script src="{% static 'page/js/main/jquery.scrolly.min.js' %}"></script>
+    <script src="{% static 'page/js/main/browser.min.js' %}"></script>
+    <script src="{% static 'page/js/main/breakpoints.min.js' %}"></script>
+    <script src="{% static 'page/js/main/util.js' %}"></script>
+    <script src="{% static 'page/js/main/main.js' %}"></script>
 
-</body>
+    </body>
 {% endblock %}
