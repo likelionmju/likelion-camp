@@ -1,16 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="ko">
+{% block link %}{% static 'account/css/login.css' %}{% endblock %}
+{% block title %}Login{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block link %}{% static 'account/css/login.css' %}{% endblock %}
-    {% block title %}Login{% endblock %}
-</head>
-<body>
 {% block content %}
     {% if error == 'wronginfo' %}
         <script>
@@ -25,12 +18,9 @@
         <input type="email" name="email" class="user" placeholder="E-mail Address"/>
         <span class="entypo-key inputPassIcon"><i class="fa fa-key"></i></span>
         <input type="password" name="password" class="password" placeholder="Password"/>
-{#        <div style="height: 10px"></div>#}
+        {#        <div style="height: 10px"></div>#}
         <input type="submit" value="Login" name="login"/>
         <a href="{% url 'register' %}" style="text-decoration: none;"><input type="button" value="Join" name="join" ></a>
     </form>
     {#    <a href="{%url 'register'%}" id="register">회원 가입</a>#}
 {% endblock %}
-</body>
-
-</html>
