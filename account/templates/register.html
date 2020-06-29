@@ -1,75 +1,71 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block link %}{% static 'account/css/register.css' %}{% endblock %}
-    {% block title %}Likelion Camp{% endblock %}
-    {% block jqueryscript %}
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script type="text/javascript">
+{% block link %}{% static 'account/css/register.css' %}{% endblock %}
+{% block title %}Likelion Camp{% endblock %}
+{% block jqueryscript %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#userPw').keyup(function(){
+                $('#chkNotice').html('');
+            });
 
-            $(function(){
-                $('#userPw').keyup(function(){
+            $('#userPw').focusout(function () {
+                if($('#userPw').val()==''){
                     $('#chkNotice').html('');
-                });
-
-                $('#userPw').focusout(function () {
-                    if($('#userPw').val()==''){
-                        $('#chkNotice').html('');
-                    }
-                })
-
-                $('#userPwChk').focusout(function(){
-                    console.log($('#userPw').val());
-                    if($('#userPw').val() != '' && $('#userPwChk').val() != ''){
-                        if($('#userPw').val() != $('#userPwChk').val()){
-                            $('#chkNotice').html('비밀번호가 일치하지 않습니다.<br><br>');
-                            $('#chkNotice').css('color', '#F26241');
-                            $('.password').effect("shake", {distance : 2});
-
-                        } else{
-                            $('#chkNotice').html('비밀번호가 일치합니다.<br><br>');
-                            $('#chkNotice').css('color', '#F26241');
-                        }
-                    }
-
-                });
-
-            });
-
-            $(document).on('keyup click keypress focus focusout', '.data', function() {
-                if($('input[name=name]').val()==''||$('input[name=email]').val()==''||$('#userPw').val()==''||$('#userPwChk').val()==''){
-                    $('#submit').attr('disabled', 'disabled');
-                }else{
-                    if($('#userPw').val()!=$('#userPwChk').val()){
-                        $('#submit').attr('disabled', 'disabled');
-                        return;
-                    }
-                    console.log("hihi");
-                    $('#submit').removeAttr("disabled");
                 }
+            })
+
+            $('#userPwChk').focusout(function(){
+                console.log($('#userPw').val());
+                if($('#userPw').val() != '' && $('#userPwChk').val() != ''){
+                    if($('#userPw').val() != $('#userPwChk').val()){
+                        $('#chkNotice').html('비밀번호가 일치하지 않습니다.<br><br>');
+                        $('#chkNotice').css('color', '#F26241');
+                        $('.password').effect("shake", {distance : 2});
+
+                    } else{
+                        $('#chkNotice').html('비밀번호가 일치합니다.<br><br>');
+                        $('#chkNotice').css('color', '#F26241');
+                    }
+                }
+
             });
-        </script>
-    {% endblock %}
-</head>
+
+        });
+
+        $(document).on('keyup click keypress focus focusout', '.data', function() {
+            if($('input[name=name]').val()==''||$('input[name=email]').val()==''||$('#userPw').val()==''||$('#userPwChk').val()==''){
+                console.log($('#userPw').val());
+                console.log($('#userPwChk').val());
+                console.log($('input[name=name]').val());
+                console.log($('input[name=email]').val());
+                $('#submit').attr('disabled', 'true');
+            }else{
+                if($('#userPw').val()!=$('#userPwChk').val()){
+                    $('#submit').attr('disabled', 'true');
+                    return;
+                }
+                console.log("hihi");
+                $('#submit').removeAttr("disabled");
+            }
+        });
+    </script>
+{% endblock %}
+
 {% block content%}
-    <body>
     <h1>회원가입</h1>
     <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
         <div class="form-actions">
             <button id="submit" class="button" type="submit" disabled=""> 가 입 하 기</button>
         </div>
         <div class="panel panel-default registration">
             <div class="panel-heading"></div>
             <div class="panel-body">
-
-                {% csrf_token %}
                 <div class="up">
                     이름 : <input type="text" name="name" class="name data"/>
                     기수 :
@@ -93,11 +89,7 @@
                     <div id="chkNotice">
                     </div>
                 </div>
+            </div>
+        </div>
     </form>
-    </div>
-    </div>
-    </body>
 {% endblock %}
-
-
-</html>
