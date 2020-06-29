@@ -11,13 +11,14 @@
 {% block content%}
 <body>
     <h2 style="color: red;">과제 제출하기</h2><br>
-    <form action="{% url 'new' %}" method="POST">
+    <form action="{% url 'new' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <h3>과제 제목</h3>
         <input type="text" name='title'>
         <h3>과제 내용</h3>
         <textarea name="content" cols="50" rows="10"></textarea>
         <br>
+        <input type="file" name="post_file">
         <input type="submit" value="제출">
 
     </form>

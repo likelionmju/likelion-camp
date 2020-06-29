@@ -18,6 +18,9 @@ def new(request):
         # post.author = request.user
         post.title = request.POST['title']
         post.content = request.POST['content']
+        post.post_file = request.FILES['post_file']
+        # post.post_file = request.POST.get('post_file','')
+        
         post.pub_date = timezone.datetime.now()
         post.save()
         return redirect('/homework/detail/'+str(post.id))
@@ -36,6 +39,7 @@ def edit(request, id):
         post.title = request.POST['title']
         post.content = request.POST['content']
         post.save()
+
         return redirect('/homework/detail/'+str(post.id))
     else:
         # 수정 폼
