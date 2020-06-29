@@ -14,7 +14,7 @@
 }
 
 body {
-    background: #000000;
+    background-color: #F2F2F2;
     font-family: 'Roboto', sans-serif;
   }
 
@@ -34,21 +34,21 @@ form {
   position:absolute;
   top:68px;
   right: 80px;
-  color:#E18A07;
+  color:rgb(224, 155, 50);
 }
 
 .inputPassIcon {
   position:absolute;
   top:136px;
   right: 80px;
-  color:#E18A07;
+  color:rgb(224, 155, 50);
 }
 
 input {
   padding: 16px;
   border-radius:7px;
   border:0px;
-  background: rgba(255,255,255,.2);
+  background: rgba(223, 135, 20, 0.87);
   display: block;
   margin: 15px;
   width: 300px;  

@@ -130,7 +130,11 @@
 					</header>
 					<p>간단한 정보 입력으로 바로 회원가입하세요!</p>
 					<ul class="actions special">
-						<li><a href="{%url 'register'%}" class="button wide primary">Sign Up</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'home' %}" class="button wide primary">Sign Up</a></li>
+                        {% else %}
+                            <li><a href="{% url 'register' %}" class="button wide primary">Sign Up</a></li>
+                        {% endif %}
 					</ul>
 				</div>
 			</section>
@@ -158,5 +162,3 @@
 
 </body>
 {% endblock %}
-
-</html>

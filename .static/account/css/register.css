@@ -1,146 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
-
 body{
-    background-color: black;
-    font-family: 'Noto Sans KR', sans-serif;
-    color:white;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color:#F2F1EB;
 }
-
-p {
-	text-transform: uppercase;
-	letter-spacing: .5em;
-	display: inline-block;
-	border-width: 4px 0;
-	padding: 1.5em 0em;
-	position: absolute;
-	top: 18%;
-	left: 25%;
-	width: 40em;
-	margin: 0 0 0 -20em;
+h1{
+  text-align: right;
+  font-size: 50px;
+  margin: 30px;
 }
-span {
-  	font: 700 4em/1 "Oswald", sans-serif;
-  	letter-spacing: 0;
-  	padding: .25em 0 .325em;
-	  display: block;
-	  margin: 0 auto;
-  	text-shadow: 0 0 80px rgba(255,255,255,.5);
-
-/* Clip Background Image */
-
-	  background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png) repeat-y;
-	  -webkit-background-clip: text;
-	  background-clip: text;
-
-/* Animate Background Image */
-
-	  -webkit-text-fill-color: transparent;
-	  -webkit-animation: aitf 80s linear infinite;
-
-/* Activate hardware acceleration for smoother animations */
-
-	  -webkit-transform: translate3d(0,0,0);
-	  -webkit-backface-visibility: hidden;
-
-  }
-
-
-/* Animate Background Image */
-
-@-webkit-keyframes aitf {
-	0% { background-position: 0% 50%; }
-	100% { background-position: 100% 50%; }
+select{
+  background-color: #F2C029;
+  border: none;
+  border-radius: 10px;
 }
-
-
-form {
-    position:relative;
-    margin: 50px auto;
-    width: 380px;
-    height: auto;
-  }
-
-  input {
-    padding: 16px;
-    border-radius:7px;
-    border:0px;
-    background: rgba(255,255,255,.2);
-    display: block;
-    margin: 15px;
-    width: 300px;  
-    color:white;
-    font-size:18px;
-    height: 54px;
-  }
-
-  select {
-    width: 300px; 
-    padding: 16px;
-    border:0px;
-    font-family: inherit;
-    background: url('arrow.jpg') no-repeat 95% 50% rgba(255,255,255,.2);
-    border-radius:7px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 15px;
-    color:rgb(196, 196, 196);
-    }
-    
-    select::-ms-expand {
-        display: none;
-        background: rgba(255,255,255,.2);
-    }
-    
-
-  h4{
-      color :rgb(226, 120, 21) ;
-  }
-
-  input:focus {
-    outline-color: rgba(0,0,0,0);
-  }
-
-  .button {
-    display: inline-block;
-    border-radius: 4px;
-    background-color:rgb(225, 112, 7) ;
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 25px;
-    padding: 20px;
-    width: 340px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
-  }
-
-  .button span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-  }
-  
-  .button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-  }
-  
-  .button:hover span {
-    padding-right: 25px;
-  }
-  
-  .button:hover span:after {
-    opacity: 1;
-    right: 0;
-  }
-
-
-    
-
+select:focus{
+  border: none;
+  background-color:#F27B35;
+  color:white;
+}
+div.up{
+  margin:20px;
+  font-size: 20px;  
+}
+div.email{
+  margin-top: 20px;
+}
+div.down{
+  margin-top: 20px;
+  font-size: 20px;
+  margin-left: 20px;
+}
+input{
+  border: none;
+  background-color: #F2C029;
+  color: black;
+  border-radius: 10px;
+}
+input.name{
+  border: none;
+  width: 100px;
+  text-align: center;
+}
+input:focus{
+  border: none;
+  background-color:#F27B35;
+  color:white;
+  border-radius: 10px;
+}
+div.form-actions{
+  margin-left: calc(100%/1.15);
+  margin-top: -10px;
+}
+button{
+  width: 180px;
+  height: 40px;
+  text-decoration: none;
+  border: 2px solid black;
+  color: black;
+}
+div.panel.panel-default.registration{
+  margin-left: 150px;
+}
+button:focus{
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5) inset;
+}
+button:hover{
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5) inset;
+}
+input:hover{
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5) inset;
+}
+input.email.data{
+  width:130px;
+}
