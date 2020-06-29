@@ -20,8 +20,7 @@ select:focus{
 }
 div.up{
   margin:20px;
-  font-size: 20px;
-  
+  font-size: 20px;  
 }
 div.email{
   margin-top: 20px;
@@ -56,6 +55,8 @@ button{
   width: 180px;
   height: 40px;
   text-decoration: none;
+  border: 2px solid black;
+  color: black;
 }
 div.panel.panel-default.registration{
   margin-left: 150px;
@@ -68,4 +69,7 @@ button:hover{
 }
 input:hover{
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5) inset;
+}
+input.email.data{
+  width:130px;
 }
