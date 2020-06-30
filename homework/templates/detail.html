@@ -14,7 +14,12 @@
     <h2>과제 제목</h2>{{post.title}}<br>
     
     <h2>과제 내용</h2>{{post.content}}<br>
+    
+    {% if post.post_file.url != None %}
     <div>첨부파일 다운로드<a href="{{ post.post_file.url }}" download="">{{ post.post_file }}</a> </div>
+    {% endif %}
+   
+    
     <a href="{% url 'edit' post.id %}" >수정</a>
     <a href="{% url 'delete' post.id %}">삭제</a>
     

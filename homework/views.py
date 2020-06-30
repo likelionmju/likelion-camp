@@ -12,20 +12,18 @@ def detail(request, id):
     post = get_object_or_404(Post, pk=id)
     return render(request,'detail.html',{'post':post})
 
-def new(request):
+def homeworknew(request):
     if request.method == 'POST':
         post = Post()
         # post.author = request.user
         post.title = request.POST['title']
         post.content = request.POST['content']
-        post.post_file = request.FILES['post_file']
-        # post.post_file = request.POST.get('post_file','')
-        
+        post.post_file = request.FILES.get('post_file',None)
         post.pub_date = timezone.datetime.now()
         post.save()
         return redirect('/homework/detail/'+str(post.id))
     else:
-        return render(request,'new.html')
+        return render(request,'homeworknew.html')
 
 def delete(request, id):
     post = get_object_or_404(Post, pk=id)
@@ -38,6 +36,7 @@ def edit(request, id):
     if request.method == 'POST':
         post.title = request.POST['title']
         post.content = request.POST['content']
+        post.post_file = request.FILES.get('post_file',None)
         post.save()
 
         return redirect('/homework/detail/'+str(post.id))
