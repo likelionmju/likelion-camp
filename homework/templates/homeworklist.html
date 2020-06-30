@@ -11,14 +11,17 @@
 </head>
 {% block content%}
 <body>
-    <h1>과제 제출</h1><br>
 
+    
+    <h1>과제 제출</h1><br>
+    
 
     <a href="{%url 'homeworknew'%}" id="homeworknew">제출하기</a><br><br>
-    
     {% for post in posts.all reversed %}
+    
     <a href="{%url 'detail' post.id %}">{{post.title}}</a>
     {{post.pub_date}}
+    {{post.author}}
     <br>
     {% endfor %}
    

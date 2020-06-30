@@ -4,6 +4,8 @@ from .models import Post
 from django.conf import settings
 # Create your views here.
 
+
+
 def homeworklist(request):
     posts = Post.objects
     return render(request, 'homeworklist.html', {'posts':posts})
@@ -15,7 +17,7 @@ def detail(request, id):
 def homeworknew(request):
     if request.method == 'POST':
         post = Post()
-        # post.author = request.user
+        post.author = request.user
         post.title = request.POST['title']
         post.content = request.POST['content']
         post.post_file = request.FILES.get('post_file',None)

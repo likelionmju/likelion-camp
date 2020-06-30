@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from account.models import User
 
 # Create your models here.
 def user_directory_path(instance, filename):
@@ -8,10 +9,11 @@ def user_directory_path(instance, filename):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.PROTECT,default='')
     pub_date = models.DateTimeField('publish')
     post_file = models.FileField(upload_to='files/', null=True, blank=True)
     content = models.TextField()
+
 
 
     def __str__(self):

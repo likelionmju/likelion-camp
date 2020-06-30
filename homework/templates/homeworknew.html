@@ -11,6 +11,7 @@
 {% block content%}
 <body>
     <h2 style="color: red;">과제 제출하기</h2><br>
+    {{user.name}}
     <form action="{% url 'homeworknew' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <h3>과제 제목</h3>
