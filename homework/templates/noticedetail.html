@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likelion Camp</title>
+</head>
+{% block content%}
+<body>
+    
+    <h2>공지사항 제목</h2>{{notice.title}}<br>
+    
+    <h2>공지사항 내용</h2>{{notice.content}}<br>
+    {{post.author}}
+    
+    {% if notice.notice_file.url != None %}
+    <div>첨부파일 다운로드<a href="{{ notice.notice_file.url }}" download="">{{ notice.notice_file }}</a> </div>
+    {% endif %}
+   
+    {% if notice.author == user %}
+    <a href="{% url 'noticeedit' notice.id %}" >수정</a>
+    <a href="{% url 'noticedelete' notice.id %}">삭제</a>
+    {% endif %}
+    
+</body>
+{% endblock %}
+
+
+</html>

@@ -11,8 +11,18 @@
 </head>
 {% block content%}
 <body>
-
+    <h1>공지사항</h1><br>
     
+    {% if notice.author == superuser %}
+    <a href="{%url 'noticenew'%}" id="noticenew">공지사항 추가</a><br><br>
+    {% endif %}
+    
+    {% for notice in notices.all reversed %}
+    <a href="{%url 'noticedetail' notice.id %}">{{notice.title}}</a>
+    {{notice.pub_date}}
+    {{notice.author}}
+    <br>
+    {% endfor %}
     <h1>과제 제출</h1><br>
     
 
