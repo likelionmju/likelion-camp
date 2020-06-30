@@ -20,9 +20,17 @@
         <textarea name="content" cols="50" rows="10"></textarea>
         <br>
         <input type="file" name="post_file">
-        <input type="submit" value="제출">
+        <input type="submit" value="제출" onclick="submit_btn()">
+  
+        
+        
     </form>
-   
+    <script>
+        function submit_btn(){
+            alert("과제 제출이 완료되었습니다.")
+        }
+</script>
+    
 </body>
 {% endblock %}
 

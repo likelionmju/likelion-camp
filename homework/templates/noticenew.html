@@ -20,9 +20,13 @@
         <textarea name="content" cols="50" rows="10"></textarea>
         <br>
         <input type="file" name="notice_file">
-        <input type="submit" value="저장">
+        <input type="submit" value="등록" onclick="submit_btn()">
     </form>
-   
+    <script>
+        function submit_btn(){
+            alert("공지가 등록되었습니다.")
+        }
+</script>
 </body>
 {% endblock %}
 
