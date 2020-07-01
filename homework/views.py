@@ -10,7 +10,7 @@ from django.core.paginator import Paginator
 def homeworklist(request):
     posts = Post.objects
     notices = Notice.objects
-    
+
     blog_list = Post.objects.all().order_by('-id')
     paginator = Paginator(blog_list, 10)
     page = request.GET.get('page')
@@ -19,7 +19,7 @@ def homeworklist(request):
     notice_list = Notice.objects.all().order_by('-id')
     notice_paginator = Paginator(notice_list, 5)
     notice_page = request.GET.get('page')
-    notice_blogs = paginator.get_page(page) 
+    notice_blogs = notice_paginator.get_page(page) 
     return render(request, 'homeworklist.html', {'posts':posts,'notices':notices,'blogs':blogs,'notice_blogs':notice_blogs})
 
 def noticedetail(request, id):
@@ -30,7 +30,6 @@ def noticenew(request):
     if request.method == 'POST':
         notice = Notice()
         notice.author = request.user
-        notice.title = request.POST['title']
         notice.content = request.POST['content']
         notice.notice_file = request.FILES.get('notice_file',None)
         notice.pub_date = timezone.datetime.now()
@@ -48,7 +47,6 @@ def noticeedit(request, id):
     notice = get_object_or_404(Notice, pk=id)
     
     if request.method == 'POST':
-        notice.title = request.POST['title']
         notice.content = request.POST['content']
         notice.notice_file = request.FILES.get('notice_file',None)
         notice.save()

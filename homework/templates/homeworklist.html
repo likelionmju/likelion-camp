@@ -35,13 +35,32 @@
 
             <details>
             <summary>공지 더보기</summary>
-            {% for notice in notices.all reversed %}
-            <p><a href="{%url 'noticedetail' notice.id %}" style="color: rgb(0, 0, 0);font-weight: bold;">{{notice.content}}</a>
-                <br>
-                </p>
-
-                
-            {% endfor %}
+            {% for notice_blog in notice_blogs %}
+        <br>
+        <div >
+            <a href="{% url 'noticedetail' notice_blog.id %}">
+                {{ notice_blog.content }}
+            </a>
+         
+         
+        </div>
+        {% endfor %}
+        
+<br>
+{% if notice_blogs.has_previous %}
+<a href="?page=1">First</a>
+<a href="?page={{notice_blogs.previous_page_number}}">Previous</a>
+{% endif %}
+ 
+{# NowOfTotal #}
+<span>{{notice_blogs.number}}</span>
+<span>of</span>
+<span>{{notice_blogs.paginator.num_pages}}</span>
+ 
+{% if notice_blogs.has_next %}
+<a href="?page={{notice_blogs.next_page_number}}">NEXT</a>
+<a href="?page={{notice_blogs.paginator.num_pages}}">Last</a>
+{% endif %}
             
             
         </details>
