@@ -17,16 +17,19 @@
             <h1>공지사항</h1>
     </header>
     <div class="content">
+        마감일 : {{notice.submitdate}}
         <h3>〖 내용 〗</h3>
         {{notice.content}}
         <br>
         {% if notice.notice_file.url != None %}
     <div><a href="{{ notice.notice_file.url }}" download="" style="color : rgba(255,255,255,.8);">{{ notice.notice_file }}</a> </div>
     {% endif %}
+    
    <div class="box">
         {% if notice.author == user %}
         <a href="{% url 'noticeedit' notice.id %}" style="color : rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.8); font-size: 20px;">&nbsp수정&nbsp</a>&nbsp&nbsp&nbsp
         <a href="{% url 'noticedelete' notice.id %}" style="color : rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.8); font-size: 20px;">&nbsp삭제&nbsp</a>
+        
         {% endif %}
    </div>
 

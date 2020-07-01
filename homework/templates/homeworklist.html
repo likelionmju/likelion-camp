@@ -26,6 +26,7 @@
             {% for notice in notices.all reversed %}
             {% if forloop.counter == 1 %}
             <p><a href="{%url 'noticedetail' notice.id %}" style="color: rgb(0, 0, 0);font-weight: bold;">{{notice.content}}</a>
+                <br>마감일 : {{notice.submitdate}}
                 <br>
                 </p>
             {% endif %}
@@ -39,7 +40,8 @@
         <br>
         <div >
             <a href="{% url 'noticedetail' notice_blog.id %}">
-                {{ notice_blog.content }}
+                {{ notice_blog.content }} <br>
+                마감일 : {{notice_blog.submitdate}}
             </a>
          
          

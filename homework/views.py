@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Post,Notice
 from django.conf import settings
+from datetime import datetime 
 from django.core.paginator import Paginator
 # Create your views here.
 
@@ -30,6 +31,7 @@ def noticenew(request):
     if request.method == 'POST':
         notice = Notice()
         notice.author = request.user
+        notice.submitdate = request.POST['submitdate']
         notice.content = request.POST['content']
         notice.notice_file = request.FILES.get('notice_file',None)
         notice.pub_date = timezone.datetime.now()
@@ -48,6 +50,7 @@ def noticeedit(request, id):
     
     if request.method == 'POST':
         notice.content = request.POST['content']
+        notice.submitdate = request.POST['submitdate']
         notice.notice_file = request.FILES.get('notice_file',None)
         notice.save()
 
