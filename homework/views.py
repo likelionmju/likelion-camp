@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Post,Notice
 from django.conf import settings
+from django.core.paginator import Paginator
 # Create your views here.
 
 
@@ -9,7 +10,17 @@ from django.conf import settings
 def homeworklist(request):
     posts = Post.objects
     notices = Notice.objects
-    return render(request, 'homeworklist.html', {'posts':posts,'notices':notices,'count':0})
+    
+    blog_list = Post.objects.all().order_by('-id')
+    paginator = Paginator(blog_list, 10)
+    page = request.GET.get('page')
+    blogs = paginator.get_page(page) 
+
+    notice_list = Notice.objects.all().order_by('-id')
+    notice_paginator = Paginator(notice_list, 5)
+    notice_page = request.GET.get('page')
+    notice_blogs = paginator.get_page(page) 
+    return render(request, 'homeworklist.html', {'posts':posts,'notices':notices,'blogs':blogs,'notice_blogs':notice_blogs})
 
 def noticedetail(request, id):
     notice = get_object_or_404(Notice, pk=id)
