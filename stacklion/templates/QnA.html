@@ -62,7 +62,7 @@
     <h1 style="text-align: center; text-shadow: 4px 2px 2px rgb(172, 171, 171); ">QUESTION <a style="color:#82BF45">&</a> ANSWER</h1>
     <div class="entire">
         <div class="question_form" style="margin:13px;">
-            <h3 style="color: #D95829; text-align: center;"><a style="color: black;">{{ user.name }} </a>QUESTION</h3>
+            <h3 style="color: #D95829; text-align: center;"><a style="color: black; font-size: 20px;">{{ user.name }} </a>QUESTION</h3>
             <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <textarea class="question" name="question" rows="10" cols="80" placeholder="질문을 입력해주세요."></textarea><br>
