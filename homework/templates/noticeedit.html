@@ -6,25 +6,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block link %}{% static 'homework/css/noticeedit.css' %}{% endblock %}
     {% block title %}Likelion Camp{% endblock %}
 </head>
 {% block content%}
 <body>
-    <h2 style="color: red;">공지사항 수정</h2><br>
+    <header class="main-header">
+        <div class="header-inner">
+            <h1>공지사항 수정</h1>
+        </div>
+    </header>
+    <div class="content">
+        <form action="{% url 'noticeedit' notice.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h3>〖 제목 〗</h3>
+            <input type="text" name='title' value={{notice.title}} class="title"> 
+            <h3>〖 내용 〗</h3>
+            <textarea name="content" cols="50" rows="10">{{notice.content}}</textarea>
+            <br>
+            <input type="file" name="notice_file">
+            <input type="submit" value="수정" onclick="submit_btn()"  class="submit"> 
+    
+        </form>
+    
+    </div>
     {{notice.author}}
-    <form action="{% url 'noticeedit' notice.id %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <h3>제목</h3>
-        <input type="text" name='title' value={{notice.title}}>
-        <h3>내용</h3>
-        <textarea name="content" cols="50" rows="10">{{notice.content}}</textarea>
-        <br>
-        <input type="file" name="notice_file">
-        
-        <input type="submit" value="수정" onclick="submit_btn()">
-
-    </form>
-
     <script>
         function submit_btn(){
             alert("공지가 수정되었습니다.")
