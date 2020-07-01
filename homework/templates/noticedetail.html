@@ -27,8 +27,8 @@
     {% endif %}
    <div class="box">
         {% if notice.author == user %}
-        <a href="{% url 'noticeedit' notice.id %}" style="color : rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.8);">&nbsp수정&nbsp</a>&nbsp&nbsp&nbsp
-        <a href="{% url 'noticedelete' notice.id %}" style="color : rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.8);">&nbsp삭제&nbsp</a>
+        <a href="{% url 'noticeedit' notice.id %}" style="color : rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.8); font-size: 20px;">&nbsp수정&nbsp</a>&nbsp&nbsp&nbsp
+        <a href="{% url 'noticedelete' notice.id %}" style="color : rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.8); font-size: 20px;">&nbsp삭제&nbsp</a>
         {% endif %}
    </div>
 
