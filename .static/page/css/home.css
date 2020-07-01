@@ -2324,6 +2324,22 @@ input, select, textarea {
 			color: #6b88e6;
 		}
 
+		.icon.html5:before {
+			color: #E65127;
+		}
+
+		.icon.css3:before {
+			color: #0C73B8;
+		}
+
+		.icon.bootstrap:before {
+			color: #824DCF;
+		}
+
+		.icon.js:before {
+			color: #E7A328;
+		}
+
 		.icon.major {
 			text-decoration: none;
 			color: #555;
@@ -2341,7 +2357,7 @@ input, select, textarea {
 				text-rendering: auto;
 				line-height: 1;
 				text-transform: none !important;
-				font-family: 'Font Awesome 5 Free';
+				font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
 				font-weight: 400;
 			}
 

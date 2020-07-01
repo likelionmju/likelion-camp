@@ -11,30 +11,40 @@
 </head>
 {% block content%}
 <body>
-    <h1>공지사항</h1><br>
-    
-    {% if notice.author == superuser %}
-    <a href="{%url 'noticenew'%}" id="noticenew">공지사항 추가</a><br><br>
-    {% endif %}
-    
-    {% for notice in notices.all reversed %}
-    <a href="{%url 'noticedetail' notice.id %}">{{notice.title}}</a>
-    {{notice.pub_date}}
-    {{notice.author}}
-    <br>
-    {% endfor %}
-    <h1>과제 제출</h1><br>
+    <div class="shell">
+        <header class="shell-header">
+      
+            <h1>과제 알림 및 제출</h1>
+      
+      
+        </header>
+        <main class="shell-body">
+            <h2>공지사항</h2>
+            {% if notice.author == superuser %}
+            <a href="{%url 'noticenew'%}" id="noticenew">공지사항 추가</a><br><br>
+            {% endif %}
+            
+            {% for notice in notices.all reversed %}
+            <p><a href="{%url 'noticedetail' notice.id %}">{{notice.title}}</a>
+                {{notice.pub_date}}
+                {{notice.author}}</p>
+            <br>
+            {% endfor %}
+        </main>
+        <footer class="shell-footer">
+                <a href="{%url 'homeworknew'%}" id="homeworknew" class="btn orange">제 출 하 기</a>
+            {% for post in posts.all reversed %}
+            
+            <a href="{%url 'detail' post.id %}">{{post.title}}</a>
+            {{post.pub_date}}
+            {{post.author}}
+            <br>
+            {% endfor %} 
+        </footer>
+      </div>
     
 
-    <a href="{%url 'homeworknew'%}" id="homeworknew">제출하기</a><br><br>
-    {% for post in posts.all reversed %}
     
-    <a href="{%url 'detail' post.id %}">{{post.title}}</a>
-    {{post.pub_date}}
-    {{post.author}}
-    <br>
-    {% endfor %}
-   
 </body>
 {% endblock %}
 
