@@ -6,24 +6,49 @@
 {% block noscript %}
     <noscript><link rel="stylesheet" href="{% static 'page/css/noscript.css' %}" /></noscript>
 {% endblock %}
+{% block jqueryscript %}
+    <script>
+        $(document).ready(function() {
+            /* 1 */
+            $(window).scroll( function(){
+                console.log("hihi");
+                /* 2 */
+                $('.pre_one').each( function(i){
+                    var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+                    var bottom_of_window = $(window).scrollTop() + $(window).height();
+                    /* 3 */
+                    if( bottom_of_window > bottom_of_object/2 ){
+                        $(this).animate({'opacity':'1'},500);
+                    }
+                });
+            });
+        });
+        {#$(document).on('mouseenter', '#one', function () {#}
+        {#    console.log("hover");#}
+        {##}
+        {#    $('#hihi').fadeIn();#}
+        {#    $('.pre_one.one').fadeIn();#}
+
+    </script>
+{% endblock %}
 
 {% block content%}
-<body class="is-preload">
-    <a href="{%url 'parallax'%}" id="parallax">testing page</a>
-    
-		<body class="is-preload">
-		<!-- Header -->
-			<section id="header">
-				<div class="inner">
-					<span class="icon solid major fa">HACK YOUR LIFE</span>
-					<h1>멋쟁이사자처럼 X 명지대(서울)<br />
-					MJU X LIKELION</h1>
-					<p>전국 연합 코딩 교육 & 창업 동아리</p>
-					<ul class="actions special">
-						<li><a href="#one" class="button scrolly">알아보기</a></li>
-					</ul>
-				</div>
-			</section>
+    <body class="is-preload">
+{#    <a href="{%url 'parallax'%}" id="parallax">testing page</a>#}
+
+    <body class="is-preload">
+    <!-- Header -->
+    <section id="header">
+        <div class="inner">
+            <span class="icon solid major fa">HACK YOUR LIFE</span>
+            <h1>멋쟁이사자처럼 X 명지대(서울)<br />
+                MJU X LIKELION</h1>
+            <p>전국 연합 코딩 교육 & 창업 동아리</p>
+            <ul class="actions special">
+                <li><a href="#one" class="button scrolly">알아보기</a></li>
+            </ul>
+        </div>
+    </section>
 
     <!-- One -->
     <section id="one" class="main style1">
@@ -31,51 +56,55 @@
             <div class="row gtr-150">
                 <div class="col-6 col-12-medium">
                     <header class="major">
-                        <h2>ABOUT US</h2>
+                        <div class="pre_one one">
+                            <h2>ABOUT US</h2>
+                        </div>
                     </header>
-                    <p> <a href="https://likelion.net/" target="_blank" > 멋쟁이사자처럼</a>은 컴퓨터 비전공자들도 프로그래밍을 할 수 있도록 교육하는 전국 대학 연합 동아리입니다. "내 아이디어를 내 손으로 직접 실현한다."는 목표를 갖고 온/오프라인 강의을 통한 체계적인 프로그래밍을 교육을 진행합니다. 열정과 아이디어만 있다면 누구나 참여 가능한 멋쟁이사자처럼에서 당신의 꿈을 이루어 보세요.  </p>
+                    <div class="pre_one two">
+                        <p> <a href="https://likelion.net/" target="_blank"> 멋쟁이사자처럼</a>은 컴퓨터 비전공자들도 프로그래밍을 할 수 있도록 교육하는 전국 대학 연합 동아리입니다. "내 아이디어를 내 손으로 직접 실현한다."는 목표를 갖고 온/오프라인 강의을 통한 체계적인 프로그래밍을 교육을 진행합니다. 열정과 아이디어만 있다면 누구나 참여 가능한 멋쟁이사자처럼에서 당신의 꿈을 이루어 보세요.  </p>
+                    </div>
                 </div>
                 <div class="col-6 col-12-medium imp-medium">
-                    <span class="image fit"><img src="{% static 'page/images/likelion.png' %}" alt="" /></span>
+                    <span class="image fit"><img class="pre_one" src="{% static 'page/images/likelion.png' %}" alt="" /></span>
                 </div>
             </div>
         </div>
     </section>
 
-		<!-- Two -->
-			<section id="two" class="main style2">
-				<div class="container">
-					<div class="row gtr-150">
-						<div class="col-6 col-12-medium">
-							<ul class="major-icons">
-								<li><span class="icon brands major fab fa-python"></span></li>
-								<li><span class="icon solid style2 major fas fa-book"></span></li>
-								<li><span class="icon brands html5 major fab fa-html5"></span></li>
-								<li><span class="icon brands css3 major fab fa-css3-alt"></span></li>
-								<li><span class="icon brands bootstrap major fab fa-bootstrap"></span></li>
-								<li><span class="icon brands js major fab fa-js"></span></li>
-								<li><span class="icon brands major fab fa-git-alt"></span></li>
-								<li><span class="icon brands major fab fa-aws"></span></li>
-							</ul>
-						</div>
-						<div class="col-6 col-12-medium">
-							<header class="major">
-								<h2>커리큘럼</h2>
-							</header>
-							<p>멋쟁이사자처럼에서는 웹 서비스 런칭을 목표로 프로그래밍 및 창업 교육을 함께 진행합니다. 컴퓨터 비전공자도 쉽게 접근할 수 있는 Python을 중심으로 프로그래밍을 배우며, Django를 활용한 웹 페이지 개발을 진행하고 있습니다.
-								<li>Front-End : HTML5, CSS3, BootStrap / JavaScript(예정)</li>
-								<li>Back-End : Django</li>
-								<li>Programming Language : Python</li>
-                                <li>Source Code Management : Github</li>
-                                <li>Communication Tool : Swit</li>
-								<li>Server Deployment : AWS</li>
-							</p>
-							<p>실제 서비스 기획을 위해 팀 단위로 프로젝트를 진행하게 됩니다. 서비스 아이디어를 구체화시키고, Adobe XD를 활용하여 UI/UX를 설계하는 방법을 배우게 됩니다. 또한 멋쟁이사자처럼 소속의 대학교들과 함께 교류하며 아이디어 공유를 위한 연합 세션을 진행하고 있습니다. </p>
-							<p>더 나아가 스타트업 준비를 위해 구체적인 수익 모델 구축 및 회사 운영 방법을 배우고, 다양한 프로젝트 경험을 통해 경쟁력 있는 개발자를 양성하는 것을 목표로 하고 있습니다. </p>
-						</div>
-					</div>
-				</div>
-			</section>
+    <!-- Two -->
+    <section id="two" class="main style2">
+        <div class="container">
+            <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                    <ul class="major-icons">
+                        <li><span class="icon brands major fab fa-python"></span></li>
+                        <li><span class="icon solid style2 major fas fa-book"></span></li>
+                        <li><span class="icon brands html5 major fab fa-html5"></span></li>
+                        <li><span class="icon brands css3 major fab fa-css3-alt"></span></li>
+                        <li><span class="icon brands bootstrap major fab fa-bootstrap"></span></li>
+                        <li><span class="icon brands js major fab fa-js"></span></li>
+                        <li><span class="icon brands major fab fa-git-alt"></span></li>
+                        <li><span class="icon brands major fab fa-aws"></span></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-12-medium">
+                    <header class="major">
+                        <h2>커리큘럼</h2>
+                    </header>
+                    <p>멋쟁이사자처럼에서는 웹 서비스 런칭을 목표로 프로그래밍 및 창업 교육을 함께 진행합니다. 컴퓨터 비전공자도 쉽게 접근할 수 있는 Python을 중심으로 프로그래밍을 배우며, Django를 활용한 웹 페이지 개발을 진행하고 있습니다.
+                    <li>Front-End : HTML5, CSS3, BootStrap / JavaScript(예정)</li>
+                    <li>Back-End : Django</li>
+                    <li>Programming Language : Python</li>
+                    <li>Source Code Management : Github</li>
+                    <li>Communication Tool : Swit</li>
+                    <li>Server Deployment : AWS</li>
+                    </p>
+                    <p>실제 서비스 기획을 위해 팀 단위로 프로젝트를 진행하게 됩니다. 서비스 아이디어를 구체화시키고, Adobe XD를 활용하여 UI/UX를 설계하는 방법을 배우게 됩니다. 또한 멋쟁이사자처럼 소속의 대학교들과 함께 교류하며 아이디어 공유를 위한 연합 세션을 진행하고 있습니다. </p>
+                    <p>더 나아가 스타트업 준비를 위해 구체적인 수익 모델 구축 및 회사 운영 방법을 배우고, 다양한 프로젝트 경험을 통해 경쟁력 있는 개발자를 양성하는 것을 목표로 하고 있습니다. </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Three -->
     <section id="three" class="main style1 special">
@@ -144,7 +173,6 @@
     </section>
 
     <!-- Scripts -->
-    <script src="{% static 'page/js/main/jquery.min.js' %}"></script>
     <script src="{% static 'page/js/main/jquery.scrolly.min.js' %}"></script>
     <script src="{% static 'page/js/main/browser.min.js' %}"></script>
     <script src="{% static 'page/js/main/breakpoints.min.js' %}"></script>
