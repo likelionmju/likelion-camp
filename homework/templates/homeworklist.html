@@ -21,23 +21,23 @@
         <main class="shell-body">
             <h2>공지사항</h2>
             {% if notice.author == superuser %}
-            <a href="{%url 'noticenew'%}" id="noticenew">공지사항 추가</a><br><br>
+            <a href="{%url 'noticenew'%}" id="noticenew" style="color: rgb(158, 158, 158);">공지사항 추가</a><br>
             {% endif %}
             
             {% for notice in notices.all reversed %}
-            <p><a href="{%url 'noticedetail' notice.id %}">{{notice.title}}</a>
-                {{notice.pub_date}}
-                {{notice.author}}</p>
-            <br>
+            <p><a href="{%url 'noticedetail' notice.id %}" style="color: rgb(0, 0, 0);font-weight: bold;">{{notice.content}}</a>
+                <br>
+                <a style="color: rgb(235, 164, 33);">【</a>{{notice.author}}<a style="color: rgb(235, 164, 33);">】</a></p>
             {% endfor %}
         </main>
         <footer class="shell-footer">
                 <a href="{%url 'homeworknew'%}" id="homeworknew" class="btn orange">제 출 하 기</a>
             {% for post in posts.all reversed %}
             
-            <a href="{%url 'detail' post.id %}">{{post.title}}</a>
+            <a href="{%url 'detail' post.id %}" style="color: rgb(158, 158, 158);">{{post.title}}</a>
+            <a style="color: rgb(235, 164, 33);">【</a>{{post.author}}<a style="color: rgb(235, 164, 33);">】</a>
             {{post.pub_date}}
-            {{post.author}}
+            
             <br>
             {% endfor %} 
         </footer>
