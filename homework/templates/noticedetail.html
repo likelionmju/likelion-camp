@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block link %}{% static 'homework/css/noticedetail.css' %}{% endblock %}
     {% block title %}Likelion Camp{% endblock %}
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
 {% block content%}
 <body>
     <header class="main-header">
         <div class="header-inner">
             <h1>공지사항</h1>
-        </div>
     </header>
     <div class="content">
         <h3>〖 제목 〗</h3>  
@@ -23,7 +23,7 @@
         {{notice.content}}
         <br>
         {% if notice.notice_file.url != None %}
-    <div>첨부파일 다운로드<a href="{{ notice.notice_file.url }}" download="" style="color : rgba(255,255,255,.8);">{{ notice.notice_file }}</a> </div>
+    <div><a href="{{ notice.notice_file.url }}" download="" style="color : rgba(255,255,255,.8);">{{ notice.notice_file }}</a> </div>
     {% endif %}
    <div class="box">
         {% if notice.author == user %}
@@ -32,7 +32,6 @@
         {% endif %}
    </div>
 
-    
     </div>  
 </body>
 {% endblock %}

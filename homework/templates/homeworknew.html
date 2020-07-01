@@ -6,25 +6,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block link %}{% static 'homework/css/homeworknew.css' %}{% endblock %}
     {% block title %}Likelion Camp{% endblock %}
 </head>
 {% block content%}
 <body>
-    <h2 style="color: red;">과제 제출하기</h2><br>
-    {{user.name}}
+    <header class="main-header">
+        <div class="header-inner">
+            <h1>{{user.name}}님의 과제</h1>
+    </header>
+    <div class="content">
     <form action="{% url 'homeworknew' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <h3>과제 제목</h3>
-        <input type="text" name='title'>
-        <h3>과제 내용</h3>
+        <h3>〖 제목 〗</h3>
+        <input class="title" type="text" name='title'>
+        <h3>〖 내용 〗</h3>
         <textarea name="content" cols="50" rows="10"></textarea>
         <br>
         <input type="file" name="post_file">
-        <input type="submit" value="제출" onclick="submit_btn()">
-  
-        
-        
+        <input class="submit" type="submit" value="제출" onclick="submit_btn()">   
     </form>
+    </div>
     <script>
         function submit_btn(){
             alert("과제 제출이 완료되었습니다.")

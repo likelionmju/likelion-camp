@@ -32,8 +32,8 @@
         </main>
         <footer class="shell-footer">
                 <a href="{%url 'homeworknew'%}" id="homeworknew" class="btn orange">제 출 하 기</a>
+                
             {% for post in posts.all reversed %}
-            
             <a href="{%url 'detail' post.id %}" style="color: rgb(158, 158, 158);">{{post.title}}</a>
             <a style="color: rgb(235, 164, 33);">【</a>{{post.author}}<a style="color: rgb(235, 164, 33);">】</a>
             {{post.pub_date}}
