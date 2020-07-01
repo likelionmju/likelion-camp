@@ -9,7 +9,7 @@ from django.conf import settings
 def homeworklist(request):
     posts = Post.objects
     notices = Notice.objects
-    return render(request, 'homeworklist.html', {'posts':posts,'notices':notices})
+    return render(request, 'homeworklist.html', {'posts':posts,'notices':notices,'count':0})
 
 def noticedetail(request, id):
     notice = get_object_or_404(Notice, pk=id)
