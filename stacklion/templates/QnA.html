@@ -59,7 +59,7 @@
 
 {% block content%}
     <body>
-    <h1 style="text-align: center; text-shadow: 4px 2px 2px rgb(172, 171, 171); ">QUESTION <a style="color:#82BF45">&</a> ANSWER</h1>
+    <h1 style="text-align: center; text-shadow: 4px 2px 2px rgb(172, 171, 171); ">QUESTION <a style="color:#FFA13D">&</a> ANSWER</h1>
     <div class="entire">
         <div class="question_form" style="margin:13px;">
             <h3 style="color: #D95829; text-align: center;"><a style="color: black; font-size: 20px;">{{ user.name }} </a>QUESTION</h3>
@@ -79,14 +79,14 @@
                 {% csrf_token %}
                 <input type="hidden" name="id" value="{{ question.id }}"/>
                 <a style="color : #5653A6; font-weight:bold;margin-top: 5px; margin-left: 5px;">{{ question.asker }} / {{ question.pub_date }}</a>
-                <div id="question_content{{ question.id }}" style="font-weight: bold; color:#82BF45; margin : 10px">
+                <div id="question_content{{ question.id }}" style="font-weight: bold; color:#E4733C; margin : 10px">
                     ▶"{{ question.question_content }}"</div>
                 {% if question.asker == user %}
                     <div id="buttonpanel{{ question.id }}"name="revise" style="margin-left: 80%;">
                         <button type="button" id="{{ question.id }}" class="button revise" value="수정" 
-                        style="border-radius: 4px; border:2px rgb(108, 158, 59) solid;  font-weight: bold; font-family: 'Nanum Gothic Coding', monospace; background-color:rgb(232, 247, 217)">수정</button>
+                        style="border-radius: 4px; border:2px #FFA13D solid;  font-weight: bold; font-family: 'Nanum Gothic Coding', monospace; background-color:rgb(247, 235, 217)">수정</button>
                         <button name="submit" type="submit" id="{{ question.id }}" class="button delete" value="삭제"
-                        style="border-radius: 4px; border:2px rgb(108, 158, 59) solid;  font-weight: bold; font-family: 'Nanum Gothic Coding', monospace; background-color:rgb(232, 247, 217)">삭제</button>
+                        style="border-radius: 4px; border:2px #FFA13D solid;  font-weight: bold; font-family: 'Nanum Gothic Coding', monospace; background-color:rgb(247, 235, 217)">삭제</button>
                     </div>
                 {% endif %}
 
