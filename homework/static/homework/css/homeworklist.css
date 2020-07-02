@@ -78,4 +78,6 @@
   .orange:hover {
     background-color: #FF983C;
   }
-  
+  summary:focus{
+    border: none;
+  }
