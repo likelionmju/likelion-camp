@@ -20,7 +20,7 @@
         <form action="{% url 'noticeedit' notice.id %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <h3>〖 마감일 〗</h3>
-            <input  type="date" Placeholder="mm-dd-yyyy" name="submitdate" class="date">
+            <input  type="date" name="submitdate" class="date">
             <h3>〖 내용 〗</h3>
             <textarea name="content" cols="50" rows="10">{{notice.content}}</textarea>
             <br>
