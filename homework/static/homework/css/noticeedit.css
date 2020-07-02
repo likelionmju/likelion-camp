@@ -50,11 +50,13 @@
   textarea{
       border: 1px solid rgba(255,255,255,.8);
       background-color: rgb(253, 161, 22);
+      color : rgba(255,255,255,.8);
       margin-bottom: 5px;
   }
   input.title{
     border: 1px solid rgba(255,255,255,.8);
     background-color: rgb(253, 161, 22);
+    color : rgba(255,255,255,.8);
     color: black;
   }
   input.submit{
@@ -63,6 +65,6 @@
     color : rgba(255,255,255,.8);
     margin-left: calc(100%/12);
   }
-  input{
-    color : rgba(255,255,255,.8);
+  input.date{
+    color: black;
   }

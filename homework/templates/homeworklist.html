@@ -20,7 +20,9 @@
         </header>
         <main class="shell-body">
             <h2>공지사항</h2>
-            
+            {% if notices.author == superuser %}
+            <a href="{%url 'noticenew'%}" id="noticenew" style="color: rgb(158, 158, 158);">공지사항 추가</a><br>
+            {% endif %} 
             
          
             {% for notice in notices.all reversed %}
@@ -68,9 +70,7 @@
         </details>
         
         
-        {% if notices.author == superuser %}
-            <a href="{%url 'noticenew'%}" id="noticenew" style="color: rgb(158, 158, 158);">공지사항 추가</a><br>
-        {% endif %}
+        
 
 
         
