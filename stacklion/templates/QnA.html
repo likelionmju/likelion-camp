@@ -65,7 +65,7 @@
             <h3 style="color: #D95829; text-align: center;"><a style="color: black; font-size: 20px;">{{ user.name }} </a>QUESTION</h3>
             <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <textarea class="question" name="question" rows="10" cols="80" placeholder="질문을 입력해주세요."></textarea><br>
+                <textarea class="question" name="question" rows="10" style="width:100%;" placeholder="질문을 입력해주세요."></textarea><br>
                 <input type="file" name="question_file" style="color: rgba(218, 95, 50, 0.644); font-weight: bold" multiple>
                 <output id="list"></output><br>
                 <input style="font-weight: bold; margin-left: 90%; margin-bottom:10px" class="button" type="submit" value="등록">
@@ -99,7 +99,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="val" value="answer"/>
                 <input type="hidden" value="{{ question.id }}" name="question_id">
-                <textarea style="margin:13px"class="answer" name="answer" rows="2" cols="80" placeholder="답변을 입력해주세요."></textarea>
+                <textarea style="margin:13px; width:95%;"class="answer" name="answer" rows="2" placeholder="답변을 입력해주세요."></textarea>
                 <input type="submit" class="button" style="margin-left: 87%; margin-bottom:10px"value="답변" >   
             </form>
 
