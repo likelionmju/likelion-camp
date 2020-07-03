@@ -1,5 +1,44 @@
+/* Fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
+/* nav */
+
 nav.navbar a {
     color:rgb(180, 179, 179);
     font-family: 'Roboto', sans-serif;
     border-bottom: 0px #666;
+}
+
+    nav.navbar a.navbar-brand{
+        color: rgb(255, 153, 0);
+        text-shadow: 1px 1px 1px gray; 
+        font-size: 25px;
+        font-family: 'Roboto', 'sans-serif';
+    }
+
+    nav.navbar a.nav-item.nav-link, nav.navbar a.nav-item.nav-link.active {
+        color:rgb(180, 179, 179);
+        font-family: 'Roboto', sans-serif;
+    }
+
+.nav-item{
+    font-family: 'Noto Sans KR', sans-serif; 
+}
+    
+    .nav-item.user{
+        margin-left: 60%; 
+        color: black;
+    }
+
+    .nav-item.nav-link.ml-auto{
+        font-size: medium;
+        color:rgb(180, 179, 179);
+    }
+
+.sr-only{
+    color:rgb(180, 179, 179);
+    font-family: 'Roboto', sans-serif;
 }
