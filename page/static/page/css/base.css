@@ -31,8 +31,9 @@ nav.navbar a {
 }
     
     .nav-item.user{
-        margin-left: calc(100%/1.56);
+        margin-left: calc(100%/1.7) !important;
         color: white;
+        font-size: 15px !important;
     }
 
     .nav-item.nav-link.ml-auto{
