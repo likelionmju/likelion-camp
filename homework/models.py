@@ -21,13 +21,12 @@ class Post(models.Model):
         return self.title
 
 class Notice(models.Model):
+    
     author = models.ForeignKey(User, on_delete=models.PROTECT,default='')
     pub_date = models.DateTimeField('publish')
     submitdate = models.DateTimeField(null=True, blank=True)
     notice_file = models.FileField(upload_to='files/', null=True, blank=True)
     content = models.TextField()
-
-
 
     def __str__(self):
         return self.title

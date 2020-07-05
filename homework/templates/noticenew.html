@@ -17,21 +17,30 @@
         </div>
     </header>
     <div class="content">
-        <form action="{% url 'noticenew' %}" method="POST" enctype="multipart/form-data">
+        <form action="{% url 'noticenew' %}" method="POST" enctype="multipart/form-data" name="edit" id="edit">
             {% csrf_token %}
             <h3>〖 마감일 〗</h3>
-            <input type="date" Placeholder="mm-dd-yyyy" name="submitdate" class="date">
+            <input type="date" name="submitdate" class="date">
             <h3>〖 내용 〗</h3>
             <textarea name="content" cols="50" rows="10"></textarea>
             <br>
             <input type="file" name="notice_file">
-            <input type="submit" class="submit" value="등록" onclick="submit_btn()">
+            <input type="button" class="submit" value="등록" onclick="submit_btn()">
         </form>
     </div>
     <script>
+
         function submit_btn(){
-            alert("공지가 등록되었습니다.")
-        }
+            var check_date = document.edit.submitdate.value;
+            if(check_date == ""){
+                alert("마감일을 입력해주세요");
+            }
+            else{
+                alert("공지가 등록되었습니다.");
+                document.getElementById('edit').submit();
+                
+            }
+                }
 </script>
 </body>
 {% endblock %}
