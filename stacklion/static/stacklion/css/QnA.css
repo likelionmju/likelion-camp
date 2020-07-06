@@ -1,24 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 body{
     background-color: #F2F2F2;
-    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 h1{
     color : #E4733C;
-    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bolder;
     margin-top: 30px;
     margin-bottom: 30px;
     font-size: 50px;
 }
 h3,h4{
-    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bolder;
 }
 div.entire {
     width: 100%;
     height: 100%;
-    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 div.question_form{
@@ -27,7 +31,7 @@ div.question_form{
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 10px;
-    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 div.answer_form{
@@ -36,12 +40,12 @@ div.answer_form{
     margin-right: 10px;
     margin-top: 30px;
     border: rgb(223, 213, 209) 2px solid;
-    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 input.button{
-    font-weight: bold;
-    font-family: 'Gothic A1', sans-serif;
+    font-weight: bolder;
+    font-family: 'Noto Sans KR', sans-serif;
     border:2px #D95829 solid;
     border-radius: 4px;
     background-color: rgb(236, 225, 220);

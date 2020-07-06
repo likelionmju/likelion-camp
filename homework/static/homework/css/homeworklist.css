@@ -1,8 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 .shell {
     display: grid;
@@ -30,11 +26,12 @@
     color: white;
     background-color: rgb(255, 153, 0);
     padding: 35px 20px;
-    font-family: 'Black Han Sans', sans-serif;
-
+    font-family: 'Noto Sans KR', sans-serif; 
+    font-weight: bolder;
   }
   h2{
-    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif; 
+    font-weight: bolder;
 
   }
   .shell-body {
@@ -56,7 +53,7 @@
   
   body {
     margin:0;
-    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif; 
   }
   .btn {
     border-radius: 5px;
@@ -67,7 +64,7 @@
     color: #fff;
     position: relative;
     display: inline-block;
-    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif; 
   }
   
   .btn:active {

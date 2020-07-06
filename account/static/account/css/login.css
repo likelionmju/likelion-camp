@@ -1,5 +1,6 @@
 @import url(http://weloveiconfonts.com/api/?family=entypo);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
@@ -15,7 +16,7 @@
 
 body {
     background-color: #F2F2F2;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
   }
 
 h2 {
@@ -34,14 +35,14 @@ form {
   position:absolute;
   top:68px;
   right: 80px;
-  color:rgb(224, 155, 50);
+  color : white;
 }
 
 .inputPassIcon {
   position:absolute;
   top:136px;
   right: 80px;
-  color:rgb(224, 155, 50);
+  color : white;
 }
 
 input {
