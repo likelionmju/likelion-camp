@@ -1,212 +1,215 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% block title %} Likelion Camp {% endblock %}
-        {% block link %}{% static 'page/css/introduce.css' %}{% endblock %}
-    </head>
+{% block title %} Likelion Camp {% endblock %}
+{% block link %}{% static 'page/css/introduce.css' %}{% endblock %}
+
 {% block content%}
-    <body>
+
+<body>
 
     <!-- Wrapper -->
-        <div id="wrapper">
+    <div id="wrapper">
 
-            <!-- Header -->
-                <header id="header">
-                    <span class="avatar"><img src="{% static 'page/images/avatar.png' %}" alt="" /></span>
-                    <h1>Who's with <strong>MJU X LIKELION?</strong><br/>
-                    구성원 소개</h1>
-                    <ul class="icons">
-                        <li><a href="https://www.facebook.com/likelionMJU" target="_blank" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
-                        <li><a href="https://www.instagram.com/likelion_mju/" target="_blank" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="https://github.com/likelionmju" target="_blank" class="icon style2 fa-github"><span class="label">Github</span></a></li>
-                        <li><a href="https://www.youtube.com/channel/UCoYWng52Y7_Mit4K7USB-cg" target="_blank" class="icon style2 fa-youtube"><span class="label">Github</span></a></li>
-                    </ul>
-                    <hr>
-                </header>
-                
- 
+        <!-- Header -->
+        <header id="header">
+            <span class="avatar"><img src="{% static 'page/images/avatar.png' %}" alt="" /></span>
+            <h1>Who's with <strong>MJU X LIKELION?</strong><br />
+                구성원 소개</h1>
+            <ul class="icons">
+                <li><a href="https://www.facebook.com/likelionMJU" target="_blank" class="icon style2 fa-facebook"><span
+                            class="label">Facebook</span></a></li>
+                <li><a href="https://www.instagram.com/likelion_mju/" target="_blank"
+                        class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="https://github.com/likelionmju" target="_blank" class="icon style2 fa-github"><span
+                            class="label">Github</span></a></li>
+                <li><a href="https://www.youtube.com/channel/UCoYWng52Y7_Mit4K7USB-cg" target="_blank"
+                        class="icon style2 fa-youtube"><span class="label">Github</span></a></li>
+            </ul>
+            <hr>
+        </header>
 
-            <!-- Main -->
-                <section id="main">
-                    <h1 style="text-align: center;">운영진</h1>
-                    <!-- Thumbnails -->
-                        <section class="thumbnails">
-  
-                            <div>
-                                <a href="{% static 'page/images/thumbs/김만수.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/김만수.jpg' %}" alt="" />
-                                    <h3>김만수 (만파카)</h3>
-                                    <p>응용소프트웨어 18</p>
-                                    <h5>사실은 경영대학 학생임</h5>
-                                </a>
-                                <a href="{% static 'page/images/thumbs/노혜인.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/노혜인.jpg' %}" alt="" />
-                                    <h3>노혜인 (YES혜인)</h3>
-                                    <p>경영정보학과 18 <br>
-                                        (RPA 복수전공)
-                                    </p>
-                                    <h5>모두가 "NO" 라고 말할 때, <br>
-                                        "YES"를 외칠 줄 아는 사람.
-                                    </h5>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="{% static 'page/images/thumbs/김나연.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/김나연.jpg' %}" alt="" />
-                                    <h3>김나연 (클로이KKK)</h3>
-                                    <p>응용소프트웨어 17</p>
-                                    <h5>노는 게 제일 좋아 !</h5>
-                                </a>
-                                <a href="{% static 'page/images/thumbs/최윤식.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/최윤식.jpg' %}" alt="" />
-                                    <h3>최윤식 (또치)</h3>
-                                    <p>응용소프트웨어 16</p>
-                                    <h5>안녕하세요. 명지대 이종석입니다.</h5>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="{% static 'page/images/thumbs/김민지.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/김민지.jpg' %}" alt="" />
-                                    <h3>김민지 (백두산호랑이)</h3>
-                                    <p>경영학과 18 <br>
-                                        (경영정보/RPA 복수전공)</p>
-                                    <h5>백두산 정기를 받아 싸우자 ! 이기자 !</h5>
-                                </a>
-                                <a href="{% static 'page/images/thumbs/한준혁.jpeg' %}">
-                                    <img src="{% static 'page/images/thumbs/한준혁.jpeg' %}" alt="" />
-                                    <h3>한준혁 (해롱이)</h3>
-                                    <p>경영학과 15 <br>
-                                        (RPA 복수전공)
-                                    </p>
-                                    <h5>고양이처럼 사는 게 목표</h5>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="{% static 'page/images/thumbs/김지현.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/김지현.jpg' %}" alt="" />
-                                    <h3>김지현 (집순이)</h3>
-                                    <p>데이터테크놀로지 18</p>
-                                    <h5>집에 갈래.....🙂</h5>
-                                </a>
-                            </div>
-                        </section>
+        <!-- Main Contents -->
+        <section id="main">
+            <h1 style="text-align: center;">운영진</h1>
 
-                        <hr>
+            <!-- Images -->
+            <section class="thumbnails">
 
-                        <h1 style="text-align: center;">부원</h1>
-                    <!-- Thumbnails -->
-                        <section class="thumbnails">
-  
-                            <div>
-                                <a href="{% static 'page/images/thumbs/곽민아.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/곽민아.jpg' %}" alt="" />
-                                    <h3>곽민아 (미나리)</h3>
-                                    <p>경영정보학과 18</p>
-                                    <h5>귀여운 게 최고야!</h5>
-                                </a>
-                                <a href="{% static 'page/images/thumbs/김유비.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/김유비.jpg' %}" alt="" />
-                                    <h3>김유비 (유빕)</h3>
-                                    <p>응용소프트웨어 20</p>
-                                    <h5>안녕하세요! 김유비입니다.</h5>
-                                </a>
-                                <a href="{% static 'page/images/thumbs/엄예빈.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/엄예빈.jpg' %}" alt="" />
-                                    <h3>엄예빈 (까만콩)</h3>
-                                    <p>경영학과 18</p>
-                                    <h5>놀고 먹는 게 최고야!</h5>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="{% static 'page/images/thumbs/곽진아.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/곽진아.jpg' %}" alt="" />
-                                    <h3>곽진아 (찐아)</h3>
-                                    <p>정보통신공학과 16</p>
-                                    <h5>긍정적이고 재미있게 살기😃</h5>
-                                </a>
-                                <a href="{% static 'page/images/thumbs/김예빈.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/김예빈.jpg' %}" alt="" />
-                                    <h3>김예빈 (열정 만수르)</h3>
-                                    <p>미술사학과 19<br>
-                                        (경영정보 복수전공)
-                                    </p>
-                                    <h5>인간에게 가장 해로운 벌레는 대충</h5>
-                                </a>
-                                <a href="{% static 'page/images/thumbs/이소윤.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/이소윤.jpg' %}" alt="" />
-                                    <h3>이소윤 (소따뚜이)</h3>
-                                    <p>경영학과 18 <br>
-                                        (경영정보 복수전공)
-                                    </p>
-                                    <h5>집에 가고 싶다... 아니야, 정신차려</h5>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="{% static 'page/images/thumbs/김도영.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/김도영.jpg' %}" alt="" />
-                                    <h3>김도영 (도여미)</h3>
-                                    <p>응용소프트웨어 19</p>
-                                    <h5>다음 생에는 돌로 태어나 <br>
-                                    아무것도 안 하고 싶다. </h5>
-                                </a>
-                                <a href="{% static 'page/images/thumbs/김현빈.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/김현빈.jpg' %}" alt="" />
-                                    <h3>김현빈 (포비)</h3>
-                                    <p>미술사학과 20</p>
-                                    <h5>☆코딩 병아리☆</h5>
-                                </a>
-                                <a href="{% static 'page/images/thumbs/정가현.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/정가현.jpg' %}" alt="" />
-                                    <h3>정가현 (디즈니덕후)</h3>
-                                    <p>숭실대 전자정보공학부 18</p>
-                                    <h5>하고 싶은 건 다 하고 살거야 👸</h5>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="{% static 'page/images/thumbs/김승현.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/김승현.jpg' %}" alt="" />
-                                    <h3>김승현 (에디)</h3>
-                                    <p>데이터테크놀로지 17</p>
-                                    <h5>장고는 처음이라서... 😶</h5>
-                                </a>
-                                <a href="{% static 'page/images/thumbs/박성제.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/박성제.jpg' %}" alt="" />
-                                    <h3>박성제 (AiRini)</h3>
-                                    <p>응용소프트웨어 18</p>
-                                    <h5>현금술사</h5>
-                                </a>
-                                <a href="{% static 'page/images/thumbs/조환희.jpg' %}">
-                                    <img src="{% static 'page/images/thumbs/조환희.jpg' %}" alt="" />
-                                    <h3>조환희 (조퍼니)</h3>
-                                    <p>사회과학부 20</p>
-                                    <h5>누가 뭐라해도 나는 조퍼니. </h5>
-                                </a>
-                            </div>
-                        </section>
+                <div>
+                    <a href="{% static 'page/images/thumbs/김만수.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/김만수.jpg' %}" alt="" />
+                        <h3>김만수 (만파카)</h3>
+                        <p>응용소프트웨어 18</p>
+                        <h5>사실은 경영대학 학생임</h5>
+                    </a>
+                    <a href="{% static 'page/images/thumbs/노혜인.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/노혜인.jpg' %}" alt="" />
+                        <h3>노혜인 (YES혜인)</h3>
+                        <p>경영정보학과 18 <br>
+                            (RPA 복수전공)
+                        </p>
+                        <h5>모두가 "NO" 라고 말할 때, <br>
+                            "YES"를 외칠 줄 아는 사람.
+                        </h5>
+                    </a>
+                </div>
 
-                </section>
+                <div>
+                    <a href="{% static 'page/images/thumbs/김나연.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/김나연.jpg' %}" alt="" />
+                        <h3>김나연 (클로이KKK)</h3>
+                        <p>응용소프트웨어 17</p>
+                        <h5>노는 게 제일 좋아 !</h5>
+                    </a>
+                    <a href="{% static 'page/images/thumbs/최윤식.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/최윤식.jpg' %}" alt="" />
+                        <h3>최윤식 (또치)</h3>
+                        <p>응용소프트웨어 16</p>
+                        <h5>안녕하세요. 명지대 이종석입니다.</h5>
+                    </a>
+                </div>
 
-            <!-- Footer -->
-                <footer id="footer">
-                    <p>&copy; MJU X LIKELION 8th. <br>
-                        All rights reserved.</p>
-                </footer>
+                <div>
+                    <a href="{% static 'page/images/thumbs/김민지.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/김민지.jpg' %}" alt="" />
+                        <h3>김민지 (백두산호랑이)</h3>
+                        <p>경영학과 18 <br>
+                            (경영정보/RPA 복수전공)</p>
+                        <h5>백두산 정기를 받아 싸우자 ! 이기자 !</h5>
+                    </a>
+                    <a href="{% static 'page/images/thumbs/한준혁.jpeg' %}">
+                        <img src="{% static 'page/images/thumbs/한준혁.jpeg' %}" alt="" />
+                        <h3>한준혁 (해롱이)</h3>
+                        <p>경영학과 15 <br>
+                            (RPA 복수전공)
+                        </p>
+                        <h5>고양이처럼 사는 게 목표</h5>
+                    </a>
+                </div>
 
-        </div>
+                <div>
+                    <a href="{% static 'page/images/thumbs/김지현.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/김지현.jpg' %}" alt="" />
+                        <h3>김지현 (집순이)</h3>
+                        <p>데이터테크놀로지 18</p>
+                        <h5>집에 갈래.....🙂</h5>
+                    </a>
+                </div>
+            </section>
+
+            <hr>
+
+            <h1 style="text-align: center;">부원</h1>
+            
+            <!-- Images -->
+            <section class="thumbnails">
+
+                <div>
+                    <a href="{% static 'page/images/thumbs/곽민아.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/곽민아.jpg' %}" alt="" />
+                        <h3>곽민아 (미나리)</h3>
+                        <p>경영정보학과 18</p>
+                        <h5>귀여운 게 최고야!</h5>
+                    </a>
+                    <a href="{% static 'page/images/thumbs/김유비.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/김유비.jpg' %}" alt="" />
+                        <h3>김유비 (유빕)</h3>
+                        <p>응용소프트웨어 20</p>
+                        <h5>안녕하세요! 김유비입니다.</h5>
+                    </a>
+                    <a href="{% static 'page/images/thumbs/엄예빈.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/엄예빈.jpg' %}" alt="" />
+                        <h3>엄예빈 (까만콩)</h3>
+                        <p>경영학과 18</p>
+                        <h5>놀고 먹는 게 최고야!</h5>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="{% static 'page/images/thumbs/곽진아.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/곽진아.jpg' %}" alt="" />
+                        <h3>곽진아 (찐아)</h3>
+                        <p>정보통신공학과 16</p>
+                        <h5>긍정적이고 재미있게 살기😃</h5>
+                    </a>
+                    <a href="{% static 'page/images/thumbs/김예빈.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/김예빈.jpg' %}" alt="" />
+                        <h3>김예빈 (열정 만수르)</h3>
+                        <p>미술사학과 19<br>
+                            (경영정보 복수전공)
+                        </p>
+                        <h5>인간에게 가장 해로운 벌레는 대충</h5>
+                    </a>
+                    <a href="{% static 'page/images/thumbs/이소윤.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/이소윤.jpg' %}" alt="" />
+                        <h3>이소윤 (소따뚜이)</h3>
+                        <p>경영학과 18 <br>
+                            (경영정보 복수전공)
+                        </p>
+                        <h5>집에 가고 싶다... 아니야, 정신차려</h5>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="{% static 'page/images/thumbs/김도영.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/김도영.jpg' %}" alt="" />
+                        <h3>김도영 (도여미)</h3>
+                        <p>응용소프트웨어 19</p>
+                        <h5>다음 생에는 돌로 태어나 <br>
+                            아무것도 안 하고 싶다. </h5>
+                    </a>
+                    <a href="{% static 'page/images/thumbs/김현빈.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/김현빈.jpg' %}" alt="" />
+                        <h3>김현빈 (포비)</h3>
+                        <p>미술사학과 20</p>
+                        <h5>☆코딩 병아리☆</h5>
+                    </a>
+                    <a href="{% static 'page/images/thumbs/정가현.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/정가현.jpg' %}" alt="" />
+                        <h3>정가현 (디즈니덕후)</h3>
+                        <p>숭실대 전자정보공학부 18</p>
+                        <h5>하고 싶은 건 다 하고 살거야 👸</h5>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="{% static 'page/images/thumbs/김승현.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/김승현.jpg' %}" alt="" />
+                        <h3>김승현 (에디)</h3>
+                        <p>데이터테크놀로지 17</p>
+                        <h5>장고는 처음이라서... 😶</h5>
+                    </a>
+                    <a href="{% static 'page/images/thumbs/박성제.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/박성제.jpg' %}" alt="" />
+                        <h3>박성제 (AiRini)</h3>
+                        <p>응용소프트웨어 18</p>
+                        <h5>현금술사</h5>
+                    </a>
+                    <a href="{% static 'page/images/thumbs/조환희.jpg' %}">
+                        <img src="{% static 'page/images/thumbs/조환희.jpg' %}" alt="" />
+                        <h3>조환희 (조퍼니)</h3>
+                        <p>사회과학부 20</p>
+                        <h5>누가 뭐라해도 나는 조퍼니. </h5>
+                    </a>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p>&copy; MJU X LIKELION 8th. <br>
+                All rights reserved.</p>
+        </footer>
+
+    </div>
 
     <!-- Scripts -->
-        <script src="{% static 'page/js/introduce/jquery.min.js' %}"></script>
-        <script src="{% static 'page/js/introduce/jquery.poptrox.min.js' %}"></script>
-        <script src="{% static 'page/js/introduce/skel.min.js' %}"></script>
-        <script src="{% static 'page/js/introduce/main.js' %}"></script>
+    <script src="{% static 'page/js/introduce/jquery.min.js' %}"></script>
+    <script src="{% static 'page/js/introduce/jquery.poptrox.min.js' %}"></script>
+    <script src="{% static 'page/js/introduce/skel.min.js' %}"></script>
+    <script src="{% static 'page/js/introduce/main.js' %}"></script>
 
-    </body>
+</body>
 {% endblock %}
-
-
-</html>
