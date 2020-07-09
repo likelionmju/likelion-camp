@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 body{
   font-family: 'Noto Sans KR', sans-serif;
-  background-color:#F2F1EB;
+    background-color: black;
+		background-image: url("../images/bg.jpg");
+		background-size: cover;
+    background-position: top center;
+    color: white;
 }
 h1{
   text-align: right;
@@ -9,13 +13,13 @@ h1{
   margin: 30px;
 }
 select{
-  background-color: #F2C029;
+  background-color: rgba(255, 255, 255, 0.788);
   border: none;
   border-radius: 10px;
 }
 select:focus{
   border: none;
-  background-color:#F27B35;
+  background-color:#721d8bbd;
   color:white;
 }
 div.up{
@@ -32,7 +36,7 @@ div.down{
 }
 input{
   border: none;
-  background-color: #F2C029;
+  background-color: rgba(255, 255, 255, 0.788);
   color: black;
   border-radius: 10px;
 }
@@ -43,12 +47,12 @@ input.name{
 }
 input:focus{
   border: none;
-  background-color:#F27B35;
+  background-color:#721d8bbd;
   color:white;
   border-radius: 10px;
 }
 div.form-actions{
-  margin-left: calc(100%/1.15);
+  margin-left: calc(100%/1.2);
   margin-top: -10px;
 }
 button{
@@ -56,6 +60,7 @@ button{
   height: 40px;
   text-decoration: none;
   border: 2px solid black;
+  color: rgba(255, 255, 255, 0.836);
   color: black;
 }
 div.panel.panel-default.registration{
@@ -68,7 +73,7 @@ button:hover{
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5) inset;
 }
 input:hover{
-  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5) inset;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5) inset;
 }
 input.email.data{
   width:130px;
