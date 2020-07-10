@@ -1,5 +1,6 @@
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
+from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.contrib import auth
 
@@ -25,28 +26,32 @@ def login(request):
         return render(request, 'login.html')
 
 def logout(request):
-        auth.logout(request)
-        return redirect('home')
+    auth.logout(request)
+    return redirect('home')
 
 def register(request):
     if request.method == "POST":
         if request.POST["password1"] == request.POST["password2"]:
-            user = User.objects.create_user(name=request.POST["name"], email=request.POST["email"]+"@likelion.org", grade=request.POST["grade"],
-                                            password=request.POST["password1"])
-            user.is_active = False
-            user.save()
-            current_site = get_current_site(request)
-            message = render_to_string('activation_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': account_activation_token.make_token(user),
-            })
-            mail_title = "계정 활성화 확인 이메일"
-            mail_to = request.POST["email"]+"@likelion.org"
-            email = EmailMessage(mail_title, message, to=[mail_to])
-            email.send()
-            return render(request, 'activation_alert.html', {'name':request.POST['name'], 'email':mail_to})
+            try:
+                user = User.objects.create_user(name=request.POST["name"], email=request.POST["email"]+"@likelion.org", grade=request.POST["grade"],
+                                                  password=request.POST["password1"])
+                user.is_active = False
+                user.save()
+                current_site = get_current_site(request)
+                message = render_to_string('activation_email.html', {
+                    'user': user,
+                    'domain': current_site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'token': account_activation_token.make_token(user),
+                })
+                mail_title = "계정 활성화 확인 이메일"
+                mail_to = request.POST["email"] + "@likelion.org"
+                email = EmailMessage(mail_title, message, to=[mail_to])
+                email.send()
+                return render(request, 'activation_alert.html', {'name': request.POST['name'], 'email': mail_to})
+            except IntegrityError as e:
+                if 'UNIQUE constraint' in str(e.args):
+                    return render(request, 'register.html', {'error': 'existemail'})
     else:
         return render(request, 'register.html')
 

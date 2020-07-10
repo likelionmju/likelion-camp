@@ -57,11 +57,16 @@
 {% endblock %}
 
 {% block content%}
+    {% if error == 'existemail' %}
+        <script>
+            alert("이미 가입된 이메일입니다.");
+        </script>
+    {% endif %}
     <h1>회원가입</h1>
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
         <div class="form-actions">
-            <button id="submit" class="button" type="submit" disabled=""> 가 입 하 기</button>
+            <button id="submit" class="button" type="submit" disabled="true"> 가 입 하 기</button>
         </div>
         <div class="panel panel-default registration">
             <div class="panel-heading"></div>
