@@ -14,13 +14,13 @@ def homeworklist(request):
 
     blog_list = Post.objects.all().order_by('-id')
     paginator = Paginator(blog_list, 10)
-    page = request.GET.get('page')
-    blogs = paginator.get_page(page) 
+    blog_page = request.GET.get('blog_page')
+    blogs = paginator.get_page(blog_page) 
 
     notice_list = Notice.objects.all().order_by('-id')
-    notice_paginator = Paginator(notice_list, 5)
-    notice_page = request.GET.get('page')
-    notice_blogs = notice_paginator.get_page(page) 
+    notice_paginator = Paginator(notice_list, 6)
+    notice_page = request.GET.get('notice_page')
+    notice_blogs = notice_paginator.get_page(notice_page) 
     return render(request, 'homeworklist.html', {'posts':posts,'notices':notices,'blogs':blogs,'notice_blogs':notice_blogs})
 
 def noticedetail(request, id):

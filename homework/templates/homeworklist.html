@@ -24,6 +24,7 @@
             {% if superuser %}
             <a href="{%url 'noticenew'%}" id="noticenew" style="color: rgb(158, 158, 158);font-size: 15px;">공지사항 추가</a><br>
             {% endif %}
+            <a href="{%url 'noticenew'%}" id="noticenew" style="color: rgb(158, 158, 158);font-size: 15px;">공지사항 추가</a><br>
 
             {% for notice in notices.all reversed %}
              
@@ -48,9 +49,10 @@
             </div>
             {% endif %}
             {% endfor %}
+            
             <div style="text-align: center; margin-top: 10px;">
                 {% if notice_blogs.has_previous and not notice_blogs.has_next %}
-                <a href="?page={{notice_blogs.previous_page_number}}" style="color: black; text-align: center; font-weight: bold;">←</a>
+                <a href="?notice_page={{notice_blogs.previous_page_number}}" style="color: black; text-align: center; font-weight: bold;">←</a>
                 {# NowOfTotal #}
                 <span>[{{notice_blogs.number}}</span>
                 <span>/</span>
@@ -58,12 +60,12 @@
                 {% endif %}
                 
                 {% if notice_blogs.has_previous and notice_blogs.has_next %}
-                <a href="?page={{notice_blogs.previous_page_number}}" style="color: black; text-align: center; font-weight: bold;">←</a>
+                <a href="?notice_page={{notice_blogs.previous_page_number}}" style="color: black; text-align: center; font-weight: bold;">←</a>
                 {# NowOfTotal #}
                 <span>[{{notice_blogs.number}}</span>
                 <span>/</span>
                 <span>{{notice_blogs.paginator.num_pages}}]</span>
-                <a href="?page={{notice_blogs.next_page_number}}" style="color: black; text-align: center; font-weight: bold;">→</a>
+                <a href="?notice_page={{notice_blogs.next_page_number}}" style="color: black; text-align: center; font-weight: bold;">→</a>
                 {% endif %}
                 
                 
@@ -72,7 +74,7 @@
                 <span>[{{notice_blogs.number}}</span>
                 <span>/</span>
                 <span>{{notice_blogs.paginator.num_pages}}]</span>
-                <a href="?page={{notice_blogs.next_page_number}}" style="color: black; text-align: center; font-weight: bold;">→</a>
+                <a href="?notice_page={{notice_blogs.next_page_number}}" style="color: black; text-align: center; font-weight: bold;">→</a>
                 {% endif %}
                        
             </div> 
@@ -94,23 +96,24 @@
                 </a>
             </div>
             {% endfor %}
+            
             <div style="text-align: center; margin-top: 10px;">
                 {% if blogs.has_previous and not blogs.has_next %}
-                <a href="?page={{blogs.previous_page_number}}" style="color: black; font-weight: bold;">←</a>
+                <a href="?blog_page={{blogs.previous_page_number}}" style="color: black; font-weight: bold;">←</a>
                 {# NowOfTotal #}
                 <span>[{{blogs.number}}</span>
                 <span>/</span>
                 <span>{{blogs.paginator.num_pages}}]</span>
                 
                 {% endif %}
-                
+
                 {% if blogs.has_previous and blogs.has_next %}
-                <a href="?page={{blogs.previous_page_number}}" style="color: black; font-weight: bold;">←</a>
+                <a href="?blog_page={{blogs.previous_page_number}}" style="color: black; font-weight: bold;">←</a>
                 {# NowOfTotal #}
                 <span>[{{blogs.number}}</span>
                 <span>/</span>
                 <span>{{blogs.paginator.num_pages}}]</span>
-                <a href="?page={{blogs.next_page_number}}"style="color: black; text-align: center; font-weight: bold;">→</a>
+                <a href="?blog_page={{blogs.next_page_number}}"style="color: black; text-align: center; font-weight: bold;">→</a>
                 {% endif %}
     
                 {% if blogs.has_next and not blogs.has_previous %}
@@ -118,10 +121,11 @@
                 <span>[{{blogs.number}}</span>
                 <span>/</span>
                 <span>{{blogs.paginator.num_pages}}]</span>
-                <a href="?page={{blogs.next_page_number}}"style="color: black; text-align: center; font-weight: bold;">→</a>
+                <a href="?blog_page={{blogs.next_page_number}}"style="color: black; text-align: center; font-weight: bold;">→</a>
                 {% endif %}
             </div>      
         </details>
+        
        
         </footer>
       </div>
