@@ -16,13 +16,15 @@ nav.navbar a {
 }
 
     nav.navbar a.navbar-brand{
-        color: rgb(255, 153, 0);
-        text-shadow: 1px 1px 1px gray; 
+        background: rgb(184,137,145);
+        background: linear-gradient(90deg, rgba(184,137,145,1) 0%, rgba(60,118,145,1) 50%, rgba(204,154,119,1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         font-weight: bold !important;
         font-size: 25px, !important;
     }
 
-    nav.navbar a.nav-item.nav-link, nav.navbar a.nav-item.nav-link.active {
+    nav.navbar a.nav-item.nav-link, nav.navbar a.nav-item.nav-link {
         color:rgb(180, 179, 179);
     }
 
