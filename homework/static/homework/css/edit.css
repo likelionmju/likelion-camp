@@ -7,10 +7,10 @@
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 1.5;
     margin: 0;
-    background: rgb(253, 161, 22);
+    background-image: linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%);
   }
   header {
-    background: rgb(253, 161, 22);
+    background-image: linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%);
  }
  
  .header-inner {
