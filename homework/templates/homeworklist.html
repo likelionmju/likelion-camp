@@ -21,7 +21,7 @@
         <main class="shell-body">
             <h2>[공지사항]</h2>
 
-            {% if superuser %}
+            {% if user.is_superuser == True %}
             <a href="{%url 'noticenew'%}" id="noticenew" style="color: rgb(158, 158, 158);font-size: 15px;">공지사항 추가</a><br>
             {% endif %}
             <a href="{%url 'noticenew'%}" id="noticenew" style="color: rgb(158, 158, 158);font-size: 15px;">공지사항 추가</a><br>
