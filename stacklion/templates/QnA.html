@@ -12,106 +12,117 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 {% if top %}
-                    $('html').animate({scrollTop : {{ top }} }, 400);
+                    $('html').animate({scrollTop: {{ top }}}, 400);
                 {% endif %}
             })
 
             $(document).on('click', '.revise', function () {
                 var id = $(this).attr("id");
-                var content = $('#question_content'+id).html();
-                var top = $('#question_content'+id).position().top;
-                console.log(top);
+                var content = $('#question_content' + id).html();
+                var top = $('#question_content' + id).position().top;
+                var inner_div_files = ""
+                var files = $('question_file'+id).each(function (item) {
+                   inner_div_files = $(item).val()+'<button type="button" ';
+                });
+                console.log(files);
 
-                $('#question_content'+id).replaceWith('<textarea name="revise" id="textarea'+id+'">'+content+'</textarea>');
-                $('#buttonpanel'+id).html('<button type="button" id="'+id+'" class="button cancel" value="취소">취소</button>\n' +
-                    '                        <button name="submit" type="submit" id="'+id+'" class="button complete" value="확인">확인</button>' + '<input type="hidden" name="scrolltop" value="'+top+'"/>');
+                $('#question_content' + id).replaceWith('<textarea name="revise" id="textarea' + id + '">' + content + '</textarea>');
+                $('#buttonpanel' + id).html('<button type="button" id="' + id + '" class="button cancel" value="취소">취소</button>\n' +
+                    '                        <button name="submit" type="submit" id="' + id + '" class="button complete" value="확인">확인</button>' + '<input type="hidden" name="scrolltop" value="' + top + '"/>');
                 {#$('#buttonpanel'+id).load(window.location.href + '#buttonpanel'+id);#}
                 {#window.location.reload();#}
             })
 
             $(document).on('click', '.cancel', function () {
                 var id = $(this).attr("id");
-                    console.log(id);
-                    var content = $('#textarea'+id).html();
-                    console.log(content);
+                console.log(id);
+                var content = $('#textarea' + id).html();
+                console.log(content);
 
-                    $('#textarea'+id).replaceWith('<div id="question_content'+id+'">'+content+'</div>');
-                    $('#buttonpanel'+id).html('<button type="button" id="'+id+'" class="button revise" value="수정">수정</button>\n' +
-                        '                        <button type="submit" id="'+id+'" class="button delete" value="삭제">삭제</button>');
+                $('#textarea' + id).replaceWith('<div id="question_content' + id + '">' + content + '</div>');
+                $('#buttonpanel' + id).html('<button type="button" id="' + id + '" class="button revise" value="수정">수정</button>\n' +
+                    '                        <button type="submit" id="' + id + '" class="button delete" value="삭제">삭제</button>');
 
             })
-
-            {#$(function () {#}
-            {#    $(".cancel").click(function(){#}
-            {#        var id = $(this).attr("id");#}
-            {#        console.log(id);#}
-            {#        var content = $('#textarea'+id).html();#}
-            {#        console.log(content);#}
-            {##}
-            {#        $('#textarea'+id).replaceWith('<div id="question_content'+id+'">'+content+'</div>');#}
-            {#        $('#buttonpanel'+id).html('<button type="button" id="'+id+'" class="button revise" value="수정">수정</button>\n' +#}
-            {#            '                        <button type="submit" id="'+id+'" class="button delete" value="삭제">삭제</button>');#}
-            {#    });#}
 
         </script>
     {% endblock %}
 </head>
 
-{% block content%}
+{% block content %}
     <body>
-    <h1 style="text-align: center; text-shadow: 2px 2px 2px rgb(172, 171, 171); ">QUESTION<a style="color:#FFA13D"> &</a> ANSWER</h1>
+    <h1 style="text-align: center; text-shadow: 2px 2px 2px rgb(172, 171, 171); ">QUESTION<a style="color:#FFA13D">
+        &</a> ANSWER</h1>
     <div class="entire">
         <div class="question_form" style="margin:13px;">
-            <h3 style="color: #D95829; text-align: center; text-shadow: 1px 1px 1px rgb(172, 171, 171);"><a style="color: black; font-size: 20px;">{{ user.name }}님 </a>질문</h3>
+            <h3 style="color: #D95829; text-align: center; text-shadow: 1px 1px 1px rgb(172, 171, 171);"><a
+                    style="color: black; font-size: 20px;">{{ user.name }}님 </a>질문</h3>
             <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <textarea class="question" name="question" rows="10" style="width:100%;" placeholder="질문을 입력해주세요."></textarea><br>
-                <input type="file" name="question_file" style="color: rgba(218, 95, 50, 0.644); font-weight: bold" multiple>
-                <output id="list"></output><br>
-                <input style="font-weight: bold; margin-left: 90%; margin-bottom:10px" class="button" type="submit" value="등록">
+                <textarea class="question" name="question" rows="10" style="width:100%;"
+                          placeholder="질문을 입력해주세요."></textarea><br>
+                <input type="file" name="question_file" style="color: rgba(218, 95, 50, 0.644); font-weight: bold"
+                       multiple>
+                <output id="list"></output>
+                <br>
+                <input style="font-weight: bold; margin-left: 90%; margin-bottom:10px" class="button" type="submit"
+                       value="등록">
             </form>
         </div>
 
         {% for question in questions.all reversed %}
-        <div id="{{ question.id }}" class="answer_form">
-            <h4 style="color: #D95829;margin-top: 5px; margin-left: 5px;text-shadow: 1px 1px 1px rgb(172, 171, 171);">답변</h4>
-            <form action="{% url 'QnA' %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="id" value="{{ question.id }}"/>
-                <a style="color : #5653A6; font-weight:bold;margin-top: 5px; margin-left: 5px;">{{ question.asker }} / {{ question.pub_date }}</a>
-                <div id="question_content{{ question.id }}" style="font-weight: bold; color:#E4733C; margin : 10px">
-                    ▶"{{ question.question_content }}"</div>
-                {% if question.asker == user %}
-                    <div id="buttonpanel{{ question.id }}"name="revise" style="margin-left: 80%;">
-                        <button type="button" id="{{ question.id }}" class="button revise" value="수정" 
-                        style="border-radius: 4px; border:2px #FFA13D solid;  font-weight: bold; background-color:rgb(247, 235, 217)">수정</button>
-                        <button name="submit" type="submit" id="{{ question.id }}" class="button delete" value="삭제"
-                        style="border-radius: 4px; border:2px #FFA13D solid; font-weight: bold; background-color:rgb(247, 235, 217)">삭제</button>
+            <div id="{{ question.id }}" class="answer_form">
+                <h4 style="color: #D95829;margin-top: 5px; margin-left: 5px;text-shadow: 1px 1px 1px rgb(172, 171, 171);">
+                    답변</h4>
+                <form action="{% url 'QnA' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ question.id }}"/>
+                    <a style="color : #5653A6; font-weight:bold;margin-top: 5px; margin-left: 5px;">{{ question.asker }}
+                        / {{ question.pub_date }}</a>
+                    <div id="question_content{{ question.id }}" style="font-weight: bold; color:#E4733C; margin : 10px">
+                        ▶"{{ question.question_content }}"
                     </div>
-                {% endif %}
+                    <div id="div_files">
+                    {% for qfile in question.files.all %}
+                        <div style="margin-left: 10px;"><a id="question_file{{ question.id }}"
+                                                           href="{{ qfile.file.url }}" download=""
+                                                           value="{{ qfile.file }}"
+                                                           style="color: rgba(218, 95, 50, 0.644); font-weight: bold;">첨부파일
+                            다운로드 : {{ qfile.file }}</a></div>
+                    {% endfor %}</div>
+                    {% if question.asker == user %}
+                        <div id="buttonpanel{{ question.id }}" name="revise" style="margin-left: 80%;">
+                            <button type="button" id="{{ question.id }}" class="button revise" value="수정"
+                                    style="border-radius: 4px; border:2px #FFA13D solid;  font-weight: bold; background-color:rgb(247, 235, 217)">
+                                수정
+                            </button>
+                            <button name="submit" type="submit" id="{{ question.id }}" class="button delete" value="삭제"
+                                    style="border-radius: 4px; border:2px #FFA13D solid; font-weight: bold; background-color:rgb(247, 235, 217)">
+                                삭제
+                            </button>
+                        </div>
+                    {% endif %}
+                </form>
 
-                {% if question.question_file.url != None %}
-                    <div style="margin-left: 10px;"><a href="{{ question.question_file.url }}" download="" style="color: rgba(218, 95, 50, 0.644); font-weight: bold;">첨부파일 다운로드 : {{ question.question_file }}</a> </div>
-                {% endif %}
-            </form>
+                <form action="{% url 'refresh' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="val" value="answer"/>
+                    <input type="hidden" value="{{ question.id }}" name="question_id">
+                    <textarea style="margin:13px; width:95%;" class="answer" name="answer" rows="2"
+                              placeholder="답변을 입력해주세요."></textarea>
+                    <input type="submit" class="button" style="margin-left: 87%; margin-bottom:10px" value="답변">
+                </form>
 
-            <form action="{% url 'refresh' %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="val" value="answer"/>
-                <input type="hidden" value="{{ question.id }}" name="question_id">
-                <textarea style="margin:13px; width:95%;"class="answer" name="answer" rows="2" placeholder="답변을 입력해주세요."></textarea>
-                <input type="submit" class="button" style="margin-left: 87%; margin-bottom:10px"value="답변" >   
-            </form>
+                {% for answer in question.answers.all %}
+                    <div name="comment" style="margin:5px; font-weight: bold;">
+                        <a style="color: rgb(235, 164, 33);">【</a>{{ answer.answerer }}<a
+                            style="color: rgb(235, 164, 33);">】</a>
+                        {{ answer.answer_content }}
+                    </div>
+                {% endfor %}
+            </div>
 
-            {% for answer in question.answers.all %}
-                <div name="comment" style="margin:5px; font-weight: bold;">
-                    <a style="color: rgb(235, 164, 33);">【</a>{{ answer.answerer }}<a style="color: rgb(235, 164, 33);">】</a>
-                    {{ answer.answer_content }}
-                </div>
-            {% endfor %}
-        </div>
-
-    {% endfor %}
+        {% endfor %}
     </div>
     </body>
 {% endblock %}

@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 from django.utils import timezone
 
-from stacklion.models import Question, Answer
+from stacklion.models import Question, QuestionFile, Answer
 
 
 def QnA(request):
@@ -33,10 +33,15 @@ def new(request):
     if request.method == 'POST':
         question = Question()
         question.question_content = request.POST['question']
-        question.question_file = request.FILES.get('question_file', None)
         question.asker = request.user
         question.pub_date = timezone.datetime.now()
         question.save()
+
+        for t_file in request.FILES.getlist('question_file'):
+            QFile = QuestionFile()
+            QFile.file = t_file
+            QFile.question = question
+            QFile.save()
         return redirect('/stacklion/')
 
 @csrf_exempt
