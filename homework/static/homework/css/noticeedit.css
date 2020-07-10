@@ -7,11 +7,12 @@
     font-family: 'Noto Sans KR', sans-serif; 
     line-height: 1.5;
     margin: 0;
-    background: rgb(253, 161, 22);
+    background: #3494E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #EC6EAD, #3494E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
   }
-  header {
-    background: rgb(253, 161, 22);
- }
+
  
  .header-inner {
    max-width: 60%;
@@ -26,7 +27,7 @@
    text-transform: uppercase;
    font-size: 3rem;
    line-height: .8;
-   text-shadow: -10px 5px 30px rgba(0,0,0,.2), -20px 10px 30px rgba(0,0,0,.1), -30px 10px 30px rgba(0,0,0,.1), -3px 2px 5px rgb(212, 129, 4), 3px -2px 5px rgb(255, 153, 0);
+   text-shadow: -10px 5px 30px rgba(0,0,0,.2), -20px 10px 30px rgba(0,0,0,.1), -30px 10px 30px rgba(0,0,0,.1), -3px 2px 5px rgba(0,0,0,.1), 3px -2px 5px rgba(0,0,0,.1);
  }
  
  h1 span {
@@ -49,23 +50,23 @@
 
   textarea{
       border: 1px solid rgba(255,255,255,.8);
-      background-color: rgb(253, 161, 22);
+      background: #b183aa8e; 
       margin-bottom: 5px;
+      color: rgba(26, 26, 26, 0.801);
   }
   input.title{
     border: 1px solid rgba(255,255,255,.8);
-    background-color: rgb(253, 161, 22);
-    color : rgba(255,255,255,.8);
-    color: black;
+    background: #6c5b7b8e; 
+    color: rgba(255, 255, 255, 0.801);
   }
   input.submit{
     border: 1px solid rgba(255,255,255,.8);
-    background-color: rgb(253, 161, 22);
-    color : rgba(255,255,255,.8);
+    background: #b183aa8e;  
+    color: rgba(255, 255, 255, 0.801);
     margin-left: calc(100%/12);
   }
   input.date{
-    color: black;
-    background-color: rgb(253, 161, 22);
+    color: rgba(26, 26, 26, 0.801);
+    background: #b183aa8e; 
     border: 1px solid rgba(255,255,255,.8);
   }
