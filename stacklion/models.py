@@ -23,6 +23,10 @@ class QuestionFile(models.Model):
     file = models.FileField(upload_to="files/")
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='files')
 
+    def get_filename(self):
+        fileName = str(self.file)[6:]
+        return fileName
+
 
 class Answer(models.Model):
     answer_content = models.TextField(null=False, blank=False)

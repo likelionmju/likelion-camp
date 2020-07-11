@@ -15,22 +15,30 @@
                     $('html').animate({scrollTop: {{ top }}}, 400);
                 {% endif %}
             })
+            
+            $(document).on('click', '.filedelete', function (item) {
+                var fileid = $(this).attr('id');
+                console.log(fileid);
+                $('#filedelete').append('<input type="hidden" value="'+fileid+'" name="filedelete" />');
+                $('#div'+fileid).remove();
+            })
 
             $(document).on('click', '.revise', function () {
                 var id = $(this).attr("id");
                 var content = $('#question_content' + id).html();
                 var top = $('#question_content' + id).position().top;
                 var inner_div_files = ""
-                var files = $('question_file'+id).each(function (item) {
-                   inner_div_files = $(item).val()+'<button type="button" ';
+                var files = $('.question_file'+id).each(function (index, item) {
+                    console.log($('.question_file'+id)+"메롱")
+                    console.log($(item).attr('id')+"fuck");
+                   inner_div_files += '<div id="div'+$(item).attr('id')+'">'+$(item).html()+'<button id="'+$(item).attr('id')+'" class="filedelete" type="button">삭제</button><br></div>';
                 });
                 console.log(files);
 
+                $('#div_files').replaceWith(inner_div_files);
                 $('#question_content' + id).replaceWith('<textarea name="revise" id="textarea' + id + '">' + content + '</textarea>');
                 $('#buttonpanel' + id).html('<button type="button" id="' + id + '" class="button cancel" value="취소">취소</button>\n' +
                     '                        <button name="submit" type="submit" id="' + id + '" class="button complete" value="확인">확인</button>' + '<input type="hidden" name="scrolltop" value="' + top + '"/>');
-                {#$('#buttonpanel'+id).load(window.location.href + '#buttonpanel'+id);#}
-                {#window.location.reload();#}
             })
 
             $(document).on('click', '.cancel', function () {
@@ -80,16 +88,16 @@
                     <a style="color : #5653A6; font-weight:bold;margin-top: 5px; margin-left: 5px;">{{ question.asker }}
                         / {{ question.pub_date }}</a>
                     <div id="question_content{{ question.id }}" style="font-weight: bold; color:#E4733C; margin : 10px">
-                        ▶"{{ question.question_content }}"
+                        {{ question.question_content }}
                     </div>
                     <div id="div_files">
                     {% for qfile in question.files.all %}
-                        <div style="margin-left: 10px;"><a id="question_file{{ question.id }}"
+                        <div style="margin-left: 10px;"><a class="question_file{{ question.id }}" id="{{ qfile.id }}"
                                                            href="{{ qfile.file.url }}" download=""
-                                                           value="{{ qfile.file }}"
-                                                           style="color: rgba(218, 95, 50, 0.644); font-weight: bold;">첨부파일
-                            다운로드 : {{ qfile.file }}</a></div>
+                                                           value=""
+                                                           style="color: rgba(218, 95, 50, 0.644); font-weight: bold;">{{ qfile.file }}</a></div>
                     {% endfor %}</div>
+                    <div id="filedelete"></div>
                     {% if question.asker == user %}
                         <div id="buttonpanel{{ question.id }}" name="revise" style="margin-left: 80%;">
                             <button type="button" id="{{ question.id }}" class="button revise" value="수정"

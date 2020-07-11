@@ -15,10 +15,15 @@ def QnA(request):
             question.question_content = request.POST['revise']
             # 나중에 파일도 해줄 것
             question.save()
-            # 코드 정리 좀 개더럽네 ㅁ;ㅣ아허
+
+            filelist = request.POST.getlist('filedelete','')
+            print(filelist)
+            if filelist != None:
+                for f in filelist:
+                    file = get_object_or_404(QuestionFile, pk=f)
+                    file.delete()
             questions = Question.objects
             top = request.POST['scrolltop']
-            print(top)
             return render(request, "QnA.html", {'questions': questions, 'top':top})
         elif request.POST['submit']=='삭제':
             id = request.POST['id']
@@ -36,7 +41,6 @@ def new(request):
         question.asker = request.user
         question.pub_date = timezone.datetime.now()
         question.save()
-
         for t_file in request.FILES.getlist('question_file'):
             QFile = QuestionFile()
             QFile.file = t_file
