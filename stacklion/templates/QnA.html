@@ -67,23 +67,24 @@
                 <h2>{{ user.name }}님 질문</h2>
                 <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
+                    <input class="button" style=" font-weight: bold; 
+                    margin-left: 95%; 
+                    margin-bottom:10px; width: 55px;"
+                    type="submit" value="등록">
                     <textarea class="question" name="question" rows="10" style="width:100%;"
                     placeholder="질문을 입력해주세요."></textarea><br>
                     <input type="file" name="question_file" multiple>
                     <output id="list"></output>
                     <br>
-                    <input style="font-weight: bold; margin-left: 90%; margin-bottom:10px;"
-                    class="button" type="submit" value="등록">
                 </form>
             </main>
             <footer class="shell-footer">
                 {% for question in questions.all reversed %}
-            <div id="{{ question.id }}" class="answer_form">
-                <h2>답변</h2>
+            <div id="{{ question.id }}" class="answer_form"> 
                 <form action="{% url 'QnA' %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="id" value="{{ question.id }}"/>
-                    <a>{{ question.asker }} / {{ question.pub_date }}</a>
+                    <a style="font-weight: bold;">{{ question.asker }} / {{ question.pub_date }}</a>
                     <div id="question_content{{ question.id }}" >
                         {{ question.question_content }}
                     </div>
@@ -112,9 +113,9 @@
                     {% csrf_token %}
                     <input type="hidden" name="val" value="answer"/>
                     <input type="hidden" value="{{ question.id }}" name="question_id">
-                    <textarea style="margin:13px; width:95%;" class="answer" name="answer" rows="2"
+                    <textarea style="margin:13px; width:80%;" class="answer" name="answer" rows="2"
                               placeholder="답변을 입력해주세요."></textarea>
-                    <input type="submit" class="button" style="margin-left: 87%; margin-bottom:10px" value="답변">
+                    <input type="submit" class="button" style="margin-left: 85%; margin-bottom:10px" value="답변">
                 </form>
 
                 {% for answer in question.answers.all %}
