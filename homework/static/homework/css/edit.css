@@ -7,10 +7,9 @@
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 1.5;
     margin: 0;
-    background-color: black;
-		background-image: url("../images/bg.jpg");
-		background-size: cover;
-    background-position: top center;
+    background: #3494E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #EC6EAD, #3494E6); 
   }
 
  
@@ -48,19 +47,20 @@
   }
 
   textarea{
-      border: 1px solid rgba(255,255,255,.8);
-      background-color: rgb(253, 161, 22);
-      margin-bottom: 5px;
+    border: 1px solid rgba(255,255,255,.8);
+    background: #6c5b7b8e; 
+    margin-bottom: 5px;
+    color: rgba(26, 26, 26, 0.801);
   }
   input.title{
     border: 1px solid rgba(255,255,255,.8);
-    background-color: rgb(253, 161, 22);
-    color: black;
+    background: #6c5b7b8e; 
+    color: rgba(255, 255, 255, 0.801);
   }
   input.submit{
     border: 1px solid rgba(255,255,255,.8);
-    background-color: rgb(253, 161, 22);
-    color : rgba(255,255,255,.8);
+    background: #6c5b7b8e; 
+    color: rgba(255, 255, 255, 0.801);
     margin-left: calc(100%/12);
   }
   input{

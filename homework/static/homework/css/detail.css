@@ -8,10 +8,9 @@
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 1.5;
     margin: 0;
-    background-color: black;
-		background-image: url("../images/bg.jpg");
-		background-size: cover;
-    background-position: top center;
+    background: #3494E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #EC6EAD, #3494E6);
   }
 
  
