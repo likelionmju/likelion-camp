@@ -3,132 +3,152 @@
 
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block link %}{% static 'stacklion/css/QnA.css' %}{% endblock %}
     {% block title %}Likelion Camp{% endblock %}
     {% block jqueryscript %}
-        <script type="text/javascript">
-            $(document).ready(function () {
-                {% if top %}
-                    $('html').animate({scrollTop: {{ top }}}, 400);
-                {% endif %}
-            })
-            
-            $(document).on('click', '.filedelete', function (item) {
-                var fileid = $(this).attr('id');
-                console.log(fileid);
-                $('#filedelete').append('<input type="hidden" value="'+fileid+'" name="filedelete" />');
-                $('#div'+fileid).remove();
-            })
+    <script type="text/javascript">
+        $(document).ready(function () {
+            {
+                %
+                if top %
+            }
+            $('html').animate({
+                scrollTop: {
+                    {
+                        top
+                    }
+                }
+            }, 400); {
+                % endif %
+            }
+        })
 
-            $(document).on('click', '.revise', function () {
-                var id = $(this).attr("id");
-                var content = $('#question_content' + id).html();
-                var top = $('#question_content' + id).position().top;
-                var inner_div_files = ""
-                var files = $('.question_file'+id).each(function (index, item) {
-                    console.log($('.question_file'+id)+"메롱")
-                    console.log($(item).attr('id')+"fuck");
-                   inner_div_files += '<div id="div'+$(item).attr('id')+'">'+$(item).html()+'<button id="'+$(item).attr('id')+'" class="filedelete" type="button">삭제</button><br></div>';
-                });
-                console.log(files);
+        $(document).on('click', '.filedelete', function (item) {
+            var fileid = $(this).attr('id');
+            console.log(fileid);
+            $('#filedelete').append('<input type="hidden" value="' + fileid + '" name="filedelete" />');
+            $('#div' + fileid).remove();
+        })
 
-                $('#div_files').replaceWith(inner_div_files);
-                $('#question_content' + id).replaceWith('<textarea name="revise" id="textarea' + id + '">' + content + '</textarea>');
-                $('#buttonpanel' + id).html('<button type="button" id="' + id + '" class="button cancel" value="취소">취소</button>\n' +
-                    '                        <button name="submit" type="submit" id="' + id + '" class="button complete" value="확인">확인</button>' + '<input type="hidden" name="scrolltop" value="' + top + '"/>');
-            })
+        $(document).on('click', '.revise', function () {
+            var id = $(this).attr("id");
+            var content = $('#question_content' + id).html();
+            var top = $('#question_content' + id).position().top;
+            var inner_div_files = ""
+            var files = $('.question_file' + id).each(function (index, item) {
+                console.log($('.question_file' + id) + "메롱")
+                console.log($(item).attr('id') + "fuck");
+                inner_div_files += '<div id="div' + $(item).attr('id') + '">' + $(item).html() +
+                    '<button id="' + $(item).attr('id') +
+                    '" class="filedelete" type="button">삭제</button><br></div>';
+            });
+            console.log(files);
 
-            $(document).on('click', '.cancel', function () {
-                var id = $(this).attr("id");
-                console.log(id);
-                var content = $('#textarea' + id).html();
-                console.log(content);
+            $('#div_files').replaceWith(inner_div_files);
+            $('#question_content' + id).replaceWith('<textarea name="revise" id="textarea' + id + '">' +
+                content + '</textarea>');
+            $('#buttonpanel' + id).html('<button type="button" id="' + id +
+                '" class="button cancel" value="취소">취소</button>\n' +
+                '                        <button name="submit" type="submit" id="' + id +
+                '" class="button complete" value="확인">확인</button>' +
+                '<input type="hidden" name="scrolltop" value="' + top + '"/>');
+        })
 
-                $('#textarea' + id).replaceWith('<div id="question_content' + id + '">' + content + '</div>');
-                $('#buttonpanel' + id).html('<button type="button" id="' + id + '" class="button revise" value="수정">수정</button>\n' +
-                    '                        <button type="submit" id="' + id + '" class="button delete" value="삭제">삭제</button>');
+        $(document).on('click', '.cancel', function () {
+            var id = $(this).attr("id");
+            console.log(id);
+            var content = $('#textarea' + id).html();
+            console.log(content);
 
-            })
+            $('#textarea' + id).replaceWith('<div id="question_content' + id + '">' + content + '</div>');
+            $('#buttonpanel' + id).html('<button type="button" id="' + id +
+                '" class="button revise" value="수정">수정</button>\n' +
+                '                        <button type="submit" id="' + id +
+                '" class="button delete" value="삭제">삭제</button>');
 
-        </script>
+        })
+    </script>
     {% endblock %}
 </head>
 
 {% block content %}
-    <body>
-        <div class="shell">
-            <header class="shell-header">
-                <h1 style="text-align: center;">질문과 답변</h1>
-            </header>
-            <main class="shell-body">
-                <h2>{{ user.name }}님 질문</h2>
-                <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <textarea class="question" name="question" rows="10" style="width:100%;"
+
+<body>
+    <div class="shell">
+        <header class="shell-header">
+            <h1 style="text-align: center;">질문과 답변</h1>
+        </header>
+        <main class="shell-body">
+            <h2>{{ user.name }}님 질문</h2>
+            <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <textarea class="question" name="question" rows="10" style="width:100%;"
                     placeholder="질문을 입력해주세요."></textarea><br>
-                    <input type="file" name="question_file" multiple>
-                    <output id="list"></output>
-                    <br>
-                    <input style="font-weight: bold; margin-left: 90%; margin-bottom:10px;"
-                    class="button" type="submit" value="등록">
-                </form>
-            </main>
-            <footer class="shell-footer">
-                {% for question in questions.all reversed %}
+                <input type="file" name="question_file" multiple>
+                <output id="list"></output>
+                <br>
+                <input style="font-weight: bold; margin-left: 90%; margin-bottom:10px;" class="button" type="submit"
+                    value="등록">
+            </form>
+        </main>
+        <footer class="shell-footer">
+            {% for question in questions.all reversed %}
             <div id="{{ question.id }}" class="answer_form">
-                <h2>답변</h2>
+                <h2> {{ question.asker }}님의 질문</h2>
                 <form action="{% url 'QnA' %}" method="post">
                     {% csrf_token %}
-                    <input type="hidden" name="id" value="{{ question.id }}"/>
+                    <input type="hidden" name="id" value="{{ question.id }}" />
                     <a>{{ question.asker }} / {{ question.pub_date }}</a>
-                    <div id="question_content{{ question.id }}" >
+                    <div id="question_content{{ question.id }}">
                         {{ question.question_content }}
                     </div>
                     <div id="div_files">
-                    {% for qfile in question.files.all %}
+                        {% for qfile in question.files.all %}
                         <div style="margin-left: 10px;">
-                            <a class="question_file{{ question.id }}" id="{{ qfile.id }}"
-                                href="{{ qfile.file.url }}" download="" value="">{{ qfile.file }}</a>
+                            <a class="question_file{{ question.id }}" id="{{ qfile.id }}" href="{{ qfile.file.url }}"
+                                download="" value="">{{ qfile.file }}</a>
                         </div>
-                    {% endfor %}
+                        {% endfor %}
                     </div>
                     <div id="filedelete"></div>
                     {% if question.asker == user %}
-                        <div id="buttonpanel{{ question.id }}" name="revise" style="margin-left: 80%;">
-                            <button type="button" id="{{ question.id }}" class="button revise" value="수정">
-                                수정
-                            </button>
-                            <button name="submit" type="submit" id="{{ question.id }}" class="button delete" value="삭제">
-                                삭제
-                            </button>
-                        </div>
+                    <div id="buttonpanel{{ question.id }}" name="revise" style="margin-left: 80%;">
+                        <button type="button" id="{{ question.id }}" class="button revise" value="수정">
+                            수정
+                        </button>
+                        <button name="submit" type="submit" id="{{ question.id }}" class="button delete" value="삭제">
+                            삭제
+                        </button>
+                    </div>
                     {% endif %}
                 </form>
 
                 <form action="{% url 'refresh' %}" method="post">
                     {% csrf_token %}
-                    <input type="hidden" name="val" value="answer"/>
+                    <input type="hidden" name="val" value="answer" />
                     <input type="hidden" value="{{ question.id }}" name="question_id">
                     <textarea style="margin:13px; width:95%;" class="answer" name="answer" rows="2"
-                              placeholder="답변을 입력해주세요."></textarea>
+                        placeholder="답변을 입력해주세요."></textarea>
                     <input type="submit" class="button" style="margin-left: 87%; margin-bottom:10px" value="답변">
                 </form>
 
                 {% for answer in question.answers.all %}
-                    <div name="comment" style="margin:5px; font-weight: bold;">
-                        <a style="color: rgb(235, 164, 33);">【</a>{{ answer.answerer }}<a
-                            style="color: rgb(235, 164, 33);">】</a>
-                        {{ answer.answer_content }}
-                    </div>
+                <div name="comment" style="margin:5px; font-weight: bold;">
+                    <a style="color: rgb(235, 164, 33);">【</a>{{ answer.answerer }}<a
+                        style="color: rgb(235, 164, 33);">】</a>
+                    {{ answer.answer_content }}
+                </div>
                 {% endfor %}
             </div>
 
-        {% endfor %}
-            </footer>
-        </div>
-    </body>
+            {% endfor %}
+        </footer>
+    </div>
+</body>
 {% endblock %}
+
 </html>
