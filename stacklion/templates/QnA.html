@@ -82,7 +82,7 @@
                 <h1 style="text-align: center;">질문과 답변</h1>
             </header>
             <main class="shell-body">
-                <h2>{{ user.name }}님 질문</h2>
+                <h2>{{ user.name }}님, 무엇이 궁금하신가요?</h2>
                 <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <input class="button" style=" font-weight: bold; 
@@ -99,7 +99,7 @@
             <footer class="shell-footer">
                 {% for question in questions.all reversed %}
             <div id="{{ question.id }}" class="answer_form"> 
-                <h4 style="color: #FD6585;">질문</h4>
+                <h4 style="color: #FD6585;"> <span class="asker"> {{ question.asker }} </span>님의 질문</h4>
                 <form action="{% url 'QnA' %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="id" value="{{ question.id }}"/>
