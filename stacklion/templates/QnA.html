@@ -91,7 +91,7 @@
                     type="submit" value="등록">
                     <textarea class="question" name="question" rows="10" style="width:100%;"
                     placeholder="질문을 입력해주세요."></textarea><br>
-                    <input type="file" name="question_file" multiple>
+                    <input type="file" name="question_file" style="border: none; font-weight: lighter;" multiple>
                     <output id="list"></output>
                     <br>
                 </form>
@@ -99,24 +99,26 @@
             <footer class="shell-footer">
                 {% for question in questions.all reversed %}
             <div id="{{ question.id }}" class="answer_form"> 
+                <h4 style="color: #FD6585;">질문</h4>
                 <form action="{% url 'QnA' %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="id" value="{{ question.id }}"/>
-                    <a style="font-weight: bold;">{{ question.asker }} / {{ question.pub_date }}</a>
-                    <div id="question_content{{ question.id }}" >
+                    <div id="question_content{{ question.id }}" style="font-weight: bold;">
                         {{ question.question_content }}
                     </div>
                     <div id="div_files">
                         {% for qfile in question.files.all %}
-                        <div style="margin-left: 10px;">
+                        <div >
                             <a class="question_file{{ question.id }}" id="{{ qfile.id }}" href="{{ qfile.file.url }}"
-                                download="" value="">{{ qfile.file }}</a>
+                                download="" value="" style="color: rgb(151, 151, 151); font-size: 13px;">{{ qfile.file }}</a>
                         </div>
                         {% endfor %}
                     </div>
                     <div id="filedelete"></div>
+                    <a style="margin-left: 80%; font-size: 13px;">{{ question.asker }} / {{ question.pub_date }}</a>
+                    
                     {% if question.asker == user %}
-                    <div id="buttonpanel{{ question.id }}" name="revise" style="margin-left: 80%;">
+                    <div id="buttonpanel{{ question.id }}" name="revise" style="margin-top:10px; margin-left: 83%; font-size: 13px;">
                         <button type="button" id="{{ question.id }}" class="button revise" value="수정">
                             수정
                         </button>
@@ -131,21 +133,16 @@
                     {% csrf_token %}
                     <input type="hidden" name="val" value="answer" />
                     <input type="hidden" value="{{ question.id }}" name="question_id">
-<<<<<<< HEAD
-                    <textarea style="margin:13px; width:95%;" class="answer" name="answer" rows="2"
+                    <textarea style="margin-top:20px;margin-bottom: 20px; width:93%;height: 30%;" class="answer" name="answer" rows="2"
                         placeholder="답변을 입력해주세요."></textarea>
-                    <input type="submit" class="button" style="margin-left: 87%; margin-bottom:10px" value="답변">
-=======
-                    <textarea style="margin:13px; width:80%;" class="answer" name="answer" rows="2"
-                              placeholder="답변을 입력해주세요."></textarea>
-                    <input type="submit" class="button" style="margin-left: 85%; margin-bottom:10px" value="답변">
->>>>>>> 31b32aca477bb2afb6cb1f5e3939e4cc3705ed70
+                    <input type="submit" class="button" style="margin-left: 87%; margin-bottom:10px; width: 50px;" value="답변">
                 </form>
 
                 {% for answer in question.answers.all %}
-                <div name="comment" style="margin:5px; font-weight: bold;">
-                    <a style="color: rgb(235, 164, 33);">【</a>{{ answer.answerer }}<a
-                        style="color: rgb(235, 164, 33);">】</a>
+                <div name="comment" style="margin:5px;">
+                    <h4 style="color:#0D25B9 ;">답변</h4>
+                    <a style=" font-weight: bold;">【</a><a style=" font-weight: bold;">{{ answer.answerer }}</a><a
+                        style=" font-weight: bold;">】</a>
                     {{ answer.answer_content }}
                 </div>
                 {% endfor %}
