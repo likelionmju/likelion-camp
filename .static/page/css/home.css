@@ -1,5 +1,9 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap");
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); .notosanskr * { font-family: 'Noto Sans KR', sans-serif; }
 
 /*
 	Photon by HTML5 UP
@@ -99,7 +103,7 @@ input, select, textarea {
 
 	body, input, select, textarea {
 		color: #666;
-		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-family: "Noto Sans KR", sans-serif;
 		font-size: 16pt;
 		font-weight: 300;
 		line-height: 1.65em;
@@ -119,6 +123,12 @@ input, select, textarea {
 			border-bottom-color: transparent !important;
 			color: #6bd4c8;
 		}
+
+	a.nav-item, a.navbar-brand {
+		color:rgb(180, 179, 179);
+		font-family: "Noto Sans KR", sans-serif;
+		border-bottom: 0px #666;
+	}
 
 	strong, b {
 		color: #555;
@@ -207,7 +217,7 @@ input, select, textarea {
 		background: rgba(144, 144, 144, 0.075);
 		border-radius: 4px;
 		border: solid 1px rgba(144, 144, 144, 0.5);
-		font-family: "Courier New", monospace;
+		font-family: "Noto Sans KR", sans-serif;
 		font-size: 0.9em;
 		margin: 0 0.25em;
 		padding: 0.25em 0.65em;
@@ -215,7 +225,7 @@ input, select, textarea {
 
 	pre {
 		-webkit-overflow-scrolling: touch;
-		font-family: "Courier New", monospace;
+		font-family: "Noto Sans KR", sans-serif;
 		font-size: 0.9em;
 		margin: 0 0 2em 0;
 	}
@@ -359,6 +369,10 @@ input, select, textarea {
 
 		.row > .col-4 {
 			width: 33.33333%;
+		}
+
+		.row > .col-4 > .content {
+			font-size: 1rem;
 		}
 
 		.row > .off-4 {

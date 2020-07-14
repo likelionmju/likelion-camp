@@ -1,5 +1,6 @@
 @import url(http://weloveiconfonts.com/api/?family=entypo);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
@@ -13,13 +14,17 @@
   box-sizing: border-box; 
 }
 
-body {
-    background-color: #F2F2F2;
-    font-family: 'Roboto', sans-serif;
-  }
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+    background-color: black;
+		background-image: url("../images/bg.jpg");
+		background-size: cover;
+    background-position: top center;
+    color: white;
+}
 
 h2 {
-  color:#E18A07;
+  color:rgba(255, 255, 255, 0.788);
   margin-left:12px;
 }
 
@@ -34,41 +39,43 @@ form {
   position:absolute;
   top:68px;
   right: 80px;
-  color:rgb(224, 155, 50);
+  color : black;
 }
 
 .inputPassIcon {
   position:absolute;
   top:136px;
   right: 80px;
-  color:rgb(224, 155, 50);
+  color : black;
 }
 
 input {
   padding: 16px;
   border-radius:7px;
   border:0px;
-  background: rgba(223, 135, 20, 0.87);
+  background: rgba(255, 255, 255, 0.788);
   display: block;
   margin: 15px;
   width: 300px;  
-  color:white;
+  color:rgb(0, 0, 0);
   font-size:18px;
   height: 54px;
+  font-weight: bold;
 }
 
 input:focus {
-  outline-color: rgba(0,0,0,0);
+  outline-color: rgba(0,0,0);
   background: rgba(255,255,255,.95);
-  color: #E18A07;
+  color: #721d8bbd;
 }
 
 input::-webkit-input-placeholder {
-  color: white;
+  color: rgba(0, 0, 0, 0.842);
+  font-weight: bold;
 }
 
 input:focus::-webkit-input-placeholder {
-  color: #E18A07;
+  color: #721d8bbd;
 }
 
 

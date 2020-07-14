@@ -18,4 +18,5 @@ urlpatterns = [
     path('account/',include('account.urls')),
     path('homework/',include('homework.urls')),
     path('stacklion/', include('stacklion.urls')),
+    path('hw/', include('hw.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

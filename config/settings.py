@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'homework.apps.HomeworkConfig',
     'stacklion.apps.StacklionConfig',
+    'hw.apps.HwConfig',
 ]
 
 AUTH_USER_MODEL = 'account.User'
@@ -126,6 +127,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'account/static'),
     os.path.join(BASE_DIR, 'homework/static'),
     os.path.join(BASE_DIR, 'stacklion/static'),
+    os.path.join(BASE_DIR, 'hw/static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR,'.static')
 

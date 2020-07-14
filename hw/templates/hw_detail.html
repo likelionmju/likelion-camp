@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}{% static 'hw/css/hw_detail.css' %}{% endblock %}
+{% block jqueryscript %}
+    <script>
+
+        $('#file_select').on("change", function () {
+            alert("hello");
+            var files = $('#file_select').prop("files");
+            var names = $.map(files, function (val) { return val.name; });
+            $.each(names, function (i, name) {
+                console.log(name);
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    {{ homework }}
+    <div>
+        <h1>{{ homework.title }}</h1>
+        <span>마감일 : {{ homework.end_date }}</span>
+    </div>
+    <div>
+        {{ homework.content }}
+    </div>
+
+    <div>
+        <h3>과제 제출 하기</h3>
+        <div>마감일 : {{ homework.end_date }}</div>
+        <form action="{% url 'register' %}" enctype="multipart/form-data">
+            <textarea></textarea><br>
+            <div class="filebox">
+                <label id="file_select" for="ex_file">파일선택</label>
+                <input type="file" id="ex_file" multiple>
+            </div>
+            <input type="submit" value="제출"/>
+        </form>
+    </div>
+{% endblock %}

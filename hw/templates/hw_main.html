@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>과제 제출</h1>
+    <h2>최근 공지사항</h2>
+    <h2>과제 리스트</h2>
+    <table border="1">
+        <tr>
+            <th>등록일</th>
+            <th>과제명</th>
+            <th>마감일</th>
+            <th>제출여부</th>
+        </tr>
+        {% for h in homeworks.all reversed %}
+            <tr>
+                <td>{{ h.register_date }}</td>
+                <td><a href="{% url 'detail' h.id %}">{{ h.title }}</a></td>
+                <td>{{ h.end_date }}</td>
+                <td>
+                    {% if h.check == True %}
+                        진행중
+                    {% else %}
+                        제출마감
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
