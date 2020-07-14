@@ -6,7 +6,8 @@ from hw.models import Homework
 
 def main(request):
     homeworks = Homework.objects.all
-    return render(request, "hw_main.html", {'homeworks':homeworks})
+    latest_hw = Homework.objects.last()
+    return render(request, "hw_main.html", {'homeworks':homeworks, 'lastest':latest_hw})
 
 def detail(request, id):
     homework = get_object_or_404(Homework, pk=id)
