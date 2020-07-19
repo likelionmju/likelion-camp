@@ -33,7 +33,7 @@
                 var files = $('.question_file' + id).each(function (index, item) {
                     inner_div_files += '<div id="div' + $(item).attr('id') + '">' + $(item).html() +
                         '<button id="' + $(item).attr('id') +
-                        '" class="filedelete" type="button">삭제</button><br></div>';
+                        '" class="filedelete" type="button">삭제</button><br></div>'
                 });
                 console.log(files);
                 $('#div_files').replaceWith(inner_div_files);
@@ -92,8 +92,7 @@
                     <form action="{% url 'QnA' %}" method="post">
                         {% csrf_token %}
                         <input type="hidden" name="id" value="{{ question.id }}"/>
-                        <div id="question_content{{ question.id }}" style="font-weight: bold;">
-                            {{ question.question_content }}
+                        <div id="question_content{{ question.id }}" style="width:fit-content; font-size: 15px; width: 93%;">{{ question.question_content }}
                         </div>
                         <div id="div_files">
                             {% for qfile in question.files.all %}
@@ -103,8 +102,8 @@
                                 </div>
                             {% endfor %}
                         </div>
-                        <div id="filedelete"></div>
-                        <a style="margin-left: 80%; font-size: 13px;">{{ question.asker }} / {{ question.pub_date }}</a>
+                        <div id="filedelete" class="filedelete"></div>
+                        <a style="margin-left: 80%; font-size: 13px;">{{ question.pub_date }}</a>
 
                         {% if question.asker == user %}
                             <div id="buttonpanel{{ question.id }}" name="revise" style="margin-top:10px; margin-left: 83%; font-size: 13px;">
