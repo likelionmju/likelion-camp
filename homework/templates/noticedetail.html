@@ -19,6 +19,8 @@
     <div class="content">
         <h3>〖 마감일 〗</h3>
         {{notice.submitdate}}
+        <h3>〖 제목 〗</h3>
+        {{notice.title}}
         <h3>〖 내용 〗</h3>
         {{notice.content}}
         <br>
@@ -27,10 +29,9 @@
     {% endif %}
     
    <div class="box">
-        {% if notice.author == user %}
-        <a href="{% url 'noticeedit' notice.id %}" style="color : rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.8); font-size: 20px;">&nbsp수정&nbsp</a>&nbsp&nbsp&nbsp
-        <a href="{% url 'noticedelete' notice.id %}" style="color : rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.8); font-size: 20px;">&nbsp삭제&nbsp</a>
-        
+        {% if user.is_superuser == True %}
+            <a href="{% url 'noticeedit' notice.id %}">&nbsp수정&nbsp</a>&nbsp&nbsp&nbsp
+            <a href="{% url 'noticedelete' notice.id %}">&nbsp삭제&nbsp</a>
         {% endif %}
    </div>
 

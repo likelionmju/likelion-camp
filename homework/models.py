@@ -26,6 +26,7 @@ class Notice(models.Model):
     pub_date = models.DateTimeField('publish')
     submitdate = models.DateTimeField(null=True, blank=True)
     notice_file = models.FileField(upload_to='files/', null=True, blank=True)
+    title = models.TextField(default='')
     content = models.TextField()
 
     def __str__(self):

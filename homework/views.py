@@ -32,6 +32,7 @@ def noticenew(request):
         notice = Notice()
         notice.author = request.user
         notice.submitdate = request.POST['submitdate']
+        notice.title = request.POST['title']
         notice.content = request.POST['content']
         notice.notice_file = request.FILES.get('notice_file',None)
         notice.pub_date = timezone.datetime.now()
@@ -49,6 +50,7 @@ def noticeedit(request, id):
     notice = get_object_or_404(Notice, pk=id)
     
     if request.method == 'POST':
+        notice.title = request.POST['title']
         notice.content = request.POST['content']
         notice.submitdate = request.POST['submitdate']
         notice.notice_file = request.FILES.get('notice_file',None)
