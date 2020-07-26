@@ -33,7 +33,7 @@ def noticenew(request):
         notice.author = request.user
         notice.submitdate = request.POST['submitdate']
         notice.content = request.POST['content']
-        notice.notice_file = request.FILE+S.get('notice_file',None)
+        notice.notice_file = request.FILES.get('notice_file',None)
         notice.pub_date = timezone.datetime.now()
         notice.save()
         return redirect('/homework/noticedetail/'+str(notice.id))
