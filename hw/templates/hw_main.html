@@ -22,10 +22,6 @@
         <div id="featured" class="container">
             <div class="title">
                 <h2>과제 제출 및 공지사항</h2>
-                <h3>최근 공지사항</h3>
-                <p>제목 : {{ lastest.title }}</p>
-                <p>마감일 : {{ lastest.end_date }}</p>
-                <p>내용 : {{ lastest.content }}</p>
             </div>
             <table class="table table-hover">
                 <thead>
@@ -59,12 +55,16 @@
             {% endif %}
         </div>
     </div>
-    </div>
+
     <div id="copyright">
         <p>&copy; MJU X LIKELION 8th | All rights reserved. </p>
-    </div>
     </div>
 </body>
 
 </html>
 {% endblock %}
+
+<!-- <h3>최근 공지사항</h3>
+<p>제목 : {{ lastest.title }}</p>
+<p>마감일 : {{ lastest.end_date }}</p>
+<p>내용 : {{ lastest.content }}</p> -->

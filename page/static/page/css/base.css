@@ -48,26 +48,3 @@ nav.navbar a {
 }
 
 /* Notice Pages Css */ 
-
-input{
-    border: 1px solid rgba(255,255,255,.8);
-    background: #b183aa8e; 
-    color: rgba(26, 26, 26);
-}
-
-    input.submit{
-        margin-left: calc(100%/12);
-    }
-
-textarea{
-    border: 1px solid rgba(255,255,255,.8);
-    background: #b183aa8e; 
-    margin-bottom: 5px;
-    color: rgba(26, 26, 26, 0.801);
-}
-
-.box a{
-    color : rgba(255,255,255,.8); 
-    border: 1px solid rgba(255,255,255,.8); 
-    font-size: 20px;
-}
