@@ -19,11 +19,17 @@ class Homework(models.Model):
     check = models.BooleanField(default=False)
     confirm = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.title
+
 class Submission(models.Model):
     student = models.ForeignKey(User, on_delete=models.PROTECT)
     homework_id = models.ForeignKey(Homework, on_delete=models.PROTECT, related_name="submission")
     register_date = models.DateField('date published')
     register_content = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title
 
 class SubmissionFiles(models.Model):
     file = models.FileField(upload_to="homework/")

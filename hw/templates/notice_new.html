@@ -14,13 +14,13 @@
                     <div class="jumbotron">
                         {% csrf_token %}
                         <p class="lead">제목</p>
-                        <input class="title" type="text" name='title'>
+                        <input name='title' class="title" type="text" >
                         <p class="lead">내용</p>
                         <textarea name="content" cols="50" rows="10"></textarea>
                         <p class="lead">마감일</p>
-                        <input type="date" name="submitdate" class="date">
+                        <input name="end_date" class="date"type="date">
                         <p class="lead">첨부파일</p>
-                        <input type="file" name="notice_file">
+                        <input name="notice_file" type="file" >
                     </div>
                     {% if user.is_superuser == True %}
                     <input type="button" class="btn btn-primary btn-lg" value="공지사항 추가" onclick="submit_btn()">
