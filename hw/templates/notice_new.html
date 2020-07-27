@@ -1,0 +1,45 @@
+{% extends 'hw_main.html' %}
+{% load static %}
+
+{% block link %}{% static 'hw/css/hw_main.css' %}{% endblock %}
+{% block title %}공지사항 작성{% endblock %}
+{% block content%}
+<body>
+    
+    <div id="page-wrapper">
+        <div id="featured" class="container">
+            <div class="title">
+                <h2>공지사항 작성</h2>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <form action="{% url 'noticenew' %}" method="POST" enctype="multipart/form-data" name="edit" id="edit">
+            {% csrf_token %}
+            <h3>〖 마감일 〗</h3>
+            <input type="date" name="submitdate" class="date">
+            <h3>〖 제목 〗</h3>
+            <input class="title" type="text" name='title'>
+            <h3>〖 내용 〗</h3>
+            <textarea name="content" cols="50" rows="10"></textarea>
+            <br>
+            <input type="file" name="notice_file">
+            <input type="button" class="submit" value="등록" onclick="submit_btn()">
+        </form>
+    </div>
+    <script>
+
+        function submit_btn(){
+            var check_date = document.edit.submitdate.value;
+            if(check_date == ""){
+                alert("마감일을 입력해주세요");
+            }
+            else{
+                alert("공지가 등록되었습니다.");
+                document.getElementById('edit').submit();
+                
+            }
+                }
+</script>
+</body>
+{% endblock %}

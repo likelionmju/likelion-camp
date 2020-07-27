@@ -9,8 +9,9 @@ def user_directory_path(instance, filename):
     return 'user_{0}/{1}'.format(instance.user.id, filename)
 
 class Homework(models.Model):
-    # 공지사항 등록/제목/공지내용/마감일/제출여부
+    # 공지사항 등록날짜/게시자/제목/공지내용/마감일/제출여부
     register_date = models.DateField('date published')
+    author = models.ForeignKey(User, on_delete=models.PROTECT,default='')
     title = models.CharField(max_length=200)
     content = models.TextField(null=False, blank=False)
     end_date = models.DateField()
