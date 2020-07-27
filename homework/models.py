@@ -14,12 +14,9 @@ class Post(models.Model):
     post_file = models.FileField(upload_to='files/', null=True, blank=True)
     content = models.TextField()
 
-
-
-
     def __str__(self):
         return self.title
-
+        
 class Notice(models.Model):
     
     author = models.ForeignKey(User, on_delete=models.PROTECT,default='')
