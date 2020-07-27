@@ -1,35 +1,67 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block link %}{% static 'hw/css/default.css' %}{% endblock %}
 {% block content %}
-    <h1>과제 제출</h1>
-    <h2>최근 공지사항</h2>
-    제목 : {{ lastest.title }}
-    마감일 : {{ lastest.end_date }}
-    <div>
-    내용 : {{ lastest.content }}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+    <link href="{% static 'hw/css/hw_main.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'hw/css/fonts.css' %}" rel="stylesheet" type="text/css" media="all" />
+</head>
+
+<body>
+    <div id="page-wrapper">
+        <div id="featured" class="container">
+            <div class="title">
+                <h2>과제 제출 및 공지사항</h2>
+                <h3>최근 공지사항</h3>
+                <p>제목 : {{ lastest.title }}</p>
+                <p>마감일 : {{ lastest.end_date }}</p>
+                <p>내용 : {{ lastest.content }}</p>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">마감일</th>
+                        <th scope="col">과제명</th>
+                        <th scope="col">제출여부</th>
+                        <th scope="col">채점</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for h in homeworks.all reversed %}
+                    <tr>
+                        <th scope="row">{{ h.end_date }}</th>
+                        <td><a href="{% url 'detail' h.id %}">{{ h.title }}</a></td>
+                        <td>
+                            {% if h.check == True %}
+                            진행중
+                            {% else %}
+                            제출마감
+                            {% endif %}
+                        </td>
+                        <td>@mdo</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="#" class="button">제출하기</a>
+        </div>
     </div>
-    <h2>과제 리스트</h2>
-    <table border="1">
-        <tr>
-            <th>등록일</th>
-            <th>과제명</th>
-            <th>마감일</th>
-            <th>제출여부</th>
-        </tr>
-        {% for h in homeworks.all reversed %}
-            <tr>
-                <td>{{ h.register_date }}</td>
-                <td><a href="{% url 'detail' h.id %}">{{ h.title }}</a></td>
-                <td>{{ h.end_date }}</td>
-                <td>
-                    {% if h.check == True %}
-                        진행중
-                    {% else %}
-                        제출마감
-                    {% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
+    </div>
+    <div id="copyright">
+        <p>&copy; MJU X LIKELION 8th | All rights reserved. </p>
+    </div>
+    </div>
+</body>
+
+</html>
 {% endblock %}
