@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.conf import settings
 from datetime import datetime 
@@ -20,12 +20,12 @@ def noticenew(request):
     if request.method == 'POST':
         notice = Homework()
         notice.register_date = timezone.datetime.now()
-        notice.author = request.user
         notice.title = request.POST['title']
         notice.content = request.POST['content']
         notice.end_date = request.POST['end_date']
         notice.notice_file = request.FILES.get('notice_file',None)
         notice.save()
         return redirect('/hw')
+        # detail 로 넘어가는거
     else:
         return render(request,'notice_new.html')
