@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-<<<<<<< HEAD
-=======
 {% load djangoutils %}
 {% block link %}{% static 'hw/css/default.css' %}{% endblock %}
->>>>>>> 92371cd46543429dddd48e7ae8e9db333f536b95
 {% block content %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -32,12 +29,9 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">과제명</th>
-<<<<<<< HEAD
                         <th scope="col">마감일</th>
                         <th scope="col">마감여부</th>
-=======
                         <th scope="col">진행여부</th>
->>>>>>> 92371cd46543429dddd48e7ae8e9db333f536b95
                         <th scope="col">제출여부</th>
                     </tr>
                 </thead>
@@ -54,9 +48,7 @@
                             제출마감
                             {% endif %}
                         </td>
-<<<<<<< HEAD
                         <td>체크</td>
-=======
                         <td>
                             {% if confirm|get_value_from_dict:h.id != None %}
                                 제출
@@ -65,7 +57,6 @@
                             {% endif %}
                         </td>
                         {#                        제출 / 미제출로 표시#}
->>>>>>> 92371cd46543429dddd48e7ae8e9db333f536b95
                     </tr>
                     {% endfor %}
                 </tbody>
