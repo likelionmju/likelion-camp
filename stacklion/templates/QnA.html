@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome-all.min.css' %}">
     {% block link %}{% static 'stacklion/css/QnA.css' %}{% endblock %}
     {% block title %}Likelion Camp{% endblock %}
     {% block jqueryscript %}
@@ -99,9 +99,8 @@
                         <div id="div_files">
                             {% for qfile in question.files.all %}
                                 <div>
-                                    <p><i class="icon fa fa-file" aria-hidden="true"></i></p>
                                     <a class="question_file{{ question.id }}" id="{{ qfile.id }}" href="{{ qfile.file.url }}"
-                                       download="" value="" style="color: rgb(151, 151, 151); font-size: 13px;">{{ qfile.file }}</a>
+                                       download="" value="" style="color: rgb(151, 151, 151); font-size: 13px;"><p class="icon"><i class="fas fa-file"></i></p>{{ qfile.file }}</a>
                                 </div>
                             {% endfor %}
                         </div>
