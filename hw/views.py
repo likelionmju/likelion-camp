@@ -3,14 +3,24 @@ from django.utils import timezone
 from django.conf import settings
 from datetime import datetime 
 from django.core.paginator import Paginator
-from hw.models import Homework
+from hw.models import Homework, Submission
+
 
 # Create your views here.
 
 def main(request):
     homeworks = Homework.objects.all
-    latest_hw = Homework.objects.last()
-    return render(request, "hw_main.html", {'homeworks':homeworks, 'lastest':latest_hw})
+    hw_list = Homework.objects.values('id')
+    homework_id = []
+    confirm = {}
+    for h in hw_list:
+        homework_id.append(h['id'])
+
+    for i in homework_id:
+        sub = get_or_none(Submission, homework_id=i)
+        confirm[i]=sub
+
+    return render(request, "hw_main.html", {'homeworks':homeworks, 'confirm':confirm})
 
 def detail(request, id):
     homework = get_object_or_404(Homework, pk=id)
@@ -29,3 +39,9 @@ def noticenew(request):
         # detail 로 넘어가는거
     else:
         return render(request,'notice_new.html')
+
+def get_or_none(classmodel, **kwargs):
+    try:
+        return classmodel.objects.get(**kwargs)
+    except classmodel.DoesNotExist:
+        return None

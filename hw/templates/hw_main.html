@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load djangoutils %}
 {% block link %}{% static 'hw/css/default.css' %}{% endblock %}
 {% block content %}
 
@@ -28,6 +29,7 @@
                     <tr>
                         <th scope="col">마감일</th>
                         <th scope="col">과제명</th>
+                        <th scope="col">진행여부</th>
                         <th scope="col">제출여부</th>
                     </tr>
                 </thead>
@@ -43,6 +45,14 @@
                             제출마감
                             {% endif %}
                         </td>
+                        <td>
+                            {% if confirm|get_value_from_dict:h.id != None %}
+                                제출
+                            {% else %}
+                                미제출
+                            {% endif %}
+                        </td>
+                        {#                        제출 / 미제출로 표시#}
                     </tr>
                     {% endfor %}
                 </tbody>
