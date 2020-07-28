@@ -47,29 +47,3 @@
     margin-top: 3rem;
     color: rgba(255,255,255,.8);
   }
-
-  textarea{
-    border: 1px solid rgba(255,255,255,.8);
-    background: #b183aa8e; 
-    margin-bottom: 5px;
-    color: rgba(26, 26, 26, 0.801);
-  }
-  input.title{
-    border: 1px solid rgba(255,255,255,.8);
-    background: #6c5b7b8e; 
-    color: rgba(255, 255, 255, 0.801);
-  }
-  input.submit{
-    border: 1px solid rgba(255,255,255,.8);
-    background: #b183aa8e;  
-    color: rgba(255, 255, 255, 0.801);
-    margin-left: calc(100%/12);
-  }
-  input{
-    color : rgba(255,255,255,.8);
-  }
-  input.date{
-    color: rgba(26, 26, 26, 0.801);
-    background: #b183aa8e; 
-    border: 1px solid rgba(255,255,255,.8);
-  }

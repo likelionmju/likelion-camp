@@ -20,7 +20,7 @@
                         <p class="lead">마감일</p>
                         <input name="end_date" class="date"type="date">
                         <p class="lead">첨부파일</p>
-                        <input name="notice_file" type="file" >
+                        <input name="notice_file" type="file" multiple>
                     </div>
                     {% if user.is_superuser == True %}
                     <input type="submit" class="btn btn-primary btn-lg" value="공지사항 추가" onclick="submit_btn()">
