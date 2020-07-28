@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block link %}{% static 'hw/css/default.css' %}{% endblock %}
 {% block content %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -26,16 +25,19 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">마감일</th>
+                        <th scope="col">No</th>
                         <th scope="col">과제명</th>
+                        <th scope="col">마감일</th>
+                        <th scope="col">마감여부</th>
                         <th scope="col">제출여부</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for h in homeworks.all reversed %}
-                    <tr>
+                    <tr onclick="location.href='{% url 'detail' h.id %}'" style="cursor:pointer;">
+                        <th scope="row">{{ h.id }}</th>
+                        <td>{{ h.title }}</td>
                         <th scope="row">{{ h.end_date }}</th>
-                        <td><a href="{% url 'detail' h.id %}">{{ h.title }}</a></td>
                         <td>
                             {% if h.check == True %}
                             진행중
@@ -43,11 +45,12 @@
                             제출마감
                             {% endif %}
                         </td>
+                        <td>체크</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            <a href="#" class="btn btn-secondary">제출하기</a>
+            <br>
             {% if user.is_superuser == True %}
             <a href="{%url 'notice_new'%}" class="btn btn-primary">공지사항 추가</a>
             {% endif %}
