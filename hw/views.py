@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.conf import settings
 from datetime import datetime 
 from django.core.paginator import Paginator
-from hw.models import Homework, Submission
+from hw.models import Homework, Submission, SubmissionFiles
 
 
 # Create your views here.
@@ -24,7 +24,27 @@ def main(request):
 
 def detail(request, id):
     homework = get_object_or_404(Homework, pk=id)
-    return render(request, "hw_detail.html", {'homework':homework})
+    check = get_or_none(Submission, homework_id=homework)
+    if check != None:
+        check = 1
+    else:
+        check = 0
+    return render(request, "hw_detail.html", {'homework':homework, 'check':check})
+
+def submit(request, id):
+    if request.method == 'POST':
+        submission = Submission()
+        submission.student = request.user
+        submission.homework_id = Homework.objects.get(id=id)
+        submission.register_date = timezone.datetime.now()
+        submission.register_content = request.POST['submission_content']
+        submission.save()
+        for s_file in request.FILES.getlist('submission_files'):
+            SFile = SubmissionFiles()
+            SFile.submission = submission
+            SFile.file = s_file
+            SFile.save()
+        return redirect('/hw')
 
 def noticenew(request):
     if request.method == 'POST':
