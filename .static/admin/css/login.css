@@ -1,3 +1,9 @@
+/* LOGIN FORM */
+
+body.login {
+    background: #f8f8f8;
+}
+
 .login #header {
     height: auto;
     padding: 15px 16px;
@@ -71,4 +77,3 @@
 .login .password-reset-link {
     text-align: center;
 }
-
