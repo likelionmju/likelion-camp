@@ -8,8 +8,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome-all.min.css' %}">
+
     {% block link %}{% static 'stacklion/css/QnA.css' %}{% endblock %}
+    
+
     {% block title %}Likelion Camp{% endblock %}
     {% block jqueryscript %}
         <script type="text/javascript">
@@ -74,6 +76,7 @@
         </header>
         <main class="shell-body">
             <h2>{{ user.name }}님, 무엇이 궁금하신가요?</h2>
+            
             <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input class="button" style=" font-weight: bold;
@@ -82,7 +85,7 @@
                        type="submit" value="등록">
                 <textarea class="question" name="question" rows="10" style="width:100%;"
                           placeholder="질문을 입력해주세요."></textarea><br>
-                <input type="file" name="question_file" style="border: none; font-weight: lighter;" multiple>
+                          <input type="file" name="question_file" style="border: none; font-weight: lighter;" multiple>
                 <output id="list"></output>
                 <br>
             </form>
@@ -99,8 +102,9 @@
                         <div id="div_files">
                             {% for qfile in question.files.all %}
                                 <div>
+                                    <ui><i class="icon solid style2 major fas fa-file"></i></ui>
                                     <a class="question_file{{ question.id }}" id="{{ qfile.id }}" href="{{ qfile.file.url }}"
-                                       download="" value="" style="color: rgb(151, 151, 151); font-size: 13px;"><p class="icon"><i class="fas fa-file"></i></p>{{ qfile.file }}</a>
+                                       download="" value="" style="color: rgb(151, 151, 151); font-size: 13px;"></p>{{ qfile.file }}</a>
                                 </div>
                             {% endfor %}
                         </div>
