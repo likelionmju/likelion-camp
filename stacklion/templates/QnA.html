@@ -8,10 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     {% block link %}{% static 'stacklion/css/QnA.css' %}{% endblock %}
-    
-
     {% block title %}Likelion Camp{% endblock %}
     {% block jqueryscript %}
         <script type="text/javascript">
@@ -70,27 +67,31 @@
 
 {% block content %}
     <body>
+    <!--header html-->
     <div class="shell">
         <header class="shell-header">
             <h1 style="text-align: center;">질문과 답변</h1>
-            <span class="icon brands major fab fa-python"></span>
         </header>
         <main class="shell-body">
-            <h2>{{ user.name }}님, 무엇이 궁금하신가요?</h2>
-            
+            <h2>{{ user.name }}님, 무엇이 궁금하신가요?</h2> 
             <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input class="button" style=" font-weight: bold;
-                    margin-left: 95%; 
-                    margin-bottom:10px; width: 55px;"
-                       type="submit" value="등록">
                 <textarea class="question" name="question" rows="10" style="width:100%;"
-                          placeholder="질문을 입력해주세요."></textarea><br>
-                          <input type="file" name="question_file" style="border: none; font-weight: lighter;" multiple>
-                <output id="list"></output>
-                <br>
+                placeholder="질문을 입력해주세요."></textarea><br>
+                <table style="border:none; margin-top: -20px; width: 95%;">
+                    <tr>
+                        <td>
+                            <input type="file" name="question_file" style="border: none; font-weight: 400;margin-bottom: 10px;" multiple>
+                        </td>
+                        <td>
+                            <input class="button" style="margin-left: 95%; font-weight: 400;margin-bottom:10px; width: 55px;" type="submit" value="등록">         
+                        </td>
+                    </tr>
+                    <output id="list"></output>
+                </table>
             </form>
         </main>
+        <!--footer html-->
         <footer class="shell-footer">
             {% for question in questions.all reversed %}
                 <div id="{{ question.id }}" class="answer_form">
@@ -104,21 +105,27 @@
                             {% for qfile in question.files.all %}
                                 <div>
                                     <a class="question_file{{ question.id }}" id="{{ qfile.id }}" href="{{ qfile.file.url }}"
-                                       download="" value="" style="color: rgb(151, 151, 151); font-size: 13px;"><span class="icon solid fas fa-file">{{ qfile.file }}</span></a>
+                                       download="" value="" style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span class="icon solid fas fa-file"> {{ qfile.file }}</span></a>
                                 </div>
                             {% endfor %}
                         </div>
                         <div id="filedelete" class="filedelete"></div>
-                        <a style="margin-left: 80%; font-size: 13px;">{{ question.pub_date }}</a>
-
                         {% if question.asker == user %}
-                            <div id="buttonpanel{{ question.id }}" name="revise" style="margin-top:10px; margin-left: 83%; font-size: 13px;">
-                                <button type="button" id="{{ question.id }}" class="button revise" value="수정">
-                                    수정
-                                </button>
-                                <button name="submit" type="submit" id="{{ question.id }}" class="button delete" value="삭제">
-                                    삭제
-                                </button>
+                            <div id="buttonpanel{{ question.id }}" name="revise">
+                                <table  style="border:none; margin-top: 7px; margin-left: 73%;font-size: 14px; font-weight: 300;">
+                                    <tr>
+                                        <td>
+                                            <a style="font-size: 14px;margin-right: 5px;color: rgb(71, 71, 71)">{{ question.pub_date }}</a>
+                                        </td>
+                                        <td>
+                                            <button type="button" id="{{ question.id }}" class="button revise" value="수정" style="font-weight: 400;"> 수정 </button>
+                                        </td>
+                                        <td>
+                                            <button name="submit" type="submit" id="{{ question.id }}" class="button delete" value="삭제" style="font-weight: 400;"> 삭제 </button>
+                                        </td>
+                                    </tr>
+                                </table>
+
                             </div>
                         {% endif %}
                     </form>
@@ -127,9 +134,9 @@
                         {% csrf_token %}
                         <input type="hidden" name="val" value="answer" />
                         <input type="hidden" value="{{ question.id }}" name="question_id">
-                        <textarea style="margin-top:20px;margin-bottom: 20px; width:93%;height: 30%;" class="answer" name="answer" rows="2"
+                        <textarea style="margin-top:20px;margin-bottom: 10px; width:93%;height: 30%;" class="answer" name="answer" rows="2"
                                   placeholder="답변을 입력해주세요."></textarea>
-                        <input type="submit" class="button" style="margin-left: 87%; margin-bottom:10px; width: 50px;" value="답변">
+                        <input type="submit" class="button" style="margin-left: 87%; margin-top: -50px;margin-bottom:10px; width: 50px; font-weight: 400; font-size: 14px;" value="등록">
                     </form>
 
                     {% for answer in question.answers.all %}
