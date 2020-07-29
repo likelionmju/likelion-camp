@@ -34,19 +34,27 @@
         </div>
     </div>
 
-    {% if check == 1 %}
-        <div>
+    {% if check != 0 %}
+        <div id="여기에 쓰쟈">
             <h3>내가 제출한 과제</h3>
             <div>마감일 : {{ homework.end_date }}</div>
             <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <textarea name="submission_content"></textarea><br>
+                {{ check.register_content }}
                 <div class="filebox">
-                    <label for="ex_file">파일선택</label>
-                    <input name="submission_files" type="file" id="ex_file" multiple>
+                    <div id="div_files">
+                        {% for sfile in check.files.all %}
+                            <div>
+                                <a href="{{ sfile.file.url }}"
+                                   download="" value="" style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span class="icon solid fas fa-file"> {{ sfile.file }}</span></a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {#                    <label for="ex_file">파일선택</label>#}
+                    {#                    <input name="submission_files" type="file" id="ex_file" multiple>#}
                 </div>
                 <div id="file_list"></div>
-                <input type="submit" value="제출"/>
+                <input type="submit" value="수정"/>
             </form>
         </div>
     {% else %}

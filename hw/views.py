@@ -25,10 +25,9 @@ def main(request):
 def detail(request, id):
     homework = get_object_or_404(Homework, pk=id)
     check = get_or_none(Submission, homework_id=homework)
-    if check != None:
-        check = 1
-    else:
+    if check == None:
         check = 0
+
     return render(request, "hw_detail.html", {'homework':homework, 'check':check})
 
 def submit(request, id):
