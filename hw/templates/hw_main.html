@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load djangoutils %}
 {% block link %}{% static 'hw/css/default.css' %}{% endblock %}
 {% block content %}
 
@@ -26,16 +27,19 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">마감일</th>
+                        <th scope="col">No</th>
                         <th scope="col">과제명</th>
+                        <th scope="col">마감일</th>
+                        <th scope="col">마감여부</th>
                         <th scope="col">제출여부</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for h in homeworks.all reversed %}
-                    <tr>
+                    <tr onclick="location.href='{% url 'detail' h.id %}'" style="cursor:pointer;">
+                        <th scope="row">{{ h.id }}</th>
+                        <td>{{ h.title }}</td>
                         <th scope="row">{{ h.end_date }}</th>
-                        <td><a href="{% url 'detail' h.id %}">{{ h.title }}</a></td>
                         <td>
                             {% if h.check == True %}
                             진행중
@@ -43,11 +47,19 @@
                             제출마감
                             {% endif %}
                         </td>
+                        <td>
+                            {% if confirm|get_value_from_dict:h.id != None %}
+                                제출
+                            {% else %}
+                                미제출
+                            {% endif %}
+                        </td>
+                        {#                        제출 / 미제출로 표시#}
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            <a href="#" class="btn btn-secondary">제출하기</a>
+            <br>
             {% if user.is_superuser == True %}
             <a href="{%url 'notice_new'%}" class="btn btn-primary">공지사항 추가</a>
             {% endif %}
