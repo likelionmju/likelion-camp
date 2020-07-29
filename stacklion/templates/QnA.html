@@ -103,9 +103,8 @@
                         <div id="div_files">
                             {% for qfile in question.files.all %}
                                 <div>
-                                    <ui><i class="icon solid style2 major fas fa-file"></i></ui>
                                     <a class="question_file{{ question.id }}" id="{{ qfile.id }}" href="{{ qfile.file.url }}"
-                                       download="" value="" style="color: rgb(151, 151, 151); font-size: 13px;"></p>{{ qfile.file }}</a>
+                                       download="" value="" style="color: rgb(151, 151, 151); font-size: 13px;"><span class="icon solid fas fa-file">{{ qfile.file }}</span></a>
                                 </div>
                             {% endfor %}
                         </div>
