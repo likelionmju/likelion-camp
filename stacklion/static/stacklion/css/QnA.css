@@ -183,3 +183,21 @@ input{
       font-size: 4em;
       line-height: 1em;
     }
+table{
+      position: relative;
+      float: right;
+    }
+input.button{
+  position: relative;
+}
+
+@media screen and (min-width: 2560px){
+  input.SubmitButton{
+    margin-left: 90% !important;
+    margin-top: -50px;
+    margin-bottom:10px; 
+    width: 60px; 
+    font-weight: 400; 
+    font-size: 14px;
+  }
+}
