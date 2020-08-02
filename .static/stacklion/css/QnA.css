@@ -1,3 +1,4 @@
+@import url("fontawesome-all.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
@@ -57,7 +58,10 @@
 div.answer_form{
   border: 1px  solid rgb(179, 179, 179);
   margin-bottom: 15px;
-  padding: 10px;
+  padding-left: 45px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: -30px;
   width: 95%;
   margin-left: calc(100%/50);
 }  
@@ -76,6 +80,124 @@ input{
 .asker {
   color: black;
 }
-p.icon{
-  font-family: "Font Awesome 5 Free"; font-weight: 900;
+
+/* Icon */
+
+.icon {
+  text-decoration: none;
+  border-bottom: none;
+  position: relative;
+}
+
+  .icon:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    text-transform: none !important;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 400;
+  }
+
+  .icon > .label {
+    display: none;
+  }
+
+  .icon:before {
+    line-height: inherit;
+  }
+
+  .icon.solid:before {
+    font-weight: 900 !important;
+  }
+
+  .icon.brands:before {
+    font-family: 'Font Awesome 5 Brands';
+  }
+
+  .icon.style1:before {
+    color: #c3e895;
+  }
+
+  .icon.style2:before {
+    color: #8addaa;
+  }
+
+  .icon.style3:before {
+    color: #6bd4c8;
+  }
+
+  .icon.style4:before {
+    color: #57aed3;
+  }
+
+  .icon.style5:before {
+    color: #4a87d3;
+  }
+
+  .icon.style6:before {
+    color: #6b88e6;
+  }
+
+  .icon.html5:before {
+    color: #E65127;
+  }
+
+  .icon.css3:before {
+    color: #0C73B8;
+  }
+
+  .icon.bootstrap:before {
+    color: #824DCF;
+  }
+
+  .icon.js:before {
+    color: #E7A328;
+  }
+
+  .icon.major {
+    text-decoration: none;
+    color: #555;
+    cursor: default;
+    display: inline-block;
+    margin: 0 0 1.5em 0;
+  }
+
+    .icon.major:before {
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      display: inline-block;
+      font-style: normal;
+      font-variant: normal;
+      text-rendering: auto;
+      line-height: 1;
+      text-transform: none !important;
+      font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+      font-weight: 400;
+    }
+
+    .icon.major:before {
+      font-size: 4em;
+      line-height: 1em;
+    }
+table{
+      position: relative;
+      float: right;
+    }
+input.button{
+  position: relative;
+}
+
+@media screen and (min-width: 2560px){
+  input.SubmitButton{
+    margin-left: 90% !important;
+    margin-top: -50px;
+    margin-bottom:10px; 
+    width: 60px; 
+    font-weight: 400; 
+    font-size: 14px;
+  }
 }
