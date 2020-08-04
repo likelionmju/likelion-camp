@@ -1,0 +1,848 @@
+Index: config/settings.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\nimport os\n\n# Build paths inside the project like this: os.path.join(BASE_DIR, ...)\nBASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))\n\n\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/\n\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'n=ucepb0zayp4rg2&m($9km_8!)4lqu3u*4--cdx*&j4pnkl&g'\n\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n\nALLOWED_HOSTS = []\n\n# Application definition\n\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'page.apps.PageConfig',\n    'account.apps.AccountConfig',\n    'homework.apps.HomeworkConfig',\n    'stacklion.apps.StacklionConfig',\n    'hw.apps.HwConfig',\n]\n\nAUTH_USER_MODEL = 'account.User'\n\n# email\nEMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_HOST_USER = 'likelionmyongji@gmail.com'\nEMAIL_HOST_PASSWORD = 'likelionatmju@'\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nDEFAULT_FROM_EMAIL = EMAIL_HOST_USER\n\nMIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]\n\nROOT_URLCONF = 'config.urls'\n\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',\n            ],\n            # 'libraries':{\n            #     'djangoutils': 'hw.templatetags.djangoutils',\n            # }\n        },\n    },\n]\n\nWSGI_APPLICATION = 'config.wsgi.application'\n\n\n# Database\n# https://docs.djangoproject.com/en/3.0/ref/settings/#databases\n\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),\n    }\n}\n\n\n# Password validation\n# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators\n\nAUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',\n    },\n]\n\n\n# Internationalization\n# https://docs.djangoproject.com/en/3.0/topics/i18n/\n\nLANGUAGE_CODE = 'ko-kr'\n\nTIME_ZONE = 'Asia/Seoul'\n\nUSE_I18N = True\n\nUSE_L10N = True\n\nUSE_TZ = True\n\n\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.0/howto/static-files/\n\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, 'page/static'),\n    os.path.join(BASE_DIR, 'account/static'),\n    os.path.join(BASE_DIR, 'homework/static'),\n    os.path.join(BASE_DIR, 'stacklion/static'),\n    os.path.join(BASE_DIR, 'hw/static'),\n]\nSTATIC_ROOT = os.path.join(BASE_DIR,'.static')\n\nMEDIA_URL = '/media/'\nMEDIA_ROOT= os.path.join(BASE_DIR, '.media')
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- config/settings.py	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ config/settings.py	(date 1596037398237)
+@@ -30,6 +30,7 @@
+     'homework.apps.HomeworkConfig',
+     'stacklion.apps.StacklionConfig',
+     'hw.apps.HwConfig',
++    'hwmanage.apps.HwmanageConfig',
+ ]
+ 
+ AUTH_USER_MODEL = 'account.User'
+@@ -131,6 +132,7 @@
+     os.path.join(BASE_DIR, 'homework/static'),
+     os.path.join(BASE_DIR, 'stacklion/static'),
+     os.path.join(BASE_DIR, 'hw/static'),
++    os.path.join(BASE_DIR, 'hwmanage/static'),
+ ]
+ STATIC_ROOT = os.path.join(BASE_DIR,'.static')
+ 
+Index: myvenv/Scripts/runxlrd.py
+===================================================================
+--- myvenv/Scripts/runxlrd.py	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ myvenv/Scripts/runxlrd.py	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
+@@ -1,420 +0,0 @@
+-#!C:\NY LIFE\대외활동\멋쟁이사자처럼\프로젝트\likelion-camp\myvenv\Scripts\python.exe
+-# Copyright (c) 2005-2012 Stephen John Machin, Lingfo Pty Ltd
+-# This script is part of the xlrd package, which is released under a
+-# BSD-style licence.
+-
+-from __future__ import print_function
+-
+-cmd_doc = """
+-Commands:
+-
+-2rows           Print the contents of first and last row in each sheet
+-3rows           Print the contents of first, second and last row in each sheet
+-bench           Same as "show", but doesn't print -- for profiling
+-biff_count[1]   Print a count of each type of BIFF record in the file
+-biff_dump[1]    Print a dump (char and hex) of the BIFF records in the file
+-fonts           hdr + print a dump of all font objects
+-hdr             Mini-overview of file (no per-sheet information)
+-hotshot         Do a hotshot profile run e.g. ... -f1 hotshot bench bigfile*.xls
+-labels          Dump of sheet.col_label_ranges and ...row... for each sheet
+-name_dump       Dump of each object in book.name_obj_list
+-names           Print brief information for each NAME record
+-ov              Overview of file
+-profile         Like "hotshot", but uses cProfile
+-show            Print the contents of all rows in each sheet
+-version[0]      Print versions of xlrd and Python and exit
+-xfc             Print "XF counts" and cell-type counts -- see code for details
+-
+-[0] means no file arg
+-[1] means only one file arg i.e. no glob.glob pattern
+-"""
+-
+-options = None
+-if __name__ == "__main__":
+-
+-    PSYCO = 0
+-
+-    import xlrd
+-    import sys
+-    import time
+-    import glob
+-    import traceback
+-    import gc
+-
+-    from xlrd.timemachine import xrange, REPR
+-
+-
+-    class LogHandler(object):
+-
+-        def __init__(self, logfileobj):
+-            self.logfileobj = logfileobj
+-            self.fileheading = None
+-            self.shown = 0
+-
+-        def setfileheading(self, fileheading):
+-            self.fileheading = fileheading
+-            self.shown = 0
+-
+-        def write(self, text):
+-            if self.fileheading and not self.shown:
+-                self.logfileobj.write(self.fileheading)
+-                self.shown = 1
+-            self.logfileobj.write(text)
+-
+-    null_cell = xlrd.empty_cell
+-
+-    def show_row(bk, sh, rowx, colrange, printit):
+-        if bk.ragged_rows:
+-            colrange = range(sh.row_len(rowx))
+-        if not colrange: return
+-        if printit: print()
+-        if bk.formatting_info:
+-            for colx, ty, val, cxfx in get_row_data(bk, sh, rowx, colrange):
+-                if printit:
+-                    print("cell %s%d: type=%d, data: %r, xfx: %s"
+-                        % (xlrd.colname(colx), rowx+1, ty, val, cxfx))
+-        else:
+-            for colx, ty, val, _unused in get_row_data(bk, sh, rowx, colrange):
+-                if printit:
+-                    print("cell %s%d: type=%d, data: %r" % (xlrd.colname(colx), rowx+1, ty, val))
+-
+-    def get_row_data(bk, sh, rowx, colrange):
+-        result = []
+-        dmode = bk.datemode
+-        ctys = sh.row_types(rowx)
+-        cvals = sh.row_values(rowx)
+-        for colx in colrange:
+-            cty = ctys[colx]
+-            cval = cvals[colx]
+-            if bk.formatting_info:
+-                cxfx = str(sh.cell_xf_index(rowx, colx))
+-            else:
+-                cxfx = ''
+-            if cty == xlrd.XL_CELL_DATE:
+-                try:
+-                    showval = xlrd.xldate_as_tuple(cval, dmode)
+-                except xlrd.XLDateError as e:
+-                    showval = "%s:%s" % (type(e).__name__, e)
+-                    cty = xlrd.XL_CELL_ERROR
+-            elif cty == xlrd.XL_CELL_ERROR:
+-                showval = xlrd.error_text_from_code.get(cval, '<Unknown error code 0x%02x>' % cval)
+-            else:
+-                showval = cval
+-            result.append((colx, cty, showval, cxfx))
+-        return result
+-
+-    def bk_header(bk):
+-        print()
+-        print("BIFF version: %s; datemode: %s"
+-            % (xlrd.biff_text_from_num[bk.biff_version], bk.datemode))
+-        print("codepage: %r (encoding: %s); countries: %r"
+-            % (bk.codepage, bk.encoding, bk.countries))
+-        print("Last saved by: %r" % bk.user_name)
+-        print("Number of data sheets: %d" % bk.nsheets)
+-        print("Use mmap: %d; Formatting: %d; On demand: %d"
+-            % (bk.use_mmap, bk.formatting_info, bk.on_demand))
+-        print("Ragged rows: %d" % bk.ragged_rows)
+-        if bk.formatting_info:
+-            print("FORMATs: %d, FONTs: %d, XFs: %d"
+-                % (len(bk.format_list), len(bk.font_list), len(bk.xf_list)))
+-        if not options.suppress_timing:
+-            print("Load time: %.2f seconds (stage 1) %.2f seconds (stage 2)"
+-                % (bk.load_time_stage_1, bk.load_time_stage_2))
+-        print()
+-
+-    def show_fonts(bk):
+-        print("Fonts:")
+-        for x in xrange(len(bk.font_list)):
+-            font = bk.font_list[x]
+-            font.dump(header='== Index %d ==' % x, indent=4)
+-
+-    def show_names(bk, dump=0):
+-        bk_header(bk)
+-        if bk.biff_version < 50:
+-            print("Names not extracted in this BIFF version")
+-            return
+-        nlist = bk.name_obj_list
+-        print("Name list: %d entries" % len(nlist))
+-        for nobj in nlist:
+-            if dump:
+-                nobj.dump(sys.stdout,
+-                    header="\n=== Dump of name_obj_list[%d] ===" % nobj.name_index)
+-            else:
+-                print("[%d]\tName:%r macro:%r scope:%d\n\tresult:%r\n"
+-                    % (nobj.name_index, nobj.name, nobj.macro, nobj.scope, nobj.result))
+-
+-    def print_labels(sh, labs, title):
+-        if not labs:return
+-        for rlo, rhi, clo, chi in labs:
+-            print("%s label range %s:%s contains:"
+-                % (title, xlrd.cellname(rlo, clo), xlrd.cellname(rhi-1, chi-1)))
+-            for rx in xrange(rlo, rhi):
+-                for cx in xrange(clo, chi):
+-                    print("    %s: %r" % (xlrd.cellname(rx, cx), sh.cell_value(rx, cx)))
+-
+-    def show_labels(bk):
+-        # bk_header(bk)
+-        hdr = 0
+-        for shx in range(bk.nsheets):
+-            sh = bk.sheet_by_index(shx)
+-            clabs = sh.col_label_ranges
+-            rlabs = sh.row_label_ranges
+-            if clabs or rlabs:
+-                if not hdr:
+-                    bk_header(bk)
+-                    hdr = 1
+-                print("sheet %d: name = %r; nrows = %d; ncols = %d" %
+-                    (shx, sh.name, sh.nrows, sh.ncols))
+-                print_labels(sh, clabs, 'Col')
+-                print_labels(sh, rlabs, 'Row')
+-            if bk.on_demand: bk.unload_sheet(shx)
+-
+-    def show(bk, nshow=65535, printit=1):
+-        bk_header(bk)
+-        if 0:
+-            rclist = xlrd.sheet.rc_stats.items()
+-            rclist = sorted(rclist)
+-            print("rc stats")
+-            for k, v in rclist:
+-                print("0x%04x %7d" % (k, v))
+-        if options.onesheet:
+-            try:
+-                shx = int(options.onesheet)
+-            except ValueError:
+-                shx = bk.sheet_by_name(options.onesheet).number
+-            shxrange = [shx]
+-        else:
+-            shxrange = range(bk.nsheets)
+-        # print("shxrange", list(shxrange))
+-        for shx in shxrange:
+-            sh = bk.sheet_by_index(shx)
+-            nrows, ncols = sh.nrows, sh.ncols
+-            colrange = range(ncols)
+-            anshow = min(nshow, nrows)
+-            print("sheet %d: name = %s; nrows = %d; ncols = %d" %
+-                (shx, REPR(sh.name), sh.nrows, sh.ncols))
+-            if nrows and ncols:
+-                # Beat the bounds
+-                for rowx in xrange(nrows):
+-                    nc = sh.row_len(rowx)
+-                    if nc:
+-                        sh.row_types(rowx)[nc-1]
+-                        sh.row_values(rowx)[nc-1]
+-                        sh.cell(rowx, nc-1)
+-            for rowx in xrange(anshow-1):
+-                if not printit and rowx % 10000 == 1 and rowx > 1:
+-                    print("done %d rows" % (rowx-1,))
+-                show_row(bk, sh, rowx, colrange, printit)
+-            if anshow and nrows:
+-                show_row(bk, sh, nrows-1, colrange, printit)
+-            print()
+-            if bk.on_demand: bk.unload_sheet(shx)
+-
+-    def count_xfs(bk):
+-        bk_header(bk)
+-        for shx in range(bk.nsheets):
+-            sh = bk.sheet_by_index(shx)
+-            nrows = sh.nrows
+-            print("sheet %d: name = %r; nrows = %d; ncols = %d" %
+-                (shx, sh.name, sh.nrows, sh.ncols))
+-            # Access all xfindexes to force gathering stats
+-            type_stats = [0, 0, 0, 0, 0, 0, 0]
+-            for rowx in xrange(nrows):
+-                for colx in xrange(sh.row_len(rowx)):
+-                    xfx = sh.cell_xf_index(rowx, colx)
+-                    assert xfx >= 0
+-                    cty = sh.cell_type(rowx, colx)
+-                    type_stats[cty] += 1
+-            print("XF stats", sh._xf_index_stats)
+-            print("type stats", type_stats)
+-            print()
+-            if bk.on_demand: bk.unload_sheet(shx)
+-
+-    def main(cmd_args):
+-        import optparse
+-        global options, PSYCO
+-        usage = "\n%prog [options] command [input-file-patterns]\n" + cmd_doc
+-        oparser = optparse.OptionParser(usage)
+-        oparser.add_option(
+-            "-l", "--logfilename",
+-            default="",
+-            help="contains error messages")
+-        oparser.add_option(
+-            "-v", "--verbosity",
+-            type="int", default=0,
+-            help="level of information and diagnostics provided")
+-        oparser.add_option(
+-            "-m", "--mmap",
+-            type="int", default=-1,
+-            help="1: use mmap; 0: don't use mmap; -1: accept heuristic")
+-        oparser.add_option(
+-            "-e", "--encoding",
+-            default="",
+-            help="encoding override")
+-        oparser.add_option(
+-            "-f", "--formatting",
+-            type="int", default=0,
+-            help="0 (default): no fmt info\n"
+-                 "1: fmt info (all cells)\n",
+-        )
+-        oparser.add_option(
+-            "-g", "--gc",
+-            type="int", default=0,
+-            help="0: auto gc enabled; 1: auto gc disabled, manual collect after each file; 2: no gc")
+-        oparser.add_option(
+-            "-s", "--onesheet",
+-            default="",
+-            help="restrict output to this sheet (name or index)")
+-        oparser.add_option(
+-            "-u", "--unnumbered",
+-            action="store_true", default=0,
+-            help="omit line numbers or offsets in biff_dump")
+-        oparser.add_option(
+-            "-d", "--on-demand",
+-            action="store_true", default=0,
+-            help="load sheets on demand instead of all at once")
+-        oparser.add_option(
+-            "-t", "--suppress-timing",
+-            action="store_true", default=0,
+-            help="don't print timings (diffs are less messy)")
+-        oparser.add_option(
+-            "-r", "--ragged-rows",
+-            action="store_true", default=0,
+-            help="open_workbook(..., ragged_rows=True)")
+-        options, args = oparser.parse_args(cmd_args)
+-        if len(args) == 1 and args[0] in ("version", ):
+-            pass
+-        elif len(args) < 2:
+-            oparser.error("Expected at least 2 args, found %d" % len(args))
+-        cmd = args[0]
+-        xlrd_version = getattr(xlrd, "__VERSION__", "unknown; before 0.5")
+-        if cmd == 'biff_dump':
+-            xlrd.dump(args[1], unnumbered=options.unnumbered)
+-            sys.exit(0)
+-        if cmd == 'biff_count':
+-            xlrd.count_records(args[1])
+-            sys.exit(0)
+-        if cmd == 'version':
+-            print("xlrd: %s, from %s" % (xlrd_version, xlrd.__file__))
+-            print("Python:", sys.version)
+-            sys.exit(0)
+-        if options.logfilename:
+-            logfile = LogHandler(open(options.logfilename, 'w'))
+-        else:
+-            logfile = sys.stdout
+-        mmap_opt = options.mmap
+-        mmap_arg = xlrd.USE_MMAP
+-        if mmap_opt in (1, 0):
+-            mmap_arg = mmap_opt
+-        elif mmap_opt != -1:
+-            print('Unexpected value (%r) for mmap option -- assuming default' % mmap_opt)
+-        fmt_opt = options.formatting | (cmd in ('xfc', ))
+-        gc_mode = options.gc
+-        if gc_mode:
+-            gc.disable()
+-        for pattern in args[1:]:
+-            for fname in glob.glob(pattern):
+-                print("\n=== File: %s ===" % fname)
+-                if logfile != sys.stdout:
+-                    logfile.setfileheading("\n=== File: %s ===\n" % fname)
+-                if gc_mode == 1:
+-                    n_unreachable = gc.collect()
+-                    if n_unreachable:
+-                        print("GC before open:", n_unreachable, "unreachable objects")
+-                if PSYCO:
+-                    import psyco
+-                    psyco.full()
+-                    PSYCO = 0
+-                try:
+-                    t0 = time.time()
+-                    bk = xlrd.open_workbook(
+-                        fname,
+-                        verbosity=options.verbosity, logfile=logfile,
+-                        use_mmap=mmap_arg,
+-                        encoding_override=options.encoding,
+-                        formatting_info=fmt_opt,
+-                        on_demand=options.on_demand,
+-                        ragged_rows=options.ragged_rows,
+-                    )
+-                    t1 = time.time()
+-                    if not options.suppress_timing:
+-                        print("Open took %.2f seconds" % (t1-t0,))
+-                except xlrd.XLRDError as e:
+-                    print("*** Open failed: %s: %s" % (type(e).__name__, e))
+-                    continue
+-                except KeyboardInterrupt:
+-                    print("*** KeyboardInterrupt ***")
+-                    traceback.print_exc(file=sys.stdout)
+-                    sys.exit(1)
+-                except BaseException as e:
+-                    print("*** Open failed: %s: %s" % (type(e).__name__, e))
+-                    traceback.print_exc(file=sys.stdout)
+-                    continue
+-                t0 = time.time()
+-                if cmd == 'hdr':
+-                    bk_header(bk)
+-                elif cmd == 'ov': # OverView
+-                    show(bk, 0)
+-                elif cmd == 'show': # all rows
+-                    show(bk)
+-                elif cmd == '2rows': # first row and last row
+-                    show(bk, 2)
+-                elif cmd == '3rows': # first row, 2nd row and last row
+-                    show(bk, 3)
+-                elif cmd == 'bench':
+-                    show(bk, printit=0)
+-                elif cmd == 'fonts':
+-                    bk_header(bk)
+-                    show_fonts(bk)
+-                elif cmd == 'names': # named reference list
+-                    show_names(bk)
+-                elif cmd == 'name_dump': # named reference list
+-                    show_names(bk, dump=1)
+-                elif cmd == 'labels':
+-                    show_labels(bk)
+-                elif cmd == 'xfc':
+-                    count_xfs(bk)
+-                else:
+-                    print("*** Unknown command <%s>" % cmd)
+-                    sys.exit(1)
+-                del bk
+-                if gc_mode == 1:
+-                    n_unreachable = gc.collect()
+-                    if n_unreachable:
+-                        print("GC post cmd:", fname, "->", n_unreachable, "unreachable objects")
+-                if not options.suppress_timing:
+-                    t1 = time.time()
+-                    print("\ncommand took %.2f seconds\n" % (t1-t0,))
+-
+-        return None
+-
+-    av = sys.argv[1:]
+-    if not av:
+-        main(av)
+-    firstarg = av[0].lower()
+-    if firstarg == "hotshot":
+-        import hotshot
+-        import hotshot.stats
+-        av = av[1:]
+-        prof_log_name = "XXXX.prof"
+-        prof = hotshot.Profile(prof_log_name)
+-        # benchtime, result = prof.runcall(main, *av)
+-        result = prof.runcall(main, *(av, ))
+-        print("result", repr(result))
+-        prof.close()
+-        stats = hotshot.stats.load(prof_log_name)
+-        stats.strip_dirs()
+-        stats.sort_stats('time', 'calls')
+-        stats.print_stats(20)
+-    elif firstarg == "profile":
+-        import cProfile
+-        av = av[1:]
+-        cProfile.run('main(av)', 'YYYY.prof')
+-        import pstats
+-        p = pstats.Stats('YYYY.prof')
+-        p.strip_dirs().sort_stats('cumulative').print_stats(30)
+-    elif firstarg == "psyco":
+-        PSYCO = 1
+-        main(av[1:])
+-    else:
+-        main(av)
+Index: myvenv/pyvenv.cfg
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- myvenv/pyvenv.cfg	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ myvenv/pyvenv.cfg	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
+@@ -1,3 +0,0 @@
+-home = C:\Users\user\AppData\Local\Programs\Python\Python38-32
+-include-system-site-packages = false
+-version = 3.8.1
+Index: myvenv/Scripts/deactivate.bat
+===================================================================
+--- myvenv/Scripts/deactivate.bat	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ myvenv/Scripts/deactivate.bat	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
+@@ -1,21 +0,0 @@
+-@echo off
+-
+-if defined _OLD_VIRTUAL_PROMPT (
+-    set "PROMPT=%_OLD_VIRTUAL_PROMPT%"
+-)
+-set _OLD_VIRTUAL_PROMPT=
+-
+-if defined _OLD_VIRTUAL_PYTHONHOME (
+-    set "PYTHONHOME=%_OLD_VIRTUAL_PYTHONHOME%"
+-    set _OLD_VIRTUAL_PYTHONHOME=
+-)
+-
+-if defined _OLD_VIRTUAL_PATH (
+-    set "PATH=%_OLD_VIRTUAL_PATH%"
+-)
+-
+-set _OLD_VIRTUAL_PATH=
+-
+-set VIRTUAL_ENV=
+-
+-:END
+Index: myvenv/Scripts/django-admin.py
+===================================================================
+--- myvenv/Scripts/django-admin.py	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ myvenv/Scripts/django-admin.py	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
+@@ -1,5 +0,0 @@
+-#!c:\ny life\대외활동\멋쟁이사자처럼\프로젝트\likelion-camp\myvenv\scripts\python.exe
+-from django.core import management
+-
+-if __name__ == "__main__":
+-    management.execute_from_command_line()
+Index: myvenv/Scripts/activate.bat
+===================================================================
+--- myvenv/Scripts/activate.bat	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ myvenv/Scripts/activate.bat	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
+@@ -1,33 +0,0 @@
+-@echo off
+-
+-rem This file is UTF-8 encoded, so we need to update the current code page while executing it
+-for /f "tokens=2 delims=:." %%a in ('"%SystemRoot%\System32\chcp.com"') do (
+-    set _OLD_CODEPAGE=%%a
+-)
+-if defined _OLD_CODEPAGE (
+-    "%SystemRoot%\System32\chcp.com" 65001 > nul
+-)
+-
+-set VIRTUAL_ENV=C:\NY LIFE\대외활동\멋쟁이사자처럼\프로젝트\likelion-camp\myvenv
+-
+-if not defined PROMPT set PROMPT=$P$G
+-
+-if defined _OLD_VIRTUAL_PROMPT set PROMPT=%_OLD_VIRTUAL_PROMPT%
+-if defined _OLD_VIRTUAL_PYTHONHOME set PYTHONHOME=%_OLD_VIRTUAL_PYTHONHOME%
+-
+-set _OLD_VIRTUAL_PROMPT=%PROMPT%
+-set PROMPT=(myvenv) %PROMPT%
+-
+-if defined PYTHONHOME set _OLD_VIRTUAL_PYTHONHOME=%PYTHONHOME%
+-set PYTHONHOME=
+-
+-if defined _OLD_VIRTUAL_PATH set PATH=%_OLD_VIRTUAL_PATH%
+-if not defined _OLD_VIRTUAL_PATH set _OLD_VIRTUAL_PATH=%PATH%
+-
+-set PATH=%VIRTUAL_ENV%\Scripts;%PATH%
+-
+-:END
+-if defined _OLD_CODEPAGE (
+-    "%SystemRoot%\System32\chcp.com" %_OLD_CODEPAGE% > nul
+-    set _OLD_CODEPAGE=
+-)
+Index: .idea/libraries/Django_Lib.xml
+===================================================================
+--- .idea/libraries/Django_Lib.xml	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ .idea/libraries/Django_Lib.xml	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
+@@ -1,8 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Django Lib">
+-    <CLASSES>
+-      <root url="file://$PROJECT_DIR$/myvenv/Lib/site-packages" />
+-    </CLASSES>
+-    <SOURCES />
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/dataSources.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/dataSources.xml	(date 1596029114258)
++++ .idea/dataSources.xml	(date 1596029114258)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
++    <data-source source="LOCAL" name="Django default" uuid="0b93d390-922c-4e8f-bf59-55886e1703a6">
++      <driver-ref>sqlite.xerial</driver-ref>
++      <synchronize>true</synchronize>
++      <imported>true</imported>
++      <remarks>$PROJECT_DIR$/config/settings.py</remarks>
++      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
++      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db.sqlite3</jdbc-url>
++    </data-source>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/inspectionProfiles/profiles_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"InspectionProjectProfileManager\">\n  <settings>\n    <option name=\"USE_PROJECT_PROFILE\" value=\"false\" />\n    <version value=\"1.0\" />\n  </settings>\n</component>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/inspectionProfiles/profiles_settings.xml	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ .idea/inspectionProfiles/profiles_settings.xml	(date 1596034606100)
+@@ -1,5 +1,6 @@
+ <component name="InspectionProjectProfileManager">
+   <settings>
++    <option name="PROJECT_PROFILE" value="Default" />
+     <option name="USE_PROJECT_PROFILE" value="false" />
+     <version value="1.0" />
+   </settings>
+Index: hwmanage/static/hwmanage/css/default.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hwmanage/static/hwmanage/css/default.css	(date 1596039584226)
++++ hwmanage/static/hwmanage/css/default.css	(date 1596039584226)
+@@ -0,0 +1,17 @@
++*:root {
++    --main-height: calc(100vh - 7rem);
++}
++
++.main {
++    height: var(--main-height);
++    width: 100vw;
++}
++
++.footer{
++    height: 3.5rem;
++    width: 100vw;
++    padding: .5rem 1rem;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++}
+\ No newline at end of file
+Index: .static/hw/css/hw_main.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\thtml, body\n\t{\n\t\theight: 100%;\n\t}\n\t\n\tbody\n\t{\n\t\tmargin: 0px;\n\t\tpadding: 0px;\n\t\tbackground: #4C5748;\n\t\tfont-family: 'Source Sans Pro', sans-serif;\n\t\tfont-size: 12pt;\n\t\tfont-weight: 300;\n\t\tcolor: #000000;\n\t}\n\t\n\t\n\th1, h2, h3\n\t{\n\t\tmargin: 0;\n\t\tpadding: 0;\n\t}\n\t\n\tp, ol, ul\n\t{\n\t\tmargin-top: 0;\n\t}\n\t\n\tol, ul\n\t{\n\t\tpadding: 0;\n\t\tlist-style: none;\n\t}\n\t\n\tp\n\t{\n\t\tline-height: 180%;\n\t}\n\t\n\tstrong\n\t{\n\t}\n\t\n\ta\n\t{\n\t\tcolor: #151515;\n\t}\n\t\n\ta:hover\n\t{\n\t\ttext-decoration: none;\n\t}\n\t\n\t.container\n\t{\n\t\toverflow: hidden;\n\t\tmargin: 0em auto;\n\t\twidth: 1000px;\n\t}\n\t\n/*********************************************************************************/\n/* Image Style                                                                   */\n/*********************************************************************************/\n\n\t.image\n\t{\n\t\tdisplay: inline-block;\n\t}\n\t\n\t.image img\n\t{\n\t\tdisplay: block;\n\t\twidth: 100%;\n\t}\n\t\n\t.image-full\n\t{\n\t\tdisplay: block;\n\t\twidth: 100%;\n\t\tmargin: 0 0 0 0;\n\t}\n\t\n\t.image-left\n\t{\n\t\tfloat: left;\n\t\tmargin: 0 2em 2em 0;\n\t}\n\t\n\t.image-centered\n\t{\n\t\tdisplay: block;\n\t\tmargin: 0 0 2em 0;\n\t}\n\t\n\t.image-centered img\n\t{\n\t\tmargin: 0 auto;\n\t\twidth: auto;\n\t}\n\n/*********************************************************************************/\n/* List Styles                                                                   */\n/*********************************************************************************/\n\n\tul.style2\n\t{\n\t\tmargin: 0;\n\t\tpadding-top: 1em;\n\t\tlist-style: none;\n\t}\n\t\n\tul.style2 li\n\t{\n\t\tborder-top: 1px solid rgba(0,0,0,0.08);\n\t\tpadding: 0.80em 0 0.80em 0;\n\t\tfont-family: 0.80em;\n\t}\n\t\n\tul.style2 li:before\n\t{\n\t\tdisplay: inline-block;\n\t\tpadding: 4px;\n\t\tbackground: #DB3256;\n\t}\n\t\n\tul.style2 a\n\t{\n\t\tdisplay: inline-block;\n\t\tcolor: #35514f;\n\t}\n\t\n\tul.style2 li:first-child\n\t{\n\t\tborder-top: 0;\n\t\tpadding-top: 0;\n\t}\n\n\n/*********************************************************************************/\n/* Social Icon Styles                                                            */\n/*********************************************************************************/\n\n\tul.contact\n\t{\n\t\tmargin: 0;\n\t\tpadding: 0em 0em 0em 0em;\n\t\tlist-style: none;\n\t}\n\t\n\tul.contact li\n\t{\n\t\tdisplay: inline-block;\n\t\tpadding: 0em 0.30em;\n\t\tfont-size: 1em;\n\t}\n\t\n\tul.contact li span\n\t{\n\t\tdisplay: none;\n\t\tmargin: 0;\n\t\tpadding: 0;\n\t}\n\t\n\tul.contact li a\n\t{\n\t\tcolor: #FFF;\n\t}\n\t\n\tul.contact li a:before\n\t{\n\t\tdisplay: inline-block;\n\t\tbackground: #3f3f3f;\n\t\twidth: 40px;\n\t\theight: 40px;\n\t\tline-height: 40px;\n\t\ttext-align: center;\n\t\tcolor: #FFFFFF;\n\t}\n\t\n\tul.contact li a.icon-twitter:before { background: #2DAAE4; }\n\tul.contact li a.icon-facebook:before { background: #39599F; }\n\tul.contact li a.icon-dribbble:before { background: #C4376B;\t}\n\tul.contact li a.icon-tumblr:before { background: #31516A; }\n\tul.contact li a.icon-rss:before { background: #F2600B; }\n\n/*********************************************************************************/\n/* Button Style                                                                  */\n/*********************************************************************************/\n\n\t.button\n\t{\n\t\tdisplay: inline-block;\n\t\tmargin-top: 2em;\n\t\tpadding: 1em 2em 1em 2em;\n\t\tbackground: #40493C;\n\t\tborder-radius: 7px;\n\t\tborder: 1px solid #373F34;\n\t\tletter-spacing: 0.20em;\n\t\ttext-decoration: none;\n\t\ttext-transform: uppercase;\n\t\tfont-weight: 400;\n\t\tfont-size: 0.90em;\n\t\tcolor: #FFF;\n\t}\n\t\n\t.button:before\n\t{\n\t\tdisplay: inline-block;\n\t\tbackground: #FFC31F;\n\t\tmargin-right: 1em;\n\t\twidth: 40px;\n\t\theight: 40px;\n\t\tline-height: 40px;\n\t\tborder-radius: 20px;\n\t\ttext-align: center;\n\t\tcolor: #272925;\n\t}\n\t\t\n/*********************************************************************************/\n/* 4-column                                                                      */\n/*********************************************************************************/\n\n\t.box1,\n\t.box2,\n\t.box3,\n\t.box4\n\t{\n\t\twidth: 235px;\n\t}\n\t\n\t.box1,\n\t.box2,\n\t.box3\n\t{\n\t\tfloat: left;\n\t\tmargin-right: 20px;\n\t}\n\t\n\t.box4\n\t{\n\t\tfloat: right;\n\t}\n\t\n/*********************************************************************************/\n/* 3-column                                                                      */\n/*********************************************************************************/\n\n\t.boxA,\n\t.boxB,\n\t.boxC\n\t{\n\t\twidth: 320px;\n\t}\n\n\t.boxA,\n\t.boxB\n\t{\n\t\tfloat: left;\n\t\tmargin-right: 20px;\n\t}\n\t\n\t.boxC\n\t{\n\t\tfloat: right;\n\t}\n\n/*********************************************************************************/\n/* 2-column                                                                      */\n/*********************************************************************************/\n\n\t.tbox1,\n\t.tbox2\n\t{\n\t\twidth: 490px;\n\t}\n\t\n\t.tbox1\n\t{\n\t\tfloat: left;\n\t}\n\n\t.tbox2\n\t{\n\t\tfloat: right;\n\t}\n\n/*********************************************************************************/\n/* Header                                                                        */\n/*********************************************************************************/\n\n\t#header-wrapper\n\t{\n\t\toverflow: hidden;\n\t\tbackground: url(../images/pic01.jpg) no-repeat center;\n\t\tbackground-size: 100% auto;\n\t}\n\n\t#header\n\t{\n\t\toverflow: hidden;\n\t\tposition: relative;\n\t\tpadding: 5em 0em;\n\t}\n\n/*********************************************************************************/\n/* Logo                                                                          */\n/*********************************************************************************/\n\n\t#logo\n\t{\n\t\tposition: absolute;\n\t\ttop: 2.5em;\n\t\tleft: 0;\n\t}\n\t\n\t#logo h1\n\t{\n\t\tletter-spacing: 0.10em;\n\t\tfont-size: 2.5em;\n\t\tfont-weight: 600;\n\t}\n\t\n\t#logo a\n\t{\n\t\ttext-decoration: none;\n\t\ttext-transform: uppercase;\n\t\tcolor: #FFF;\n\t}\n\n/*********************************************************************************/\n/* Menu                                                                          */\n/*********************************************************************************/\n\n\t#menu\n\t{\n\t\tposition: absolute;\n\t\ttop: 3.5em;\n\t\tright: 0;\n\t}\n\t\n\t#menu ul\n\t{\n\t\tdisplay: inline-block;\n\t}\n\t\n\t#menu li\n\t{\n\t\tdisplay: block;\n\t\tfloat: left;\n\t\ttext-align: center;\n\t}\n\t\n\t#menu li a, #menu li span\n\t{\n\t\tpadding: 1em 1.5em;\n\t\tletter-spacing: 0.10em;\n\t\ttext-decoration: none;\n\t\ttext-transform: uppercase;\n\t\tfont-size: 0.90em;\n\t\tcolor: #FFF;\n\t}\n\t\n\t#menu li:hover a, #menu li.active a, #menu li.active span\n\t{\n\t}\n\t\n\t#menu .current_page_item a\n\t{\n\t}\n\t\n\t#menu .icon\n\t{\n\t}\n\n/*********************************************************************************/\n/* Banner                                                                        */\n/*********************************************************************************/\n\n\t#banner\n\t{\n\t\toverflow: hidden;\n\t\tpadding: 3em 0em 2em 0em;\n\t\tmargin-bottom: 5em;\n\t\tborder-top: 1px solid rgba(0,0,0,0.08);\n\t\tborder-bottom: 1px solid rgba(0,0,0,0.08);\n\t\ttext-align: center;\n\t\tcolor: rgba(255,255,255,0.5);\n\t}\n\n\t#banner a\n\t{\n\t\tcolor: rgba(255,255,255,0.7);\n\t}\n\n/*********************************************************************************/\n/* Page                                                                          */\n/*********************************************************************************/\n\n\t#page-wrapper\n\t{\n\t\toverflow: hidden;\n\t\tpadding: 5em 0em;\n\t\tbackground: #FFF;\n\t}\n\n\t#page\n\t{\n\t}\n\n/*********************************************************************************/\n/* Content                                                                       */\n/*********************************************************************************/\n\n\t#content\n\t{\n\t}\n\n/*********************************************************************************/\n/* Sidebar                                                                       */\n/*********************************************************************************/\n\n\t#sidebar\n\t{\n\t}\n\n/*********************************************************************************/\n/* Featured                                                                      */\n/*********************************************************************************/\n\n\t#featured\n\t{\n\t\toverflow: hidden;\n\t\ttext-align: center;\n\t}\n\t\n\t#featured .title h2\n\t{\n\t\tmargin-bottom: 2em;\n\t\tborder-bottom: 1px solid rgba(0,0,0,0.08);\n\t\ttext-align: center;\n\t\tfont-size: 2.6em;\n\t\tcolor: #40493C;\n\t}\n\n\t#featured h2\n\t{\n\t\tpadding-bottom: 1em;\n\t\ttext-transform: uppercase;\n\t\tfont-size: 1.8em;\n\t\tfont-weight: 300;\n\t\tcolor: #40493C;\n\t}\n\n\t#featured img\n\t{\n\t\tmargin-bottom: 2em;\n\t}\n\t\n\t#featured .padding-bottom\n\t{\n\t\tmargin-bottom: 6em;\n\t}\n\n/*********************************************************************************/\n/* Portfolio                                                                     */\n/*********************************************************************************/\n\n\t#portfolio\n\t{\n\t\toverflow: hidden;\n\t\tpadding: 5em 0em;\n\t}\n\n\t#portfolio h2\n\t{\n\t\tpadding-bottom: 1em;\n\t\ttext-transform: uppercase;\n\t\tfont-size: 1.8em;\n\t\tfont-weight: 300;\n\t}\n\n\t#portfolio p\n\t{\n\t\tletter-spacing: 0.10em;\n\t}\n\n/*********************************************************************************/\n/* Footer                                                                        */\n/*********************************************************************************/\n\n\t#footer\n\t{\n\t\toverflow: hidden;\n\t\tpadding: 5em 0em;\n\t\tborder-top: 1px solid rgba(0,0,0,0.08);\n\t}\n\t\n\t#footer .boxA,\n\t#footer .boxB,\n\t#footer .boxC\n\t{\n\t}\n\t\n\t#footer .boxA\n\t{\n\t\twidth: 260px;\n\t\tpadding: 3em 30px;\n\t\tbackground: rgba(255,255,255,0.4);\n\t}\n\t\n\t#footer .boxA h3\n\t{\n\t\tmargin-bottom: 1.5em;\n\t\tborder-bottom: 1px solid rgba(0,0,0,0.08);\n\t}\n\t\n\t#footer img\n\t{\n\t\tmargin-bottom: 2em;\n\t}\n\t\n\t#footer h3\n\t{\n\t\tpadding-bottom: 1em;\n\t\ttext-transform: uppercase;\n\t\tfont-size: 1.8em;\n\t\tfont-weight: 300;\n\t}\n\t\n\t#footer .link\n\t{\n\t\tdisplay: block;\n\t\tpadding-top: 1em;\n\t\ttext-transform: uppercase;\n\t\ttext-decoration: none;\n\t\tfont-weight: 700;\n\t\tcolor: rgba(0,0,0,0.8);\n\t}\n\t\n/*********************************************************************************/\n/* Copyright                                                                     */\n/*********************************************************************************/\n\n\t#copyright\n\t{\n\t\toverflow: hidden;\n\t\tpadding: 5em 0em;\n\t\tborder-top: 1px solid rgba(0,0,0,0.08);\n\t\tbackground-color: darkolivegreen;\n\t}\n\t\n\t#copyright p\n\t{\n\t\tletter-spacing: 0.20em;\n\t\ttext-align: center;\n\t\ttext-transform: uppercase;\n\t\tfont-size: 0.90em;\n\t\tcolor: rgba(255,255,255,0.3);\n\t}\n\t\n\t#copyright a\n\t{\n\t\ttext-decoration: none;\n\t\tcolor: rgba(255,255,255,0.5);\n\t}\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .static/hw/css/hw_main.css	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ .static/hw/css/hw_main.css	(date 1596037333009)
+@@ -215,6 +215,31 @@
+ 		text-align: center;
+ 		color: #272925;
+ 	}
++
++	.filebox label {
++		display: inline-block;
++		padding: .5em .75em;
++		color: #999;
++		font-size: inherit;
++		line-height: normal;
++		vertical-align: middle;
++		background-color: #fdfdfd;
++		cursor: pointer;
++		border: 1px solid #ebebeb;
++		border-bottom-color: #e2e2e2;
++		border-radius: .25em;
++	}
++
++	.filebox input[type="file"] { /* 파일 필드 숨기기 */
++		position: absolute;
++		width: 1px;
++		height: 1px;
++		padding: 0;
++		margin: -1px;
++		overflow: hidden;
++		clip: rect(0, 0, 0, 0);
++		border: 0;
++	}
+ 		
+ /*********************************************************************************/
+ /* 4-column                                                                      */
+Index: hwmanage/templates/hw_manage_index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hwmanage/templates/hw_manage_index.html	(date 1596132177696)
++++ hwmanage/templates/hw_manage_index.html	(date 1596132177696)
+@@ -0,0 +1,34 @@
++{% extends 'base.html' %}
++{% load static %}
++{% block link %}{% static 'hwmanage/css/default.css' %}{% endblock %}
++{% block title %} 과제관리 {% endblock %}
++
++{% block content %}
++    <main class="main d-flex align-content-center justify-content-center flex-wrap">
++        <h1 class="display-4 text-center w-100 mb-3">과제 목록</h1>
++        <hr class="w-75 my-5">
++        <table class="table w-75 mt-3 table-hover">
++            <thead>
++            <tr>
++                <th scope="col">No</th>
++                <th scope="col">과제명</th>
++                <th scope="col">마감일</th>
++                <th scope="col">마감여부</th>
++                <th scope="col">완료율</th>
++            </tr>
++            </thead>
++            <tbody>
++            <tr>
++                <th scope="row">1</th>
++                <td>예시</td>
++                <td>Otto</td>
++                <td>@mdo</td>
++                <td>@mdo</td>
++            </tr>
++            </tbody>
++        </table>
++    </main>
++    <div class="footer bg-dark">
++        <div class="text-light">&copy; MJU X LIKELION 8th | All rights reserved.</div>
++    </div>
++{% endblock %}
+\ No newline at end of file
+Index: likelion-camp.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- likelion-camp.iml	(date 1596131971999)
++++ likelion-camp.iml	(date 1596131971999)
+@@ -0,0 +1,51 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="django" name="Django">
++      <configuration>
++        <option name="rootFolder" value="$MODULE_DIR$/hw" />
++        <option name="settingsModule" value="$MODULE_DIR$/config/settings.py" />
++        <option name="manageScript" value="$MODULE_DIR$/manage.py" />
++        <option name="environment" value="&lt;map/&gt;" />
++        <option name="doNotUseTestRunner" value="false" />
++        <option name="trackFilePattern" value="migrations" />
++      </configuration>
++    </facet>
++  </component>
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/myvenv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++  <component name="TemplatesService">
++    <option name="TEMPLATE_CONFIGURATION" value="Django" />
++    <option name="TEMPLATE_FOLDERS">
++      <list>
++        <option value="$MODULE_DIR$/hw/templates" />
++        <option value="$MODULE_DIR$/page/templates" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/forms/jinja2/django/forms/widgets" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/forms/templates/django/forms/widgets" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/views/templates" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/contrib/gis/templates/gis" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/contrib/gis/templates/gis/admin" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/contrib/auth/templates/auth/widgets" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/contrib/admin/templates/admin" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/contrib/admin/templates/admin/auth/user" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/contrib/admin/templates/admin/widgets" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/contrib/admin/templates/admin/includes" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/contrib/admin/templates/admin/edit_inline" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/contrib/admin/templates/registration" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/contrib/postgres/jinja2/postgres/widgets" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/contrib/postgres/templates/postgres/widgets" />
++        <option value="$MODULE_DIR$/myvenv/lib/python3.8/site-packages/django/contrib/admindocs/templates/admin_doc" />
++        <option value="$MODULE_DIR$/account/templates" />
++        <option value="$MODULE_DIR$/homework/templates" />
++        <option value="$MODULE_DIR$/stacklion/templates" />
++        <option value="$MODULE_DIR$/hwmanage/templates" />
++      </list>
++    </option>
++  </component>
++</module>
+\ No newline at end of file
+Index: config/urls.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\nfrom django.contrib import admin\nfrom django.urls import path, include\nfrom django.conf import settings\nfrom django.conf.urls.static import static\nimport page.views\nimport page.urls\nimport account.views\nimport account.urls\nimport homework.views\nimport homework.urls\nimport stacklion.views\nimport stacklion.urls\n\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('page.urls')),\n    path('account/',include('account.urls')),\n    path('homework/',include('homework.urls')),\n    path('stacklion/', include('stacklion.urls')),\n    path('hw/', include('hw.urls')),\n] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- config/urls.py	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ config/urls.py	(date 1596036565695)
+@@ -19,4 +19,5 @@
+     path('homework/',include('homework.urls')),
+     path('stacklion/', include('stacklion.urls')),
+     path('hw/', include('hw.urls')),
++    path('hw/manage/', include('hwmanage.urls')),
+ ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectModuleManager\">\n    <modules>\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/likelion-camp.iml\" filepath=\"$PROJECT_DIR$/.idea/likelion-camp.iml\" />\n    </modules>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ .idea/modules.xml	(date 1596033462224)
+@@ -2,7 +2,7 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/likelion-camp.iml" filepath="$PROJECT_DIR$/.idea/likelion-camp.iml" />
++      <module fileurl="file://$PROJECT_DIR$/likelion-camp.iml" filepath="$PROJECT_DIR$/likelion-camp.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/templateLanguages.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/templateLanguages.xml	(date 1596033588701)
++++ .idea/templateLanguages.xml	(date 1596033588701)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="TemplateDataLanguageMappings">
++    <file url="file://$PROJECT_DIR$/homework/templates/detail.html" dialect="DjangoUrlPath" />
++    <file url="PROJECT" dialect="DjangoUrlPath" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/likelion-camp.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"PYTHON_MODULE\" version=\"4\">\n  <component name=\"FacetManager\">\n    <facet type=\"django\" name=\"Django\">\n      <configuration>\n        <option name=\"rootFolder\" value=\"$MODULE_DIR$\" />\n        <option name=\"settingsModule\" value=\"config/settings.py\" />\n        <option name=\"manageScript\" value=\"$MODULE_DIR$/manage.py\" />\n        <option name=\"environment\" value=\"&lt;map/&gt;\" />\n        <option name=\"doNotUseTestRunner\" value=\"false\" />\n        <option name=\"trackFilePattern\" value=\"migrations\" />\n      </configuration>\n    </facet>\n  </component>\n  <component name=\"NewModuleRootManager\">\n    <content url=\"file://$MODULE_DIR$\" />\n    <orderEntry type=\"inheritedJdk\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n    <orderEntry type=\"library\" name=\"Django Lib\" level=\"project\" />\n  </component>\n  <component name=\"TemplatesService\">\n    <option name=\"TEMPLATE_CONFIGURATION\" value=\"Django\" />\n    <option name=\"TEMPLATE_FOLDERS\">\n      <list>\n        <option value=\"$MODULE_DIR$/page/templates\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"TestRunnerService\">\n    <option name=\"PROJECT_TEST_RUNNER\" value=\"Unittests\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/likelion-camp.iml	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ .idea/likelion-camp.iml	(date 1595954804024)
+@@ -13,10 +13,11 @@
+     </facet>
+   </component>
+   <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="inheritedJdk" />
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/myvenv" />
++    </content>
++    <orderEntry type="jdk" jdkName="Python 3.8 (likelion-camp)" jdkType="Python SDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+-    <orderEntry type="library" name="Django Lib" level="project" />
+   </component>
+   <component name="TemplatesService">
+     <option name="TEMPLATE_CONFIGURATION" value="Django" />
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"JavaScriptSettings\">\n    <option name=\"languageLevel\" value=\"ES6\" />\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"Python 3.8 (likelion-camp)\" project-jdk-type=\"Python SDK\" />\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision 0cc0133379ac6cfd71f135d525d3f0b84dbb2f04)
++++ .idea/misc.xml	(date 1595954804034)
+@@ -3,5 +3,5 @@
+   <component name="JavaScriptSettings">
+     <option name="languageLevel" value="ES6" />
+   </component>
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.8 (likelion-camp)" project-jdk-type="Python SDK" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="false" project-jdk-name="Python 3.8 (likelion-camp)" project-jdk-type="Python SDK" />
+ </project>
+\ No newline at end of file

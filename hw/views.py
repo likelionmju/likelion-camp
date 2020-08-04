@@ -8,7 +8,7 @@ from hw.models import Homework, Submission, SubmissionFiles
 
 # Create your views here.
 
-def main(request):
+def hw_main(request):
     homeworks = Homework.objects.all
     hw_list = Homework.objects.values('id')
     homework_id = []

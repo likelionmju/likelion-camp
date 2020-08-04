@@ -3,6 +3,7 @@
 
 {% block link %}{% static 'hw/css/hw_main.css' %}{% endblock %}
 {% block jqueryscript %}
+<<<<<<< HEAD
     <script>
         $(document).ready(function () {
             $('#ex_file').on('change', function () {
@@ -63,16 +64,32 @@
 
         });
     </script>
+=======
+<script>
+    $(document).ready(function () {
+        $('#ex_file').on('change', function () {
+            var files = $('#ex_file').prop("files");
+            var names = $.map(files, function (val) {
+                return val.name;
+            });
+            $('#file_list').empty();
+            $.each(names, function (i, name) {
+                $('#file_list').append("<div>" + name + "</div>");
+            });
+        })
+    })
+</script>
+>>>>>>> ae36ea663ac3aacb9fd0fe46eb57f2506b900804
 {% endblock %}
 
 {% block content %}
 
-    <body>
+<body>
     <div id="page-wrapper">
         <div id="featured" class="container">
             <div class="title">
-                마감일 : {{ homework.end_date }}
                 <h2>{{ homework.title }}</h2>
+                <span>마감일 : {{ homework.end_date }}</span>
             </div>
             <div class="jumbotron">
                 여기에 공지사항 내용 쓸거임 ㅇㅇ {{ homework.content }}
@@ -80,6 +97,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     {% if submission != 0 %}
         <div id="여기에 쓰쟈">
             <h3>내가 제출한 과제</h3>
@@ -117,25 +135,52 @@
 
             </form>
         </div>
-    {% else %}
-        <div>
-            <h3>과제 제출 전</h3>
-            <div>마감일 : {{ homework.end_date }}</div>
-            <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <textarea name="submission_content"></textarea><br>
-                <div class="filebox">
-                    <label for="ex_file">파일선택</label>
-                    <input name="submission_files" type="file" id="ex_file" multiple>
+=======
+    {% if check != 0 %}
+    <div class="container">
+        <h3>내가 제출한 과제</h3>
+        <div>마감일 : {{ homework.end_date }}</div>
+        <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ check.register_content }}
+            <div class="filebox">
+                <div id="div_files">
+                    {% for sfile in check.files.all %}
+                    <div>
+                        <a href="{{ sfile.file.url }}" download="" value=""
+                            style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span
+                                class="icon solid fas fa-file"> {{ sfile.file }}</span></a>
+                    </div>
+                    {% endfor %}
                 </div>
-                <div id="file_list"></div>
-                <input type="submit" value="제출"/>
-            </form>
-        </div>
+                {#                    <label for="ex_file">파일선택</label>#}
+                {#                    <input name="submission_files" type="file" id="ex_file" multiple>#}
+            </div>
+            <div id="file_list"></div>
+            <button class="btn btn-secondary" type="submit">수정</button>
+        </form>
+    </div>
+
+>>>>>>> ae36ea663ac3aacb9fd0fe46eb57f2506b900804
+    {% else %}
+    <div>
+        <h3>과제 제출 전</h3>
+        <div>마감일 : {{ homework.end_date }}</div>
+        <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <textarea name="submission_content"></textarea><br>
+            <div class="filebox">
+                <label for="ex_file">파일선택</label>
+                <input name="submission_files" type="file" id="ex_file" multiple>
+            </div>
+            <div id="file_list"></div>
+            <button class="btn btn-secondary" type="submit">제출</button>
+        </form>
+    </div>
     {% endif %}
 
     <div id="copyright">
         <p>&copy; MJU X LIKELION 8th | All rights reserved. </p>
     </div>
-    </body>
+</body>
 {% endblock %}

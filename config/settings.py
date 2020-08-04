@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'homework.apps.HomeworkConfig',
     'stacklion.apps.StacklionConfig',
     'hw.apps.HwConfig',
+    'hwmanage.apps.HwmanageConfig',
 ]
 
 AUTH_USER_MODEL = 'account.User'
@@ -70,6 +71,9 @@ TEMPLATES = [
             # 'libraries':{
             #     'djangoutils': 'hw.templatetags.djangoutils',
             # }
+            'builtins': [
+                'hwmanage.templatetags.template_tags',
+            ],
         },
     },
 ]
@@ -131,6 +135,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'homework/static'),
     os.path.join(BASE_DIR, 'stacklion/static'),
     os.path.join(BASE_DIR, 'hw/static'),
+    os.path.join(BASE_DIR, 'hwmanage/static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR,'.static')
 

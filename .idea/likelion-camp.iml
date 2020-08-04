@@ -13,10 +13,11 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
-    <orderEntry type="inheritedJdk" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/myvenv" />
+    </content>
+    <orderEntry type="jdk" jdkName="Python 3.8 (likelion-camp)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Django Lib" level="project" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

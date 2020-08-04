@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load template_tags %}
+{% block link %}{% static 'hwmanage/css/detail.css' %}{% endblock %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <main class="main d-flex align-content-center justify-content-center flex-wrap">
+        <h1 class="display-4 text-center w-100 mb-3">학생 목록</h1>
+        <hr class="w-75 my-5">
+        <div class="list-group w-75">
+            {% for situation in current_situations %}
+                {% if not situation|get_by_key:'is_submit' %}
+                    <a href="#" class="list-group-item list-group-item-action disabled" aria-disabled="true"></a>
+                {% else %}
+                    <a class="list-group-item list-group-item-action" data-toggle="collapse"
+                       href="#user{{ forloop.counter0 }}" role="button" aria-expanded="false"
+                       aria-controls="{{ forloop.counter0 }}">{{ situation|get_by_key:'name' }}</a>
+                    <div class="collapse" id="user{{ forloop.counter0 }}">
+                        <div class="input-group my-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">제출일</span>
+                            </div>
+                            <input type="text" class="form-control" value="{{ situation|get_by_key:'register_date' }}" readonly>
+                        </div>
+                        <div class="input-group my-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">제출 내용</span>
+                            </div>
+                            <textarea class="form-control" readonly>{{ situation|get_by_key:'register_content' }}</textarea>
+                        </div>
+                        {% if situation|get_by_key:'has_file' %}
+                            {% for file in situation|get_by_key:'register_files' %}
+                                <div class="input-group my-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">제출 파일</span>
+                                    </div>
+                                    <a href="{{ file.file.url }}" class="form-control"
+                                       download="{{ file.file.url }}">{{ file.file|get_filename }}</a>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+
+    </main>
+    <div class="footer bg-dark">
+        <div class="text-light">&copy; MJU X LIKELION 8th | All rights reserved.</div>
+    </div>
+{% endblock %}

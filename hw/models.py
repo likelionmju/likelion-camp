@@ -27,7 +27,7 @@ class Submission(models.Model):
     register_content = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return '과제 : ' + str(self.homework_id) + ' / 학생 : ' + str(self.student)
 
 class SubmissionFiles(models.Model):
     file = models.FileField(upload_to="homework/")

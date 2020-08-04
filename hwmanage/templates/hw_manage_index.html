@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load template_tags %}
+{% block link %}{% static 'hwmanage/css/default.css' %}{% endblock %}
+{% block title %} 과제관리 {% endblock %}
+
+{% block content %}
+    <main class="main d-flex align-content-center justify-content-center flex-wrap">
+        <h1 class="display-4 text-center w-100 mb-3">과제 목록</h1>
+        <hr class="w-75 my-5">
+        <table class="table w-75 mt-3 table-hover">
+            <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">과제명</th>
+                <th scope="col">마감일</th>
+                <th scope="col">마감여부</th>
+                <th scope="col">완료율</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for homework in homeworks reversed %}
+                <tr onclick="location.href = '{% url 'manage_detail' homework.id %}'" class="table-row-link">
+                    <th scope="row">{{ homework.id }}</th>
+                    <td>{{ homework.title }}</td>
+                    <td>{{ homework.end_date }}</td>
+                    <td>
+                        {% if homework.check %}
+                            마감
+                        {% else %}
+                            진행중
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ percentage_list|get_at_index:forloop.counter0 }}%
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </main>
+    <div class="footer bg-dark">
+        <div class="text-light">&copy; MJU X LIKELION 8th | All rights reserved.</div>
+    </div>
+{% endblock %}
