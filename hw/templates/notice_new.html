@@ -10,24 +10,54 @@
         <div id="featured" class="container">
             <div class="title">
                 <h2>공지사항 작성</h2>
-                <form action="{% url 'notice_new' %}" method="POST" enctype="multipart/form-data" name="edit" id="edit">
+                <form class="was-validated" action="{% url 'notice_new' %}" method="POST" enctype="multipart/form-data"
+                    name="edit" id="edit">
+                    {% csrf_token %}
                     <div class="jumbotron">
-                        {% csrf_token %}
-                        <p class="lead">제목</p>
-                        <input name='title' class="title" type="text" >
-                        <p class="lead">내용</p>
-                        <textarea name="content" cols="50" rows="10"></textarea>
-                        <p class="lead">마감일</p>
-                        <input name="end_date" class="date"type="date">
-                        <p class="lead">첨부파일</p>
-                        <input name="notice_file" type="file" multiple>
+                        <div class="form-group">
+                            <label class="mb-3" for="title" name="title">제목</label>
+                            <input type="text" class="form-control is-invalid" id="title" placeholder="제목을 입력해주세요."
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-3" for="content" name="content">내용</label>
+                            <textarea class="form-control is-invalid" id="validationTextarea" placeholder="내용을 입력해주세요."
+                                cols="30" rows="10" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-3" for="end_date" name="end_date">마감일</label>
+                            <input class="" type="date" name="end_date">
+                        </div>
+
+                        <div class="custom-file mb-3">
+                            <input type="file" class="custom-file-input" id="notice_file" name="notice_file" multiple>
+                            <label class="custom-file-label text-left" for="notice_file">첨부파일을 선택하세요.</label>
+                        </div>
+                        {% if user.is_superuser == True %}
+                        <input type="submit" class="btn btn-primary" value="공지사항 추가" onclick="submit_btn()">
+                        {% endif %}
                     </div>
-                    {% if user.is_superuser == True %}
-                    <input type="submit" class="btn btn-primary btn-lg" value="공지사항 추가" onclick="submit_btn()">
-                    {% endif %}
                 </form>
             </div>
+            
+            <form action="{% url 'notice_new' %}" method="POST" enctype="multipart/form-data" name="edit" id="edit">
+                <div class="jumbotron">
+                    {% csrf_token %}
+                    <p class="lead">제목</p>
+                    <input name='title' class="title" type="text">
+                    <p class="lead">내용</p>
+                    <textarea name="content" cols="50" rows="10"></textarea>
+                    <p class="lead">마감일</p>
+                    <input name="end_date" class="date" type="date">
+                    <p class="lead">첨부파일</p>
+                    <input name="notice_file" type="file" multiple>
+                </div>
+                {% if user.is_superuser == True %}
+                <input type="submit" class="btn btn-primary btn-lg" value="공지사항 추가" onclick="submit_btn()">
+                {% endif %}
+            </form>
         </div>
+    </div>
     </div>
 
     <script>
