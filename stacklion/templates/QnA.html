@@ -93,17 +93,11 @@
                 {% csrf_token %}
                 <textarea class="question" name="question" rows="10" style="width:100%;"
                     placeholder="질문을 입력해주세요."></textarea><br>
-                <table class="UploadQuestion">
-                    <tr>
-                        <td>
-                            <input type="file" name="question_file" class="FileButton" multiple>
-                        </td>
-                        <td>
-                            <input class="button" id="SendButton" type="submit" value="등록">
-                        </td>
-                    </tr>
-                    <output id="list"></output>
-                </table>
+                <div class="d-flex justify-content-between align-items-center w-100 mt-2">
+                    <input type="file" name="question_file" class="FileButton" multiple>
+                    <input class="button" id="SendButton" type="submit" value="등록">
+                </div>
+                <output id="list"></output>
             </form>
         </main>
         <!--footer html-->
@@ -152,9 +146,11 @@
                     {% csrf_token %}
                     <input type="hidden" name="val" value="answer" />
                     <input type="hidden" value="{{ question.id }}" name="question_id">
-                    <textarea class="answer"
-                        name="answer" rows="2" placeholder="답변을 입력해주세요."></textarea>
-                    <input type="submit" class="SubmitButton" class="button" value="등록">
+                    <div class="d-flex justify-content-center align-items-end flex-column answer-wrap">
+                        <textarea class="answer"
+                            name="answer" rows="2" placeholder="답변을 입력해주세요."></textarea>
+                        <input type="submit" class="SubmitButton" class="button" value="등록">
+                    </div>
                 </form>
 
                 {% for answer in question.answers.all %}
