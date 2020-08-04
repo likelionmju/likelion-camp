@@ -8,4 +8,5 @@ urlpatterns = [
     path('detail/<int:id>', views.detail, name='detail'),
     path('notice_new', views.noticenew, name='notice_new'),
     path('submit/<int:id>', views.submit, name="submit"),
+    path('revise/<int:id>', views.revise, name="revise"),
 ]

@@ -59,6 +59,30 @@ def noticenew(request):
     else:
         return render(request,'notice_new.html')
 
+
+def revise(request, id):
+    if request.method == 'POST':
+        if request.POST['submit'] == '확인':
+            sub_id = request.POST['id']
+            submission = get_object_or_404(Submission, pk=sub_id)
+            submission.register_content = request.POST['revise']
+            # 나중에 파일도 해줄 것
+            submission.save()
+
+            filelist = request.POST.getlist('filedelete')
+            print(filelist)
+            if filelist != None:
+                for f in filelist:
+                    file = get_object_or_404(SubmissionFiles, pk=f)
+                    file.delete()
+        if request.POST['submit'] == '삭제':
+            sub_id = request.POST['id']
+            submission = Submission.objects.get(pk=sub_id)
+            submission.delete()
+    return redirect('/hw/detail/' + str(id))
+
+
+
 def get_or_none(classmodel, **kwargs):
     try:
         return classmodel.objects.get(**kwargs)

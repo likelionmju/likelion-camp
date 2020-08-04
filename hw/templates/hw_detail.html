@@ -3,7 +3,6 @@
 
 {% block link %}{% static 'hw/css/hw_main.css' %}{% endblock %}
 {% block jqueryscript %}
-<<<<<<< HEAD
     <script>
         $(document).ready(function () {
             $('#ex_file').on('change', function () {
@@ -60,11 +59,10 @@
             $('#buttonpanel' + id).html('<button type="button" id="' + id +
                 '" class="button revise" value="수정">수정</button>\n' +
                 '                        <button type="submit" id="' + id +
-                '" class="button delete" value="삭제">삭제</button>');
+                '" class="button delete" name="submit" value="삭제">삭제</button>');
 
         });
     </script>
-=======
 <script>
     $(document).ready(function () {
         $('#ex_file').on('change', function () {
@@ -79,7 +77,6 @@
         })
     })
 </script>
->>>>>>> ae36ea663ac3aacb9fd0fe46eb57f2506b900804
 {% endblock %}
 
 {% block content %}
@@ -97,19 +94,20 @@
         </div>
     </div>
 
-<<<<<<< HEAD
     {% if submission != 0 %}
         <div id="여기에 쓰쟈">
             <h3>내가 제출한 과제</h3>
             <div>마감일 : {{ homework.end_date }}</div>
-            <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
+            <form action="{% url 'revise' homework.id%}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                <input type="hidden" name="id" value="{{ submission.id }}"/>
                 <div id="submission_content{{ submission.id }}">{{ submission.register_content }}</div>
                 <div class="filebox">
                     <div id="div_files">
 {#                        여기에 쓸 수 있지 않을까#}
                     </div>
                 </div>
+                <div id="filedelete" class="filedelete"></div>
                 <div id="real_files">
                     {% for sfile in submission.files.all %}
                         <div>
@@ -135,40 +133,6 @@
 
             </form>
         </div>
-=======
-    {% if check != 0 %}
-    <div class="container">
-        <h3>내가 제출한 과제</h3>
-        <div>마감일 : {{ homework.end_date }}</div>
-        <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ check.register_content }}
-            <div class="filebox">
-                <div id="div_files">
-                    {% for sfile in check.files.all %}
-                    <div>
-                        <a href="{{ sfile.file.url }}" download="" value=""
-                            style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;">
-                            <span class="icon solid fas fa-file"> {{ sfile.file }} </span>
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
-                {#                    <label for="ex_file">파일선택</label>#}
-                {#                    <input name="submission_files" type="file" id="ex_file" multiple>#}
-            </div>
-            <div id="file_list"></div>
-            <div class="input-group my-2">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">제출 내용</span>
-                </div>
-                <textarea class="form-control" readonly>{{ Submission.register_content }}</textarea>
-            </div>
-            <input class="btn btn-secondary" type="submit" value="수정">
-        </form>
-    </div>
-
->>>>>>> ae36ea663ac3aacb9fd0fe46eb57f2506b900804
     {% else %}
     <div>
         <h3>과제 제출 전</h3>

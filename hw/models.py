@@ -22,7 +22,7 @@ class Homework(models.Model):
 
 class Submission(models.Model):
     student = models.ForeignKey(User, on_delete=models.PROTECT)
-    homework_id = models.ForeignKey(Homework, on_delete=models.PROTECT, related_name="submission")
+    homework_id = models.ForeignKey(Homework, on_delete=models.CASCADE, related_name="submission")
     register_date = models.DateField('date published')
     register_content = models.TextField(blank=True, null=True)
 
@@ -31,7 +31,7 @@ class Submission(models.Model):
 
 class SubmissionFiles(models.Model):
     file = models.FileField(upload_to="homework/")
-    submission = models.ForeignKey(Submission, on_delete=models.PROTECT, related_name="files")
+    submission = models.ForeignKey(Submission, on_delete=models.CASCADE, related_name="files")
 
     def get_filename(self):
         fileName = str(self.file)[9:]

@@ -27,7 +27,7 @@ def QnA(request):
             return render(request, "QnA.html", {'questions': questions, 'top':top})
         elif request.POST['submit']=='삭제':
             id = request.POST['id']
-            question = get_object_or_404(Question, pk=id)
+            question = Question.objects.get(pk=id)
             question.delete()
             return redirect('/stacklion/')
     else:
