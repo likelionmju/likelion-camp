@@ -20,7 +20,8 @@ def hw_main(request):
         sub = get_or_none(Submission, homework_id=i)
         confirm[i]=sub
 
-    return render(request, "hw_main.html", {'homeworks':homeworks, 'confirm':confirm})
+    now = datetime.now()
+    return render(request, "hw_main.html", {'homeworks':homeworks, 'confirm':confirm, 'now':now})
 
 def detail(request, id):
     homework = get_object_or_404(Homework, pk=id)
@@ -43,7 +44,7 @@ def submit(request, id):
             SFile.submission = submission
             SFile.file = s_file
             SFile.save()
-        return redirect('/hw')
+        return redirect('/hw/detail/'+str(id))
 
 def noticenew(request):
     if request.method == 'POST':

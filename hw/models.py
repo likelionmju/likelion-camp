@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from django.utils.datetime_safe import date
+
 from account.models import User
 
 # Create your models here.
@@ -19,6 +21,8 @@ class Homework(models.Model):
 
     def __str__(self):
         return self.title
+    def is_past_due(self):
+        return date.today() > self.end_date
 
 class Submission(models.Model):
     student = models.ForeignKey(User, on_delete=models.PROTECT)

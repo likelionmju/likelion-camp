@@ -41,10 +41,10 @@
                         <td>{{ h.title }}</td>
                         <th scope="row">{{ h.end_date }}</th>
                         <td>
-                            {% if h.check == True %}
-                            진행중
-                            {% else %}
+                            {% if h.is_past_due %}
                             제출마감
+                            {% else %}
+                            진행중
                             {% endif %}
                         </td>
                         <td>
