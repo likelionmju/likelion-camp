@@ -56,7 +56,8 @@
 </head>
 
 {% block content %}
-    <body>
+
+<body>
     <!--header html-->
     <div class="shell">
         <header class="shell-header">
@@ -67,6 +68,7 @@
             <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <textarea class="question" name="question" rows="10" style="width:100%;"
+<<<<<<< HEAD
 <<<<<<< HEAD
                           placeholder="질문을 입력해주세요."></textarea><br>
                 <table style="border:none; margin-top: -20px; width: 95%;">
@@ -93,11 +95,20 @@
                     </tr>
                     <output id="list"></output>
                 </table>
+=======
+                    placeholder="질문을 입력해주세요."></textarea><br>
+                <div class="d-flex justify-content-between align-items-center w-100 mt-2">
+                    <input type="file" name="question_file" class="FileButton" multiple>
+                    <input class="button" id="SendButton" type="submit" value="등록">
+                </div>
+                <output id="list"></output>
+>>>>>>> 6e9a5fd7ae14af5d30b15304b7ea387c2067e7f4
             </form>
         </main>
         <!--footer html-->
         <footer class="shell-footer">
             {% for question in questions.all reversed %}
+<<<<<<< HEAD
                 <div id="{{ question.id }}" class="answer_form">
                     <h4 style="color: #FD6585;"><span class="asker"> {{ question.asker }} </span>님의 질문</h4>
                     <form action="{% url 'QnA' %}" method="post">
@@ -143,11 +154,48 @@
                                         </td>
                                     </tr>
                                 </table>
+=======
+            <div id="{{ question.id }}" class="answer_form">
+                <h4 style="color: #FD6585;"> <span class="asker"> {{ question.asker }} </span>님의 질문</h4>
+                <form action="{% url 'QnA' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ question.id }}" />
+                    <div id="question_content{{ question.id }}" class="QuestionContent">
+                        {{ question.question_content }}
+                    </div>
+                    <div id="div_files">
+                        {% for qfile in question.files.all %}
+                        <div>
+                            <a class="QuestionFiles" class="question_file{{ question.id }}" id="{{ qfile.id }}" href="{{ qfile.file.url }}"
+                                download="" value=""><span class="icon solid fas fa-file"> {{ qfile.file }}</span></a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="filedelete" class="filedelete"></div>
+                    {% if question.asker == user %}
+                    <div id="buttonpanel{{ question.id }}" name="revise">
+                        <table class="ModifyDeleteBox">
+                            <tr>
+                                <td>
+                                    <a id="QuestionPubDate">{{ question.pub_date }}</a>
+                                </td>
+                                <td>
+                                    <button type="button" id="{{ question.id }}" class="button revise" value="수정"
+                                        style="font-weight: 400;"> 수정 </button>
+                                </td>
+                                <td>
+                                    <button name="submit" type="submit" id="{{ question.id }}" class="button delete"
+                                        value="삭제" style="font-weight: 400;"> 삭제 </button>
+                                </td>
+                            </tr>
+                        </table>
+>>>>>>> 6e9a5fd7ae14af5d30b15304b7ea387c2067e7f4
 
-                            </div>
-                        {% endif %}
-                    </form>
+                    </div>
+                    {% endif %}
+                </form>
 
+<<<<<<< HEAD
                     <form action="{% url 'refresh' %}" method="post">
                         {% csrf_token %}
                         <input type="hidden" name="val" value="answer"/>
@@ -163,19 +211,38 @@
                         <input type="submit" id="SubmitButton"class="button" style="margin-left: 87%; margin-top: -50px;margin-bottom:10px; width: 60px; font-weight: 400; font-size: 14px;" value="등록">
 >>>>>>> ae36ea663ac3aacb9fd0fe46eb57f2506b900804
                     </form>
+=======
+                <form action="{% url 'refresh' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="val" value="answer" />
+                    <input type="hidden" value="{{ question.id }}" name="question_id">
+                    <div class="d-flex justify-content-center align-items-end flex-column answer-wrap">
+                        <textarea class="answer"
+                            name="answer" rows="2" placeholder="답변을 입력해주세요."></textarea>
+                        <input type="submit" class="SubmitButton" class="button" value="등록">
+                    </div>
+                </form>
+>>>>>>> 6e9a5fd7ae14af5d30b15304b7ea387c2067e7f4
 
-                    {% for answer in question.answers.all %}
-                        <div name="comment" style="margin:5px;">
-                            <h4 style="color:#0D25B9 ;">답변</h4>
-                            <a style=" font-weight: bold;">【</a><a style=" font-weight: bold;">{{ answer.answerer }}</a><a
-                                style=" font-weight: bold;">】</a>
-                            {{ answer.answer_content }}
-                        </div>
-                    {% endfor %}
+                {% for answer in question.answers.all %}
+                <div name="comment" style="margin:5px;">
+                    <h4 style="color:#0D25B9 ;">답변</h4>
+                    <a style=" font-weight: bold;">【</a><a style=" font-weight: bold;">{{ answer.answerer }}</a><a
+                        style=" font-weight: bold;">】</a>
+                    {{ answer.answer_content }}
                 </div>
+                {% endfor %}
+            </div>
 
             {% endfor %}
         </footer>
     </div>
+<<<<<<< HEAD
     </body>
 {% endblock %}
+=======
+</body>
+{% endblock %}
+
+</html>
+>>>>>>> 6e9a5fd7ae14af5d30b15304b7ea387c2067e7f4
