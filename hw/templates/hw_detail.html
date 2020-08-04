@@ -13,9 +13,55 @@
                 $('#file_list').empty();
                 $.each(names, function (i, name) {
                     $('#file_list').append("<div>" + name + "</div>");
-                });
+                })
             })
         })
+
+        $(document).on('click', '.filedelete', function (item) {
+            var fileid = $(this).attr('id');
+            console.log(fileid);
+            $('#filedelete').append('<input type="hidden" value="' + fileid + '" name="filedelete" />');
+            $('#div' + fileid).remove();
+        })
+
+        $(document).on('click', '.revise', function () {
+            var id = $(this).attr("id");
+            var content = $('#submission_content' + id).html();
+            var top = $('#submission_content' + id).position().top;
+            var inner_div_files = ""
+            var files = $('.submission_file' + id).each(function (index, item) {
+                inner_div_files += '<div id="div' + $(item).attr('id') + '">' + $(item).html() +
+                    '<button id="' + $(item).attr('id') +
+                    '" class="filedelete" type="button">삭제</button><br></div>'
+            });
+            console.log(files);
+            $('#real_files').attr('hidden', true);
+            $('#div_files').html(inner_div_files);
+
+            $('#submission_content' + id).replaceWith('<textarea name="revise" id="textarea' + id + '">' +
+                content + '</textarea>');
+            $('#buttonpanel' + id).html('<button type="button" id="' + id +
+                '" class="button cancel" value="취소">취소</button>\n' +
+                '                        <button name="submit" type="submit" id="' + id +
+                '" class="button complete" value="확인">확인</button>' +
+                '<input type="hidden" name="scrolltop" value="' + top + '"/>');
+        })
+
+        $(document).on('click', '.cancel', function () {
+            var id = $(this).attr("id");
+            console.log(id);
+            var content = $('#textarea' + id).html();
+            console.log(content);
+            $('#div_files').html('');
+            $('#real_files').removeAttr('hidden');
+
+            $('#textarea' + id).replaceWith('<div id="submission_content' + id + '">' + content + '</div>');
+            $('#buttonpanel' + id).html('<button type="button" id="' + id +
+                '" class="button revise" value="수정">수정</button>\n' +
+                '                        <button type="submit" id="' + id +
+                '" class="button delete" value="삭제">삭제</button>');
+
+        });
     </script>
 {% endblock %}
 
@@ -34,27 +80,41 @@
         </div>
     </div>
 
-    {% if check != 0 %}
+    {% if submission != 0 %}
         <div id="여기에 쓰쟈">
             <h3>내가 제출한 과제</h3>
             <div>마감일 : {{ homework.end_date }}</div>
             <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ check.register_content }}
+                <div id="submission_content{{ submission.id }}">{{ submission.register_content }}</div>
                 <div class="filebox">
                     <div id="div_files">
-                        {% for sfile in check.files.all %}
-                            <div>
-                                <a href="{{ sfile.file.url }}"
-                                   download="" value="" style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span class="icon solid fas fa-file"> {{ sfile.file }}</span></a>
-                            </div>
-                        {% endfor %}
+{#                        여기에 쓸 수 있지 않을까#}
                     </div>
-                    {#                    <label for="ex_file">파일선택</label>#}
-                    {#                    <input name="submission_files" type="file" id="ex_file" multiple>#}
+                </div>
+                <div id="real_files">
+                    {% for sfile in submission.files.all %}
+                        <div>
+                            <a class="submission_file{{ submission.id }}" id="{{ sfile.id }}"
+                               href="{{ sfile.file.url }}"
+                               download="" value=""
+                               style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span
+                                    class="icon solid fas fa-file"> {{ sfile.file }}</span></a>
+                        </div>
+                    {% endfor %}
                 </div>
                 <div id="file_list"></div>
-                <input type="submit" value="수정"/>
+
+                {# 수정/삭제 --> 취소/확인 버튼으로 바뀌는 구간#}
+                <div id="buttonpanel{{ submission.id }}">
+                    <button type="button" id="{{ submission.id }}" class="button revise"
+                            value="수정" style="font-weight: 400;"> 수정
+                    </button>
+                    <button name="submit" type="submit" id="{{ submission.id }}"
+                            class="button delete" value="삭제" style="font-weight: 400;"> 삭제
+                    </button>
+                </div>
+
             </form>
         </div>
     {% else %}

@@ -24,11 +24,11 @@ def main(request):
 
 def detail(request, id):
     homework = get_object_or_404(Homework, pk=id)
-    check = get_or_none(Submission, homework_id=homework)
-    if check == None:
-        check = 0
+    submission = get_or_none(Submission, homework_id=homework)
+    if submission == None:
+        submission = 0
 
-    return render(request, "hw_detail.html", {'homework':homework, 'check':check})
+    return render(request, "hw_detail.html", {'homework':homework, 'submission':submission})
 
 def submit(request, id):
     if request.method == 'POST':
