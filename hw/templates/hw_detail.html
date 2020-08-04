@@ -29,7 +29,7 @@
                 <span>마감일 : {{ homework.end_date }}</span>
             </div>
             <div class="jumbotron">
-                여기에 공지사항 내용 쓸거임 ㅇㅇ {{ homework.content }}
+                {{ homework.content }}
             </div>
         </div>
     </div>
@@ -46,8 +46,9 @@
                     {% for sfile in check.files.all %}
                     <div>
                         <a href="{{ sfile.file.url }}" download="" value=""
-                            style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span
-                                class="icon solid fas fa-file"> {{ sfile.file }}</span></a>
+                            style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;">
+                            <span class="icon solid fas fa-file"> {{ sfile.file }} </span>
+                        </a>
                     </div>
                     {% endfor %}
                 </div>
@@ -55,7 +56,13 @@
                 {#                    <input name="submission_files" type="file" id="ex_file" multiple>#}
             </div>
             <div id="file_list"></div>
-            <button class="btn btn-secondary" type="submit">수정</button>
+            <div class="input-group my-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">제출 내용</span>
+                </div>
+                <textarea class="form-control" readonly>{{ Submission.register_content }}</textarea>
+            </div>
+            <input class="btn btn-secondary" type="submit" value="수정">
         </form>
     </div>
 
@@ -71,7 +78,7 @@
                 <input name="submission_files" type="file" id="ex_file" multiple>
             </div>
             <div id="file_list"></div>
-            <button class="btn btn-secondary" type="submit">제출</button>
+            <input class="btn btn-secondary" type="submit" value="제출">
         </form>
     </div>
     {% endif %}
