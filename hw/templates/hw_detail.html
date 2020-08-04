@@ -63,28 +63,25 @@
 
         });
     </script>
-<<<<<<< HEAD
-<script>
-    $(document).ready(function () {
-        $('#ex_file').on('change', function () {
-            var files = $('#ex_file').prop("files");
-            var names = $.map(files, function (val) {
-                return val.name;
-            });
-            $('#file_list').empty();
-            $.each(names, function (i, name) {
-                $('#file_list').append("<div>" + name + "</div>");
-            });
+    <script>
+        $(document).ready(function () {
+            $('#ex_file').on('change', function () {
+                var files = $('#ex_file').prop("files");
+                var names = $.map(files, function (val) {
+                    return val.name;
+                });
+                $('#file_list').empty();
+                $.each(names, function (i, name) {
+                    $('#file_list').append("<div>" + name + "</div>");
+                });
+            })
         })
-    })
-</script>
-=======
->>>>>>> 7c0fc8adae2fc42cbca1326799b07b2ca22dc951
+    </script>
 {% endblock %}
 
 {% block content %}
 
-<body>
+    <body>
     <div id="page-wrapper">
         <div id="featured" class="container">
             <div class="title">
@@ -101,13 +98,13 @@
         <div id="여기에 쓰쟈">
             <h3>내가 제출한 과제</h3>
             <div>마감일 : {{ homework.end_date }}</div>
-            <form action="{% url 'revise' homework.id%}" method="post" enctype="multipart/form-data">
+            <form action="{% url 'revise' homework.id %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="hidden" name="id" value="{{ submission.id }}"/>
                 <div id="submission_content{{ submission.id }}">{{ submission.register_content }}</div>
                 <div class="filebox">
                     <div id="div_files">
-{#                        여기에 쓸 수 있지 않을까#}
+                        {#                        여기에 쓸 수 있지 않을까#}
                     </div>
                 </div>
                 <div id="filedelete" class="filedelete"></div>
@@ -137,24 +134,24 @@
             </form>
         </div>
     {% else %}
-    <div>
-        <h3>과제 제출 전</h3>
-        <div>마감일 : {{ homework.end_date }}</div>
-        <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <textarea name="submission_content"></textarea><br>
-            <div class="filebox">
-                <label for="ex_file">파일선택</label>
-                <input name="submission_files" type="file" id="ex_file" multiple>
-            </div>
-            <div id="file_list"></div>
-            <input class="btn btn-secondary" type="submit" value="제출">
-        </form>
-    </div>
+        <div>
+            <h3>과제 제출 전</h3>
+            <div>마감일 : {{ homework.end_date }}</div>
+            <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <textarea name="submission_content"></textarea><br>
+                <div class="filebox">
+                    <label for="ex_file">파일선택</label>
+                    <input name="submission_files" type="file" id="ex_file" multiple>
+                </div>
+                <div id="file_list"></div>
+                <input class="btn btn-secondary" type="submit" value="제출">
+            </form>
+        </div>
     {% endif %}
 
     <div id="copyright">
         <p>&copy; MJU X LIKELION 8th | All rights reserved. </p>
     </div>
-</body>
+    </body>
 {% endblock %}
