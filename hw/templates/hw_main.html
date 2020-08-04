@@ -36,13 +36,16 @@
                 </thead>
                 <tbody>
                     {% for h in homeworks.all reversed %}
-                    <tr onclick="location.href='{% url 'detail' h.id %}'" style="cursor:pointer;">
+                    <tr id="clickable_div" onclick="location.href='{% url 'detail' h.id %}'" style="cursor:pointer;">
                         <th scope="row">{{ h.id }}</th>
                         <td>{{ h.title }}</td>
                         <th scope="row">{{ h.end_date }}</th>
                         <td>
                             {% if h.is_past_due %}
                             제출마감
+                                <script type="text/javascript">
+                                    $('#clickable_div').removeAttr('onclick');
+                                </script>
                             {% else %}
                             진행중
                             {% endif %}
