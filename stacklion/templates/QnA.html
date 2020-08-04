@@ -78,13 +78,13 @@
                 {% csrf_token %}
                 <textarea class="question" name="question" rows="10" style="width:100%;"
                 placeholder="질문을 입력해주세요."></textarea><br>
-                <table style="border:none; width: 100%;">
+                <table id="UploadQuestion">
                     <tr>
                         <td>
-                            <input type="file" name="question_file" style="border: none; font-weight: 400;margin-bottom: 10px;" multiple>
+                            <input type="file" name="question_file" id="FileButton" multiple>
                         </td>
                         <td>
-                            <input class="button" style="margin-left: 70%; font-weight: 400;margin-bottom:10px; width: 55px;" type="submit" value="등록">         
+                            <input class="button" id="SendButton"  type="submit" value="등록">         
                         </td>
                     </tr>
                     <output id="list"></output>
@@ -112,10 +112,10 @@
                         <div id="filedelete" class="filedelete"></div>
                         {% if question.asker == user %}
                             <div id="buttonpanel{{ question.id }}" name="revise">
-                                <table  class="ModifyDeleteBox" style="border:none; margin-top: 7px; margin-left: 71%;font-size: 14px; font-weight: 300; margin-right: 7%;">
+                                <table  class="ModifyDeleteBox">
                                     <tr>
                                         <td>
-                                            <a style="font-size: 14px;margin-right: 5px;color: rgb(71, 71, 71)">{{ question.pub_date }}</a>
+                                            <a id="QuestionPubDate">{{ question.pub_date }}</a>
                                         </td>
                                         <td>
                                             <button type="button" id="{{ question.id }}" class="button revise" value="수정" style="font-weight: 400;"> 수정 </button>

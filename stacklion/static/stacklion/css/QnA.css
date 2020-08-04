@@ -187,9 +187,45 @@ table{
       position: relative;
       float: right;
     }
+
+
+.UploadQuestion{
+  border:none !important;
+  width: 100%;
+}
 input.button{
   position: relative;
 }
+
+input.SendButton{
+  margin-left: 70%; 
+  font-weight: 400;
+  margin-bottom:10px; 
+  width: 55px;
+}
+
+input.FileButton{
+  border: none !important; 
+  font-weight: 400;
+  margin-bottom: 10px;
+
+}
+
+table.ModifyDeleteBox{
+  border:none; 
+  margin-top: 7px; 
+  margin-left: 71%;
+  font-size: 14px; 
+  font-weight: 300; 
+  margin-right: 7%;
+}
+
+a.QuestionPubDate{
+  font-size: 14px;
+  margin-right: 5px;
+  color: rgb(71, 71, 71);
+}
+
 
 @media screen and (min-width: 2560px){
   input.SubmitButton{
