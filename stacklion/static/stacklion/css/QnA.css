@@ -4,59 +4,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
+/* background and basic layout css */
 .shell {
-    display: grid;
-    grid-template-columns: 0 1fr 0;
-    grid-template-rows: auto 8em 1fr auto;
-  }
-  
-  @media (min-width: 600px) {
-    .shell {
-      grid-template-columns: 20px 1fr 20px;
-    }
-  }
-  
-  /* overlap */
-  .shell:before {
-    content: "";
-    grid-column: 1/-1;
-    grid-row: 1/3;
-    background-image: linear-gradient( 135deg, #FD6585 10%, #0D25B9 90%);
-  }
-  
-  .shell-header {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    color: white;
-    background-image: linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%);
-    padding: 35px 20px;
-    font-family: 'Noto Sans KR', sans-serif; 
-    font-weight: bolder;
-  }
-  h2,h4{
-    font-family: 'Noto Sans KR', sans-serif; 
-    font-weight: bolder;
+  display: grid;
+  grid-template-columns: 0 1fr 0;
+  grid-template-rows: auto 8em 1fr auto;
+}
 
+@media (min-width: 600px) {
+  .shell {
+    grid-template-columns: 20px 1fr 20px;
   }
-  .shell-body {
-    grid-row: 2 / 4;
-    grid-column: 2 / 3; 
-    min-height: 40vh;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.25);
-    background-color: #FFF;
+}
 
-  }
-  
-  .shell-footer {
-    grid-column: 2/3;
-    grid-row: -1;
-    padding: 20px; 
-  }
-  
-div.answer_form{
-  border: 1px  solid rgb(179, 179, 179);
+.shell:before {
+  content: "";
+  grid-column: 1/-1;
+  grid-row: 1/3;
+  background-image: linear-gradient(135deg, #FD6585 10%, #0D25B9 90%);
+}
+
+.shell-header {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  color: white;
+  background-image: linear-gradient(135deg, #FD6585 10%, #0D25B9 100%);
+  padding: 35px 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: bolder;
+}
+
+h2,
+h4 {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: bolder;
+}
+
+.shell-body {
+  grid-row: 2 / 4;
+  grid-column: 2 / 3;
+  min-height: 40vh;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+  background-color: #FFF;
+
+}
+
+.shell-footer {
+  grid-column: 2/3;
+  grid-row: -1;
+  padding: 20px;
+}
+
+/* make adjustments some stuff */
+div.answer_form {
+  border: 1px solid rgb(179, 179, 179);
   margin-bottom: 15px;
   padding-left: 45px;
   padding-top: 15px;
@@ -64,14 +67,21 @@ div.answer_form{
   padding-right: -30px;
   width: 95%;
   margin-left: calc(100%/50);
-}  
-button{
+}
+
+div.QuestionContent {
+  width: fit-content;
+  font-size: 15px;
+  width: 93%;
+}
+button {
   text-align: center;
   font-weight: 300;
   border: 0.5px solid black;
   width: 50px;
 }
-input{
+
+input {
   text-align: center;
   font-weight: 400;
   border: 0.5px solid black;
@@ -81,6 +91,74 @@ input{
   color: black;
 }
 
+table {
+  position: relative;
+  float: right;
+  border: none;
+}
+
+input.button {
+  position: relative;
+}
+
+@media screen and (min-width: 2560px) {
+  input.SubmitButton {
+    margin-left: 90% !important;
+    margin-top: -50px;
+    margin-bottom: 10px;
+    width: 60px;
+    font-weight: 400;
+    font-size: 14px;
+  }
+}
+
+input.SendButton {
+  margin-left: 70%;
+  font-weight: 400;
+  margin-bottom: 10px;
+  width: 55px;
+}
+
+input.FileButton {
+  border: none !important;
+  font-weight: 400;
+  margin-bottom: 10px;
+
+}
+
+table.ModifyDeleteBox {
+  border: none;
+  margin-top: 7px;
+  margin-left: 71%;
+  font-size: 14px;
+  font-weight: 300;
+  margin-right: 7%;
+}
+
+a.QuestionPubDate {
+  font-size: 14px;
+  margin-right: 5px;
+  color: rgb(71, 71, 71);
+}
+
+a.QuestionFiles {
+  color: rgb(151, 151, 151);
+  font-size: 13px;
+  font-weight: 300;
+}
+
+textarea.answer {
+  margin-top:20px;
+  margin-bottom: 10px; 
+  width:93%;
+  height: 30%;
+}
+
+.answer-wrap {
+  width: 93%;
+}
+
+
 /* Icon */
 
 .icon {
@@ -89,172 +167,101 @@ input{
   position: relative;
 }
 
-  .icon:before {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1;
-    text-transform: none !important;
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 400;
-  }
-
-  .icon > .label {
-    display: none;
-  }
-
-  .icon:before {
-    line-height: inherit;
-  }
-
-  .icon.solid:before {
-    font-weight: 900 !important;
-  }
-
-  .icon.brands:before {
-    font-family: 'Font Awesome 5 Brands';
-  }
-
-  .icon.style1:before {
-    color: #c3e895;
-  }
-
-  .icon.style2:before {
-    color: #8addaa;
-  }
-
-  .icon.style3:before {
-    color: #6bd4c8;
-  }
-
-  .icon.style4:before {
-    color: #57aed3;
-  }
-
-  .icon.style5:before {
-    color: #4a87d3;
-  }
-
-  .icon.style6:before {
-    color: #6b88e6;
-  }
-
-  .icon.html5:before {
-    color: #E65127;
-  }
-
-  .icon.css3:before {
-    color: #0C73B8;
-  }
-
-  .icon.bootstrap:before {
-    color: #824DCF;
-  }
-
-  .icon.js:before {
-    color: #E7A328;
-  }
-
-  .icon.major {
-    text-decoration: none;
-    color: #555;
-    cursor: default;
-    display: inline-block;
-    margin: 0 0 1.5em 0;
-  }
-
-    .icon.major:before {
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      display: inline-block;
-      font-style: normal;
-      font-variant: normal;
-      text-rendering: auto;
-      line-height: 1;
-      text-transform: none !important;
-      font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
-      font-weight: 400;
-    }
-
-    .icon.major:before {
-      font-size: 4em;
-      line-height: 1em;
-    }
-table{
-      position: relative;
-      float: right;
-    }
-
-input.button{
-  position: relative;
-}
-input.SubmitButton{
-  margin-bottom:10px;
-  width: 60px; 
-  font-weight: 400; 
-  font-size: 14px;
-}
-input.SendButton{
-  margin-left: 70%; 
+.icon:before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  text-transform: none !important;
+  font-family: 'Font Awesome 5 Free';
   font-weight: 400;
-  margin-bottom:10px; 
-  width: 55px;
 }
 
-input.FileButton{
-  border: none !important; 
-  font-weight: 400;
-  margin-bottom: 10px;
-
+.icon>.label {
+  display: none;
 }
 
-table.ModifyDeleteBox{
-  border:none; 
-  margin-top: 7px; 
-  margin-left: 71%;
-  font-size: 14px; 
-  font-weight: 300; 
-  margin-right: 7%;
+.icon:before {
+  line-height: inherit;
 }
 
-a.QuestionPubDate{
-  font-size: 14px;
-  margin-right: 5px;
-  color: rgb(71, 71, 71);
+.icon.solid:before {
+  font-weight: 500 !important;
 }
 
-a.QuestionFiles{
-  color: rgb(151, 151, 151);
-  font-size: 13px; 
+.icon.brands:before {
+  font-family: 'Font Awesome 5 Brands';
+}
+
+.icon.style1:before {
+  color: #c3e895;
+}
+
+.icon.style2:before {
+  color: #8addaa;
+}
+
+.icon.style3:before {
+  color: #6bd4c8;
+}
+
+.icon.style4:before {
+  color: #57aed3;
+}
+
+.icon.style5:before {
+  color: #4a87d3;
+}
+
+.icon.style6:before {
+  color: #6b88e6;
+}
+
+.icon.html5:before {
+  color: #E65127;
+}
+
+.icon.css3:before {
+  color: #0C73B8;
+}
+
+.icon.bootstrap:before {
+  color: #824DCF;
+}
+
+.icon.js:before {
+  color: #E7A328;
+}
+
+.icon.major {
+  text-decoration: none;
+  color: #555;
+  cursor: default;
+  display: inline-block;
+  margin: 0 0 1.5em 0;
+}
+
+.icon.major:before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  text-transform: none !important;
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
   font-weight: 300;
 }
-div.QuestionContent{
-  width:fit-content; 
-  font-size: 15px; 
-  width: 93%;
+
+.icon.major:before {
+  font-size: 4em;
+  line-height: 1em;
 }
 
-textarea.answer{
-  margin-top:20px;
-  margin-bottom: 10px; 
-  width: 100%;
-  height: 30%;
-}
 
-.answer-wrap{
-  width: 93%;
-}
 
-@media screen and (min-width: 2560px){
-  input.SubmitButton{
-    margin-left: 90% !important;
-    margin-top: -50px;
-    margin-bottom:10px; 
-    width: 60px; 
-    font-weight: 400; 
-    font-size: 14px;
-  }
-}
+

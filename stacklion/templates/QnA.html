@@ -89,18 +89,14 @@
                     <form action="{% url 'QnA' %}" method="post">
                         {% csrf_token %}
                         <input type="hidden" name="id" value="{{ question.id }}"/>
-                        <div id="question_content{{ question.id }}"
-                             style="width:fit-content; font-size: 15px; width: 93%;">{{ question.question_content }}
-                        </div>
+                        <div id="question_content{{ question.id }}" class="QuestionContent">{{ question.question_content }}</div>
 
                         <div id="div_files{{ question.id }}">
                             {% for qfile in question.files.all %}
-                                <div>
+                                <div >
                                     <a class="question_file{{ question.id }}" id="{{ qfile.id }}"
                                        href="{{ qfile.file.url }}"
-                                       download="" value=""
-                                       style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span
-                                            class="icon solid fas fa-file"> {{ qfile.file }}</span></a>
+                                       download="" value=""></a><span class="icon solid fas fa-file"> {{ qfile.file }}</span></a>
                                 </div>
                             {% endfor %}
                         </div>
@@ -134,17 +130,16 @@
                         {% csrf_token %}
                         <input type="hidden" name="val" value="answer"/>
                         <input type="hidden" value="{{ question.id }}" name="question_id">
-                        <textarea style="margin-top:20px;margin-bottom: 10px; width:93%;height: 30%;" class="answer"
-                                  name="answer" rows="2"
-                                  placeholder="답변을 입력해주세요."></textarea>
+                        <textarea  class="answer" name="answer" rows="2" placeholder="답변을 입력해주세요."></textarea>
                         <input type="submit" id="SubmitButton" class="button"
                                style="margin-left: 87%; margin-top: -50px;margin-bottom:10px; width: 60px; font-weight: 400; font-size: 14px;"
                                value="등록">
                     </form>
 
+                    <h4 style="color:#0D25B9 ;">답변</h4>
                     {% for answer in question.answers.all %}
+                    
                         <div name="comment" style="margin:5px;">
-                            <h4 style="color:#0D25B9 ;">답변</h4>
                             <a style=" font-weight: bold;">【</a><a style=" font-weight: bold;">{{ answer.answerer }}</a><a
                                 style=" font-weight: bold;">】</a>
                             {{ answer.answer_content }}
