@@ -19,9 +19,10 @@ def main(request):
 def detail(request, homework_id):
     homework = get_object_or_404(Homework, pk=homework_id)
     users = User.objects.all()
+    print(users)
     current_situations = []
     for user in users:
-        submission_user = Submission.objects.get(student=user.pk, homework_id=homework.pk)
+        submission_user = get_or_none(Submission, student=user.pk, homework_id=homework.pk)
         if submission_user is None:
             response_data = {'name': user.name, 'is_submit': False}
         else:
@@ -39,4 +40,10 @@ def detail(request, homework_id):
         current_situations.append(response_data)
 
     return render(request, template_name='hw_manage_detail.html', context={'title': homework.title,
-                                                                           'current_situations': current_situations})
+                                                                          'current_situations': current_situations})
+
+def get_or_none(classmodel, **kwargs):
+    try:
+        return classmodel.objects.get(**kwargs)
+    except classmodel.DoesNotExist:
+        return None
