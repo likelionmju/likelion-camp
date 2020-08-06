@@ -1,9 +1,5 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap");
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); .notosanskr * { font-family: 'Noto Sans KR', sans-serif; }
 
 /*
 	Photon by HTML5 UP
@@ -126,7 +122,6 @@ input, select, textarea {
 
 	a.nav-item, a.navbar-brand {
 		color:rgb(180, 179, 179);
-		font-family: "Noto Sans KR", sans-serif;
 		border-bottom: 0px #666;
 	}
 
