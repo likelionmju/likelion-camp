@@ -57,14 +57,16 @@
                 <a class="nav-item nav-link " href="{% url 'login' %}" onclick="loginwarning()">QnA</a>
                 {% endif %}
             </div>
+            <div class="navbar-nav flex ml-auto">
                 {% if user.is_authenticated %}
-                <a class="nav-item user">{{ user.name }}님</a>
-                <a class="nav-item nav-link ml-auto mr-1" name="logincheck" href="{% url 'logout' %}">
+                <a class="nav-item nav-link mr-2 user">{{ user.name }}님</a>
+                <a class="nav-item nav-link ml-auto mr-2" name="logincheck" href="{% url 'logout' %}">
                     로그아웃</a>
                 {% else %}
-                <a class="nav-item nav-link ml-auto mr-1" name="logincheck" href="{% url 'login' %}">
+                <a class="nav-item nav-link ml-auto mr-2" name="logincheck" href="{% url 'login' %}">
                     로그인</a>
                 {% endif %}
+            </div>
 
         </div>
     </nav>
