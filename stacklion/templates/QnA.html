@@ -93,9 +93,9 @@
 
                         <div id="div_files{{ question.id }}">
                             {% for qfile in question.files.all %}
-                                <div >
+                                <div class="QuestionFiles">
                                     <a class="question_file{{ question.id }}" id="{{ qfile.id }}"
-                                       href="{{ qfile.file.url }}"
+                                       href="{{ qfile.file.url }}" style="font-weight: 100;"
                                        download="" value=""></a><span class="icon solid fas fa-file"> {{ qfile.file }}</span></a>
                                 </div>
                             {% endfor %}
@@ -126,11 +126,12 @@
                         {% endif %}
                     </form>
 
+                    
                     <form action="{% url 'refresh' %}" method="post">
                         {% csrf_token %}
                         <input type="hidden" name="val" value="answer"/>
                         <input type="hidden" value="{{ question.id }}" name="question_id">
-                        <textarea  class="answer" name="answer" rows="2" placeholder="답변을 입력해주세요."></textarea>
+                        <textarea  class="answer" name="answer" rows="2" placeholder="한 번 답변하신 후에는 수정 및 삭제가 불가능하기 때문에 신중하게 답변해주시길 바랍니다."></textarea>
                         <input type="submit" id="SubmitButton" class="button"
                                style="margin-left: 87%; margin-top: -50px;margin-bottom:10px; width: 60px; font-weight: 400; font-size: 14px;"
                                value="등록">
