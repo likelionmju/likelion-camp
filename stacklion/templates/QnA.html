@@ -14,10 +14,12 @@
         $(document).on('click', '.revise', function () {
             var id = $(this).attr("id");
             var content = $('#question_content' + id).html();
+            console.log(content);
             var top = $('#question_content' + id).position().top;
             var inner_div_files = ""
             var files = $('.question_file' + id).each(function (index, item) {
-                inner_div_files += '<div id="div' + $(item).attr('id') + '">' + $(item).html() +
+                console.log($(item).html());
+                inner_div_files += '<div id="div' + $(item).attr('id') + '">' + $(item).children('.icon').html() +
                     '<button id="' + $(item).attr('id') +
                     '" class="filedelete" type="button">삭제</button><br></div>'
             });
@@ -96,7 +98,7 @@
                                 <div class="QuestionFiles">
                                     <a class="question_file{{ question.id }}" id="{{ qfile.id }}"
                                        href="{{ qfile.file.url }}" style="font-weight: 100;"
-                                       download="" value=""></a><span class="icon solid fas fa-file"> {{ qfile.file }}</span></a>
+                                       download="" value=""><span class="icon solid fas fa-file">{{ qfile.file }}</span></a>
                                 </div>
                             {% endfor %}
                         </div>

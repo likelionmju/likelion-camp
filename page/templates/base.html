@@ -47,7 +47,7 @@
                 <a class="nav-item nav-link " href="{% url 'hw_main' %}">Homework</a>
                 <a class="nav-item nav-link " href="{% url 'QnA' %}">QnA</a>
                     {% if user.is_superuser == True %}
-                        <a class="nav-item nav-link " href="{% url 'main' %}">관리</a>
+                        <a class="nav-item nav-link " href="{% url 'main' %}">관리div_files</a>
                     {% endif %}
                 {% else %}
                 <a class="nav-item nav-link " href="{% url 'home' %}">
