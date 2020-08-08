@@ -11,61 +11,60 @@
 *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
-body{
+body {
   font-family: 'Noto Sans KR', sans-serif;
-    background-color: black;
-		background-image: url("../images/bg.jpg");
-		background-size: cover;
-    background-position: top center;
-    color: white;
+  background-color: black;
+  background-image: url("../images/bg.jpg");
+  background-size: cover;
+  background-position: top center;
 }
 
 h2 {
-  color:rgba(255, 255, 255, 0.788);
-  margin-left:12px;
+  color: rgba(255, 255, 255, 0.788);
+  margin-left: 12px;
 }
 
 form {
-  position:relative;
+  position: relative;
   margin: 50px auto;
   width: 380px;
   height: auto;
 }
 
 .inputUserIcon {
-  position:absolute;
-  top:68px;
+  position: absolute;
+  top: 68px;
   right: 80px;
-  color : black;
+  color: black;
 }
 
 .inputPassIcon {
-  position:absolute;
-  top:136px;
+  position: absolute;
+  top: 136px;
   right: 80px;
-  color : black;
+  color: black;
 }
 
 input {
   padding: 16px;
-  border-radius:7px;
-  border:0px;
+  border-radius: 7px;
+  border: 0px;
   background: rgba(255, 255, 255, 0.788);
   display: block;
   margin: 15px;
-  width: 300px;  
-  color:rgb(0, 0, 0);
-  font-size:18px;
+  width: 300px;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
   height: 54px;
   font-weight: bold;
 }
 
-input:focus, :hover{
-  outline-color: rgba(0,0,0);
-  background: rgba(255,255,255,.95);
+input:focus-within {
+  outline-color: rgba(0, 0, 0);
+  caret-color:#721d8bbd;
   color: #721d8bbd;
 }
 
@@ -77,5 +76,3 @@ input::-webkit-input-placeholder {
 input:focus::-webkit-input-placeholder {
   color: #721d8bbd;
 }
-
-
