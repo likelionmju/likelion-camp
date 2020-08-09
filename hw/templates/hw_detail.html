@@ -1,7 +1,7 @@
 {% extends 'hw_main.html' %}
 {% load static %}
 
-{% block link %}{% static 'hw/css/hw_main.css' %}{% endblock %}
+{% block link %}{% static 'hw/css/hw_detail.css' %}{% endblock %}
 {% block jqueryscript %}
     <script>
         $(document).ready(function () {
@@ -95,8 +95,8 @@
     </div>
 
     {% if submission != 0 %}
-        <div id="여기에 쓰쟈">
-            <h3>내가 제출한 과제</h3>
+        <div class="mr-auto">
+            <h3 class="text-center">내가 제출한 과제</h3>
             <div>마감일 : {{ homework.end_date }}</div>
             <form action="{% url 'revise' homework.id %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}

@@ -1,3 +1,25 @@
+*:root {
+    --main-height: calc(100vh - 7rem);
+}
+
+.main {
+    height: var(--main-height);
+    width: 100vw;
+}
+
+.footer{
+    height: 3.5rem;
+    width: 100vw;
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-row-link{
+    cursor: pointer;
+}
+
 .filebox label {
     display: inline-block;
     padding: .5em .75em;
