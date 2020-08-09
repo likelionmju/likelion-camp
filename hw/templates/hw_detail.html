@@ -3,155 +3,234 @@
 
 {% block link %}{% static 'hw/css/hw_detail.css' %}{% endblock %}
 {% block jqueryscript %}
-    <script>
-        $(document).ready(function () {
-            $('#ex_file').on('change', function () {
-                var files = $('#ex_file').prop("files");
-                var names = $.map(files, function (val) {
-                    return val.name;
-                });
-                $('#file_list').empty();
-                $.each(names, function (i, name) {
-                    $('#file_list').append("<div>" + name + "</div>");
-                })
-            })
-        })
-
-        $(document).on('click', '.filedelete', function (item) {
-            var fileid = $(this).attr('id');
-            console.log(fileid);
-            $('#filedelete').append('<input type="hidden" value="' + fileid + '" name="filedelete" />');
-            $('#div' + fileid).remove();
-        })
-
-        $(document).on('click', '.revise', function () {
-            var id = $(this).attr("id");
-            var content = $('#submission_content' + id).html();
-            var top = $('#submission_content' + id).position().top;
-            var inner_div_files = ""
-            var files = $('.submission_file' + id).each(function (index, item) {
-                inner_div_files += '<div id="div' + $(item).attr('id') + '">' + $(item).html() +
-                    '<button id="' + $(item).attr('id') +
-                    '" class="filedelete" type="button">삭제</button><br></div>'
+<script>
+    $(document).ready(function () {
+        $('#ex_file').on('change', function () {
+            var files = $('#ex_file').prop("files");
+            var names = $.map(files, function (val) {
+                return val.name;
             });
-            console.log(files);
-            $('#real_files').attr('hidden', true);
-            $('#div_files').html(inner_div_files);
-
-            $('#submission_content' + id).replaceWith('<textarea name="revise" id="textarea' + id + '">' +
-                content + '</textarea>');
-            $('#buttonpanel' + id).html('<button type="button" id="' + id +
-                '" class="button cancel" value="취소">취소</button>\n' +
-                '                        <button name="submit" type="submit" id="' + id +
-                '" class="button complete" value="확인">확인</button>' +
-                '<input type="hidden" name="scrolltop" value="' + top + '"/>');
-        })
-
-        $(document).on('click', '.cancel', function () {
-            var id = $(this).attr("id");
-            console.log(id);
-            var content = $('#textarea' + id).html();
-            console.log(content);
-            $('#div_files').html('');
-            $('#real_files').removeAttr('hidden');
-
-            $('#textarea' + id).replaceWith('<div id="submission_content' + id + '">' + content + '</div>');
-            $('#buttonpanel' + id).html('<button type="button" id="' + id +
-                '" class="button revise" value="수정">수정</button>\n' +
-                '                        <button type="submit" id="' + id +
-                '" class="button delete" name="submit" value="삭제">삭제</button>');
-
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#ex_file').on('change', function () {
-                var files = $('#ex_file').prop("files");
-                var names = $.map(files, function (val) {
-                    return val.name;
-                });
-                $('#file_list').empty();
-                $.each(names, function (i, name) {
-                    $('#file_list').append("<div>" + name + "</div>");
-                });
+            $('#file_list').empty();
+            $.each(names, function (i, name) {
+                $('#file_list').append("<div>" + name + "</div>");
             })
         })
-    </script>
+    })
+
+    $(document).on('click', '.filedelete', function (item) {
+        var fileid = $(this).attr('id');
+        console.log(fileid);
+        $('#filedelete').append('<input type="hidden" value="' + fileid + '" name="filedelete" />');
+        $('#div' + fileid).remove();
+    })
+
+    $(document).on('click', '.revise', function () {
+        var id = $(this).attr("id");
+        var content = $('#submission_content' + id).html();
+        var top = $('#submission_content' + id).position().top;
+        var inner_div_files = ""
+        var files = $('.submission_file' + id).each(function (index, item) {
+            inner_div_files += '<div id="div' + $(item).attr('id') + '">' + $(item).html() +
+                '<button id="' + $(item).attr('id') +
+                '" class="filedelete" type="button">삭제</button><br></div>'
+        });
+        console.log(files);
+        $('#real_files').attr('hidden', true);
+        $('#div_files').html(inner_div_files);
+
+        $('#submission_content' + id).replaceWith('<textarea name="revise" id="textarea' + id + '">' +
+            content + '</textarea>');
+        $('#buttonpanel' + id).html('<button type="button" id="' + id +
+            '" class="button cancel" value="취소">취소</button>\n' +
+            '                        <button name="submit" type="submit" id="' + id +
+            '" class="button complete" value="확인">확인</button>' +
+            '<input type="hidden" name="scrolltop" value="' + top + '"/>');
+    })
+
+    $(document).on('click', '.cancel', function () {
+        var id = $(this).attr("id");
+        console.log(id);
+        var content = $('#textarea' + id).html();
+        console.log(content);
+        $('#div_files').html('');
+        $('#real_files').removeAttr('hidden');
+
+        $('#textarea' + id).replaceWith('<div id="submission_content' + id + '">' + content + '</div>');
+        $('#buttonpanel' + id).html('<button type="button" id="' + id +
+            '" class="button revise" value="수정">수정</button>\n' +
+            '                        <button type="submit" id="' + id +
+            '" class="button delete" name="submit" value="삭제">삭제</button>');
+
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#ex_file').on('change', function () {
+            var files = $('#ex_file').prop("files");
+            var names = $.map(files, function (val) {
+                return val.name;
+            });
+            $('#file_list').empty();
+            $.each(names, function (i, name) {
+                $('#file_list').append("<div>" + name + "</div>");
+            });
+        })
+    })
+</script>
 {% endblock %}
 
 {% block content %}
 
-    <body>
-    <div id="page-wrapper">
-        <div id="featured" class="container">
-            <div class="title">
-                <h2>{{ homework.title }}</h2>
-                <span>마감일 : {{ homework.end_date }}</span>
+<main class="main d-flex align-content-center justify-content-center flex-wrap my-3">
+    <h1 class="display-4 text-center w-75 mt-5">{{ homework.title }}</h1>
+    <hr class="w-75 my-5">
+
+    <div class="list-group w-75">
+        <div class="input-group my-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">마감일</span>
             </div>
-            <div class="jumbotron">
-                {{ homework.content }}
+            <input class="form-control" value="{{ homework.end_date }}" readonly>
+        </div>
+        <div class="input-group my-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">과제설명</span>
             </div>
+            <textarea class="form-control" readonly> {{ homework.content }} </textarea>
+        </div>
+        <div class="input-group my-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">제출여부</span>
+            </div>
+            {% if submission != 0 %}
+            <span class="form-control text-primary" readonly>제출완료</span>
+            {% else %}
+            <span class="form-control text-danger" readonly>미제출</span>
+            {% endif %}
         </div>
     </div>
+</main>
 
-    {% if submission != 0 %}
-        <div class="mr-auto">
-            <h3 class="text-center">내가 제출한 과제</h3>
-            <div>마감일 : {{ homework.end_date }}</div>
+<section class="d-flex align-content-center justify-content-center flex-wrap">
+    <div class="list-group w-75">
+        <div class="input-group my-2">
+
+            {% if submission != 0 %}
+            <hr class="w-100">
             <form action="{% url 'revise' homework.id %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input type="hidden" name="id" value="{{ submission.id }}"/>
-                <div id="submission_content{{ submission.id }}">{{ submission.register_content }}</div>
+                <input type="hidden" name="id" value="{{ submission.id }}" />
+                <div class="input-group my-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">제출내용</span>
+                    </div>
+                    <textarea class="form-control" id="submission_content{{ submission.id }}" readonly>{{ submission.register_content }}</textarea>
+                </div>
                 <div class="filebox">
                     <div id="div_files">
-                        {#                        여기에 쓸 수 있지 않을까#}
+                        {# 여기에 쓸 수 있지 않을까#}
                     </div>
                 </div>
                 <div id="filedelete" class="filedelete"></div>
                 <div id="real_files">
                     {% for sfile in submission.files.all %}
-                        <div>
-                            <a class="submission_file{{ submission.id }}" id="{{ sfile.id }}"
-                               href="{{ sfile.file.url }}"
-                               download="" value=""
-                               style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span
-                                    class="icon solid fas fa-file"> {{ sfile.file }}</span></a>
-                        </div>
+                    <div>
+                        <a class="submission_file{{ submission.id }}" id="{{ sfile.id }}" href="{{ sfile.file.url }}"
+                            download="" value=""
+                            style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span
+                                class="icon solid fas fa-file"> {{ sfile.file }}</span></a>
+                    </div>
                     {% endfor %}
                 </div>
                 <div id="file_list"></div>
 
                 {# 수정/삭제 --> 취소/확인 버튼으로 바뀌는 구간#}
-                <div id="buttonpanel{{ submission.id }}">
-                    <button type="button" id="{{ submission.id }}" class="button revise"
-                            value="수정" style="font-weight: 400;"> 수정
-                    </button>
-                    <button name="submit" type="submit" id="{{ submission.id }}"
-                            class="button delete" value="삭제" style="font-weight: 400;"> 삭제
-                    </button>
+                <div class="my-3" id="buttonpanel{{ submission.id }}">
+                    <button type="button" id="{{ submission.id }}" class="button revise btn btn-secondary" value="수정">수정</button>
+                    <button name="submit" type="submit" id="{{ submission.id }}" class="button delete btn btn-danger" value="삭제">삭제</button>
                 </div>
-
             </form>
-        </div>
-    {% else %}
-        <div>
-            <h3>과제 제출 전</h3>
-            <div>마감일 : {{ homework.end_date }}</div>
-            <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <textarea name="submission_content"></textarea><br>
-                <div class="filebox">
-                    <label for="ex_file">파일선택</label>
-                    <input name="submission_files" type="file" id="ex_file" multiple>
-                </div>
-                <div id="file_list"></div>
-                <input class="btn btn-secondary" type="submit" value="제출">
-            </form>
-        </div>
-    {% endif %}
 
-    <div id="copyright">
-        <p>&copy; MJU X LIKELION 8th | All rights reserved. </p>
+            {% else %}
+                <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                        <h2 class="w-100">과제 제출</h2>
+                        <textarea class="form-control" name="submission_content" rows="3"></textarea>
+                        <div class="form-group">
+                            <input class="form-control" name="submission_files" type="file" id="ex_file" multiple>
+                        </div>
+                        <div id="file_list">
+                            
+                        </div>
+                        <input class="btn btn-secondary" type="submit" value="제출">
+                </form>
+
+     
+            
+            {% endif %}
+        </div>
     </div>
-    </body>
+
+</main>
+    
+
+
+    <!-- {% if submission != 0 %}
+    <div class="mr-auto">
+        <h3 class="text-center">내가 제출한 과제</h3>
+        <div>마감일 : {{ homework.end_date }}</div>
+        <form action="{% url 'revise' homework.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ submission.id }}" />
+            <div id="submission_content{{ submission.id }}">{{ submission.register_content }}</div>
+            <div class="filebox">
+                <div id="div_files">
+                    {#                        여기에 쓸 수 있지 않을까#}
+                </div>
+            </div>
+            <div id="filedelete" class="filedelete"></div>
+            <div id="real_files">
+                {% for sfile in submission.files.all %}
+                <div>
+                    <a class="submission_file{{ submission.id }}" id="{{ sfile.id }}" href="{{ sfile.file.url }}"
+                        download="" value=""
+                        style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span
+                            class="icon solid fas fa-file"> {{ sfile.file }}</span></a>
+                </div>
+                {% endfor %}
+            </div>
+            <div id="file_list"></div>
+
+            {# 수정/삭제 --> 취소/확인 버튼으로 바뀌는 구간#}
+    <div id="buttonpanel{{ submission.id }}">
+        <button type="button" id="{{ submission.id }}" class="button revise" value="수정" style="font-weight: 400;"> 수정
+        </button>
+        <button name="submit" type="submit" id="{{ submission.id }}" class="button delete" value="삭제"
+            style="font-weight: 400;"> 삭제
+        </button>
+    </div>
+
+    </form>
+    </div>
+    {% else %}
+    <div>
+        <h3>과제 제출 전</h3>
+        <div>마감일 : {{ homework.end_date }}</div>
+        <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <textarea name="submission_content"></textarea><br>
+            <div class="filebox">
+                <label for="ex_file">파일선택</label>
+                <input name="submission_files" type="file" id="ex_file" multiple>
+            </div>
+            <div id="file_list"></div>
+            <input class="btn btn-secondary" type="submit" value="제출">
+        </form>
+    </div>
+    {% endif %} -->
+
+<div class="footer bg-dark">
+    <div class="text-light">&copy; MJU X LIKELION 8th | All rights reserved. </div>
+</div>
 {% endblock %}
