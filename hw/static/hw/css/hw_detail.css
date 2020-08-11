@@ -2,7 +2,7 @@
     --main-height: calc(100vh - 7rem);
 }
 
-.main, .footer {
+.main, .footer, .section {
     height: auto;
     width: 100vw;
 }

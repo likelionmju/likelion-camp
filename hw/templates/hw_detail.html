@@ -86,92 +86,101 @@
     <hr class="w-75 my-5">
 
     <div class="list-group w-75">
-        <div class="input-group my-2">
-            <div class="input-group-prepend">
-                <span class="input-group-text">마감일</span>
-            </div>
-            <input class="form-control" value="{{ homework.end_date }}" readonly>
-        </div>
-        <div class="input-group my-2">
-            <div class="input-group-prepend">
-                <span class="input-group-text">과제설명</span>
-            </div>
-            <textarea class="form-control" readonly> {{ homework.content }} </textarea>
-        </div>
-        <div class="input-group my-2">
-            <div class="input-group-prepend">
-                <span class="input-group-text">제출여부</span>
-            </div>
-            {% if submission != 0 %}
-            <span class="form-control text-primary" readonly>제출완료</span>
-            {% else %}
-            <span class="form-control text-danger" readonly>미제출</span>
-            {% endif %}
-        </div>
-    </div>
-</main>
-
-<section class="d-flex align-content-center justify-content-center flex-wrap">
-    <div class="list-group w-75">
-        <div class="input-group my-2">
-            <h2 class="w-100">과제 제출</h2>
-            <hr class="w-100">
-            {% if submission != 0 %}
-            <form action="{% url 'revise' homework.id %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <input type="hidden" name="id" value="{{ submission.id }}" />
+        <div class="card">
+            <h3 class="card-header">과제정보</h3>
+            <div class="card-body">
                 <div class="input-group my-2">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">제출내용</span>
+                        <span class="input-group-text">마감일</span>
                     </div>
-                    <textarea class="form-control" id="submission_content{{ submission.id }}" readonly>{{ submission.register_content }}</textarea>
+                    <input class="form-control" value="{{ homework.end_date }}" readonly>
                 </div>
-                <div class="filebox">
-                    <div id="div_files">
-                        {# 여기에 쓸 수 있지 않을까#}
+                <div class="input-group my-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">과제설명</span>
                     </div>
+                    <textarea class="form-control" readonly> {{ homework.content }} </textarea>
                 </div>
-                <div id="filedelete" class="filedelete"></div>
-                <div id="real_files">
-                    {% for sfile in submission.files.all %}
-                    <div>
-                        <a class="submission_file{{ submission.id }}" id="{{ sfile.id }}" href="{{ sfile.file.url }}"
-                            download="" value=""
-                            style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span
-                                class="icon solid fas fa-file"> {{ sfile.file }}</span></a>
+                <div class="input-group my-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">제출여부</span>
                     </div>
-                    {% endfor %}
+                    {% if submission != 0 %}
+                    <span class="form-control text-primary" readonly>제출완료</span>
+                    {% else %}
+                    <span class="form-control text-danger" readonly>미제출</span>
+                    {% endif %}
                 </div>
-                <div id="file_list"></div>
-
-                {# 수정/삭제 --> 취소/확인 버튼으로 바뀌는 구간#}
-                <div class="my-3" id="buttonpanel{{ submission.id }}">
-                    <button type="button" id="{{ submission.id }}" class="button revise btn btn-secondary" value="수정">수정</button>
-                    <button name="submit" type="submit" id="{{ submission.id }}" class="button delete btn btn-danger" value="삭제">삭제</button>
-                </div>
-            </form>
-
-            {% else %}
-                <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                        <textarea class="form-control" name="submission_content" rows="3"></textarea>
-                        <div class="form-group">
-                            <input class="form-control" name="submission_files" type="file" id="ex_file" multiple>
-                        </div>
-                        <div id="file_list">
-                            
-                        </div>
-                        <input class="btn btn-secondary" type="submit" value="제출">
-                </form>
-
-     
-            
-            {% endif %}
+            </div>
         </div>
     </div>
-
 </main>
-    
+
+<section class="d-flex align-content-center justify-content-center flex-wrap my-3">
+    <div class="list-group w-75">
+        <div class="card">
+            <h3 class="card-header">과제제출</h3>
+            <div class="card-body">
+                {% if submission != 0 %}
+                <form action="{% url 'revise' homework.id %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ submission.id }}" />
+                    <div class="input-group my-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">제출내용</span>
+                        </div>
+                        <textarea class="form-control" id="submission_content{{ submission.id }}"
+                            readonly>{{ submission.register_content }}</textarea>
+                    </div>
+                    <div class="filebox">
+                        <div id="div_files">
+                            {# 여기에 쓸 수 있지 않을까#}
+                        </div>
+                    </div>
+                    <div id="filedelete" class="filedelete"></div>
+                    <div id="real_files">
+                        {% for sfile in submission.files.all %}
+                        <div>
+                            <a class="submission_file{{ submission.id }}" id="{{ sfile.id }}"
+                                href="{{ sfile.file.url }}" download="" value=""
+                                style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span
+                                    class="icon solid fas fa-file"> {{ sfile.file }}</span></a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="file_list"></div>
+
+                    {# 수정/삭제 --> 취소/확인 버튼으로 바뀌는 구간#}
+                    <div class="my-3 float-right" id="buttonpanel{{ submission.id }}">
+                        <button type="button" id="{{ submission.id }}" class="button revise btn btn-secondary"
+                            value="수정">수정</button>
+                        <button name="submit" type="submit" id="{{ submission.id }}"
+                            class="button delete btn btn-danger" value="삭제">삭제</button>
+                    </div>
+                </form>
+
+                {% else %}
+                <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <textarea class="form-control" name="submission_content" rows="3"></textarea>
+                    <div class="form-group">
+                        <input class="form-control" name="submission_files" type="file" id="ex_file" multiple>
+                    </div>
+                    <div id="file_list">
+
+                    </div>
+                    <input class="btn btn-primary float-right" type="submit" value="제출">
+                </form>
+
+
+
+                {% endif %}
+            </div>
+        </div>
+       
+
+    </section>
+
 
 
     <!-- {% if submission != 0 %}
@@ -228,7 +237,7 @@
     </div>
     {% endif %} -->
 
-<div class="footer bg-dark">
-    <div class="text-light">&copy; MJU X LIKELION 8th | All rights reserved. </div>
-</div>
-{% endblock %}
+    <div class="footer bg-dark">
+        <div class="text-light">&copy; MJU X LIKELION 8th | All rights reserved. </div>
+    </div>
+    {% endblock %}
