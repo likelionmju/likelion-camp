@@ -114,9 +114,9 @@
 <section class="d-flex align-content-center justify-content-center flex-wrap">
     <div class="list-group w-75">
         <div class="input-group my-2">
-
-            {% if submission != 0 %}
+            <h2 class="w-100">과제 제출</h2>
             <hr class="w-100">
+            {% if submission != 0 %}
             <form action="{% url 'revise' homework.id %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="hidden" name="id" value="{{ submission.id }}" />
@@ -154,8 +154,6 @@
             {% else %}
                 <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    
-                        <h2 class="w-100">과제 제출</h2>
                         <textarea class="form-control" name="submission_content" rows="3"></textarea>
                         <div class="form-group">
                             <input class="form-control" name="submission_files" type="file" id="ex_file" multiple>
