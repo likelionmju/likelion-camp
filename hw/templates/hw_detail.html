@@ -38,12 +38,12 @@
         $('#real_files').attr('hidden', true);
         $('#div_files').html(inner_div_files);
 
-        $('#submission_content' + id).replaceWith('<textarea name="revise" id="textarea' + id + '">' +
+        $('#submission_content' + id).replaceWith('<textarea class="form-control" name="revise" id="textarea'+ id + '">' +
             content + '</textarea>');
         $('#buttonpanel' + id).html('<button type="button" id="' + id +
-            '" class="button cancel" value="취소">취소</button>\n' +
+            '" class="button cancel btn btn-secondary" value="취소">취소</button>\n' +
             '                        <button name="submit" type="submit" id="' + id +
-            '" class="button complete" value="확인">확인</button>' +
+            '" class="button complete btn btn-primary" value="확인">확인</button>' +
             '<input type="hidden" name="scrolltop" value="' + top + '"/>');
     })
 
@@ -55,11 +55,11 @@
         $('#div_files').html('');
         $('#real_files').removeAttr('hidden');
 
-        $('#textarea' + id).replaceWith('<div id="submission_content' + id + '">' + content + '</div>');
+        $('#textarea' + id).replaceWith('<textarea class="form-control" id="submission_content' + id + '" readonly>' + content + '</textarea>');
         $('#buttonpanel' + id).html('<button type="button" id="' + id +
-            '" class="button revise" value="수정">수정</button>\n' +
+            '" class="button revise btn btn-secondary" value="수정">수정</button>\n' +
             '                        <button type="submit" id="' + id +
-            '" class="button delete" name="submit" value="삭제">삭제</button>');
+            '" class="button delete btn btn-danger" name="submit" value="삭제">삭제</button>');
 
     });
 </script>
