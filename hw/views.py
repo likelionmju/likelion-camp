@@ -1,3 +1,5 @@
+from builtins import str
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.conf import settings
@@ -43,6 +45,7 @@ def submit(request, id):
             SFile = SubmissionFiles()
             SFile.submission = submission
             SFile.file = s_file
+            SFile.fileName = str(s_file)
             SFile.save()
         return redirect('/hw/detail/'+str(id))
 

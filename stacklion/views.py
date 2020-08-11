@@ -1,3 +1,5 @@
+from builtins import str
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 
@@ -44,6 +46,7 @@ def new(request):
         for t_file in request.FILES.getlist('question_file'):
             QFile = QuestionFile()
             QFile.file = t_file
+            QFile.fileName = str(t_file)
             QFile.question = question
             QFile.save()
         return redirect('/stacklion/')
