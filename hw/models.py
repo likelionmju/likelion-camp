@@ -1,3 +1,5 @@
+from builtins import str
+
 from django.db import models
 from django.conf import settings
 from django.utils.datetime_safe import date
@@ -35,6 +37,7 @@ class Submission(models.Model):
 
 class SubmissionFiles(models.Model):
     file = models.FileField(upload_to="homework/")
+    fileName = models.TextField(null=False, blank=False, default="hi")
     submission = models.ForeignKey(Submission, on_delete=models.CASCADE, related_name="files")
 
     def get_filename(self):

@@ -11,7 +11,7 @@
         <div class="list-group w-75">
             {% for situation in current_situations %}
                 {% if not situation|get_by_key:'is_submit' %}
-                    <a href="#" class="list-group-item list-group-item-action disabled" aria-disabled="true"></a>
+                    <a href="#" class="list-group-item list-group-item-action disabled" aria-disabled="true">{{ situation|get_by_key:'name' }}</a>
                 {% else %}
                     <a class="list-group-item list-group-item-action" data-toggle="collapse"
                        href="#user{{ forloop.counter0 }}" role="button" aria-expanded="false"

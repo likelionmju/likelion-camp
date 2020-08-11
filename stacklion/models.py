@@ -1,3 +1,5 @@
+from builtins import str
+
 from django.db import models
 
 # Create your models here.
@@ -21,6 +23,7 @@ class Question(models.Model):
 
 class QuestionFile(models.Model):
     file = models.FileField(upload_to="files/")
+    fileName = models.TextField(null=False, blank=False, default="hello")
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='files')
 
     def get_filename(self):

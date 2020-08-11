@@ -32,7 +32,7 @@
         var files = $('.submission_file' + id).each(function (index, item) {
             inner_div_files += '<div class="form-control" id="div' + $(item).attr('id') + '">' + $(item).html() +
                 '<button id="' + $(item).attr('id') +
-                '" class="filedelete btn btn-danger btn-sm" type="button">삭제</button><br></div>'
+                '" class="filedelete btn btn-danger btn-sm" style="float: right;margin-left: 530px" type="button">삭제</button><br></div>'
         });
         console.log(files);
         $('#real_files').attr('hidden', true);
@@ -148,7 +148,7 @@
                             {% for sfile in submission.files.all %}
                                 <a class="submission_file{{ submission.id }} d-inline-block small" id="{{ sfile.id }}"
                                     href="{{ sfile.file.url }}" download="" value="">
-                                    <span class="text-muted"> {{ sfile.file }}</span>
+                                    <span class="text-muted"> {{ sfile.fileName }}</span>
                                 </a>
                             {% endfor %}
                         </div>
