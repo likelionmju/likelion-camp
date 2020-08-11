@@ -46,6 +46,9 @@ main, footer, section {
     border: 0;
 }
 
+#real_files{
+    height: auto;
+}
 /*-- Footer --*/
 
 #copyright
