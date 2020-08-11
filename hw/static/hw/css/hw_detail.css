@@ -2,7 +2,7 @@
     --main-height: calc(100vh - 7rem);
 }
 
-.main, .footer, .section {
+main, footer, section {
     height: auto;
     width: 100vw;
 }
@@ -44,4 +44,28 @@
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+/*-- Footer --*/
+
+#copyright
+{
+    overflow: hidden;
+    padding: 5em 0em;
+    border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+#copyright p
+{
+    letter-spacing: 0.20em;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.90em;
+    color: rgba(255,255,255,0.3);
+}
+
+#copyright a
+{
+    text-decoration: none;
+    color: rgba(255,255,255,0.5);
 }
