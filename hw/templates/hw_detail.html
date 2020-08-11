@@ -30,15 +30,16 @@
         var top = $('#submission_content' + id).position().top;
         var inner_div_files = ""
         var files = $('.submission_file' + id).each(function (index, item) {
-            inner_div_files += '<div id="div' + $(item).attr('id') + '">' + $(item).html() +
+            inner_div_files += '<div class="form-control" id="div' + $(item).attr('id') + '">' + $(item).html() +
                 '<button id="' + $(item).attr('id') +
-                '" class="filedelete" type="button">삭제</button><br></div>'
+                '" class="filedelete btn btn-danger btn-sm" type="button">삭제</button><br></div>'
         });
         console.log(files);
         $('#real_files').attr('hidden', true);
         $('#div_files').html(inner_div_files);
 
-        $('#submission_content' + id).replaceWith('<textarea class="form-control" name="revise" id="textarea'+ id + '">' +
+        $('#submission_content' + id).replaceWith('<textarea class="form-control" name="revise" id="textarea' +
+            id + '">' +
             content + '</textarea>');
         $('#buttonpanel' + id).html('<button type="button" id="' + id +
             '" class="button cancel btn btn-secondary" value="취소">취소</button>\n' +
@@ -55,7 +56,8 @@
         $('#div_files').html('');
         $('#real_files').removeAttr('hidden');
 
-        $('#textarea' + id).replaceWith('<textarea class="form-control" id="submission_content' + id + '" readonly>' + content + '</textarea>');
+        $('#textarea' + id).replaceWith('<textarea class="form-control" id="submission_content' + id +
+            '" readonly>' + content + '</textarea>');
         $('#buttonpanel' + id).html('<button type="button" id="' + id +
             '" class="button revise btn btn-secondary" value="수정">수정</button>\n' +
             '                        <button type="submit" id="' + id +
@@ -132,23 +134,27 @@
                         <textarea class="form-control" id="submission_content{{ submission.id }}"
                             readonly>{{ submission.register_content }}</textarea>
                     </div>
-                    <div class="filebox">
-                        <div id="div_files">
-                            {# 여기에 쓸 수 있지 않을까#}
+                    <div class="input-group my-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">제출파일</span>
                         </div>
-                    </div>
-                    <div id="filedelete" class="filedelete"></div>
-                    <div id="real_files">
-                        {% for sfile in submission.files.all %}
-                        <div>
-                            <a class="submission_file{{ submission.id }}" id="{{ sfile.id }}"
-                                href="{{ sfile.file.url }}" download="" value=""
-                                style="color: rgb(151, 151, 151); font-size: 13px; font-weight: lighter;"><span
-                                    class="icon solid fas fa-file"> {{ sfile.file }}</span></a>
+                        <div class="filebox">
+                            <div id="div_files">
+                                {# 여기에 쓸 수 있지 않을까#}
+                            </div>
                         </div>
-                        {% endfor %}
+                        <div id="filedelete" class="filedelete"></div>
+                        <div id="real_files" class="form-control">
+                            {% for sfile in submission.files.all %}
+                                <a class="submission_file{{ submission.id }} d-inline-block small" id="{{ sfile.id }}"
+                                    href="{{ sfile.file.url }}" download="" value="">
+                                    <span class="text-muted"> {{ sfile.file }}</span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                        <div id="file_list"></div>
                     </div>
-                    <div id="file_list"></div>
+                    
 
                     {# 수정/삭제 --> 취소/확인 버튼으로 바뀌는 구간#}
                     <div class="my-3 float-right" id="buttonpanel{{ submission.id }}">
