@@ -19,7 +19,7 @@ def hw_main(request):
         homework_id.append(h['id'])
 
     for i in homework_id:
-        sub = get_or_none(Submission, homework_id=i)
+        sub = get_or_none(Submission, student_id=request.user, homework_id=i)
         confirm[i]=sub
 
     now = datetime.now()
@@ -27,8 +27,8 @@ def hw_main(request):
 
 def detail(request, id):
     homework = get_object_or_404(Homework, pk=id)
-    submission = get_or_none(Submission, homework_id=homework)
-    if submission == None:
+    submission = get_or_none(Submission, student_id=request.user, homework_id=homework)
+    if submission is None:
         submission = 0
 
     return render(request, "hw_detail.html", {'homework':homework, 'submission':submission})
