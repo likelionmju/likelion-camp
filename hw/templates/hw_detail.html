@@ -101,7 +101,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">과제설명</span>
                     </div>
-                    <textarea class="form-control" readonly> {{ homework.content }} </textarea>
+                    <textarea class="form-control h-25" rows="10" readonly> {{ homework.content }} </textarea>
                 </div>
                 <div class="input-group my-2">
                     <div class="input-group-prepend">
@@ -131,7 +131,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">제출내용</span>
                         </div>
-                        <textarea class="form-control" id="submission_content{{ submission.id }}" 
+                        <textarea class="form-control h-25" rows="10" id="submission_content{{ submission.id }}" 
                             readonly>{{ submission.register_content }}</textarea>
                     </div>
                     <div class="input-group my-2">
@@ -155,7 +155,6 @@
                         <div id="file_list"></div>
                     </div>
                     
-
                     {# 수정/삭제 --> 취소/확인 버튼으로 바뀌는 구간#}
                     <div class="my-3 float-right" id="buttonpanel{{ submission.id }}">
                         <button type="button" id="{{ submission.id }}" class="button revise btn btn-secondary"
@@ -168,7 +167,7 @@
                 {% else %}
                 <form action="{% url 'submit' homework.id %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <textarea class="form-control" name="submission_content" rows="3"></textarea>
+                    <textarea class="form-control h-25" name="submission_content" rows="5"></textarea>
                     <div class="form-group">
                         <input class="form-control" name="submission_files" type="file" id="ex_file" multiple>
                     </div>
